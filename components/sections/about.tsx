@@ -59,7 +59,7 @@ export function About() {
           >
             <div className="prose prose-neutral dark:prose-invert max-w-none">
               <p className="text-lg leading-relaxed text-muted-foreground">
-                I'm a Computer Engineering student at{" "}
+                I&apos;m a Computer Engineering student at{" "}
                 <span className="text-foreground font-semibold">
                   Politecnico di Torino
                 </span>
@@ -76,7 +76,7 @@ export function About() {
               </p>
 
               <p className="text-lg leading-relaxed text-muted-foreground">
-                Beyond code, I'm fascinated by the connections between
+                Beyond code, I&apos;m fascinated by the connections between
                 disciplines—from physics to art, biology to language learning.
                 This multidisciplinary approach shapes how I think about
                 problems and build solutions.
@@ -119,9 +119,9 @@ export function About() {
                       Multilingual communicator
                     </p>
                     <div className="flex flex-wrap gap-2 mt-3">
-                      <Badge variant="outline">Turkish (Native)</Badge>
-                      <Badge variant="outline">English (Fluent)</Badge>
-                      <Badge variant="outline">Italian (Proficient)</Badge>
+                      <Badge variant="outline">Turkish</Badge>
+                      <Badge variant="outline">English</Badge>
+                      <Badge variant="outline">Italian</Badge>
                     </div>
                   </div>
                 </div>
@@ -193,7 +193,7 @@ export function About() {
                       <li className="flex items-start gap-2">
                         <span className="text-green-500 mt-1">→</span>
                         <span>
-                          Pursuing Master's programs in Computer Science
+                          Pursuing Master&apos;s programs in Computer Science
                         </span>
                       </li>
                       <li className="flex items-start gap-2">
