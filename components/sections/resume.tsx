@@ -25,10 +25,13 @@ const skills = [
   "Databases",
   "Computer architecture",
   "Linear algebra",
-  "Computer Science",
   "Git",
   "React",
   "TypeScript",
+  "C",
+  "C++",
+  "Java",
+  "Python",
   "Next.js",
   "PostgreSQL",
   "AWS",
@@ -105,7 +108,7 @@ export function Resume() {
         >
           <SectionHeading
             title="Resume"
-            subtitle="A comprehensive overview of my background and qualifications"
+            subtitle="An overview of my background and qualifications"
             centered
           />
         </motion.div>
@@ -117,7 +120,6 @@ export function Resume() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mt-8 flex flex-col items-center justify-center gap-2"
         >
-          <p className="text-sm text-muted-foreground">Torino, Italy</p>
           <Button variant="outline" size="sm" asChild>
             <a
               href="https://www.linkedin.com/in/ege-kaya/"

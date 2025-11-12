@@ -11,7 +11,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { Github, Linkedin, Send, Loader2, CheckCircle2, AlertCircle } from "lucide-react"
 import { sendEmail } from "@/app/actions/send-email"
 
@@ -56,7 +55,7 @@ export function Contact() {
         setSubmitStatus("error")
         setTimeout(() => setSubmitStatus("idle"), 5000)
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus("error")
       setTimeout(() => setSubmitStatus("idle"), 5000)
     }
@@ -236,13 +235,6 @@ export function Contact() {
                     )}
                   </Button>
                 </form>
-
-                {/* Timezone Info */}
-                <div className="mt-6 text-center">
-                  <Badge variant="outline" className="text-xs">
-                    📍 Based in Torino, Italy (CET/CEST)
-                  </Badge>
-                </div>
               </CardContent>
             </Card>
           </motion.div>

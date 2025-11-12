@@ -46,7 +46,7 @@ export function Research() {
         >
           <SectionHeading
             title="Research & Contributions"
-            subtitle="Exploring the intersection of AI, education, and computer science"
+            subtitle="Looking out for research opportunities actively"
             centered
           />
         </motion.div>
@@ -106,8 +106,7 @@ export function Research() {
           className="mt-8 max-w-3xl mx-auto text-center"
         >
           <p className="text-sm text-muted-foreground">
-            Actively exploring research opportunities at the intersection of artificial
-            intelligence, systems architecture, and educational technology. Open to
+            Actively exploring research opportunities in the fields of Computer Science, AI, Architecture and more. Open to
             collaborations and academic partnerships.
           </p>
         </motion.div>

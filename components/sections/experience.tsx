@@ -36,8 +36,8 @@ const experiences = [
     subtitle: "PoliTo Rocket Team",
     period: "Past",
     description:
-      "Developed embedded systems software for rocket avionics using C/C++ and STM32 microcontrollers. Implemented real-time data processing and sensor integration for flight systems.",
-    tags: ["C", "C++", "STM32", "Embedded Systems", "Real-Time Programming"],
+      "Developed embedded systems software for rocket avionics using C++ and STM32 microcontrollers. Implemented real-time data processing and sensor integration for flight systems.",
+    tags: ["C++", "STM32", "Embedded Systems", "Real-Time Programming"],
   },
   {
     title: "Database Developer",
@@ -45,7 +45,7 @@ const experiences = [
     period: "Past",
     description:
       "Designed and implemented database architecture for digital twin systems. Built robust data management solutions using modern database technologies and development practices.",
-    tags: ["C++", "PostgreSQL", "CMake", "Database Design"],
+    tags: ["C++", "PostgreSQL", "Database Design"],
   },
 ]
 

@@ -23,8 +23,9 @@ const interests = [
 const stats = [
   { label: "GPA", value: "27/30" },
   { label: "Year", value: "3rd" },
-  { label: "Organizations", value: "3+" },
   { label: "Languages", value: "3" },
+  { label: "Organizations", value: "3+" },
+  { label: "Projects", value: "5+" },
 ]
 
 export function About() {
@@ -115,9 +116,6 @@ export function About() {
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-lg">Languages</h3>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      Multilingual communicator
-                    </p>
                     <div className="flex flex-wrap gap-2 mt-3">
                       <Badge variant="outline">Turkish</Badge>
                       <Badge variant="outline">English</Badge>

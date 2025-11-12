@@ -27,7 +27,7 @@ const projects = [
       "Automated role assignment system for university organization Discord server. Built with Discord.js and Node.js, integrated with Supabase for persistent data storage and management.",
     tags: ["Discord.js", "Node.js", "Supabase", "API Integration"],
     isNDA: false,
-    github: "#", // Replace with actual GitHub URL
+    github: "https://github.com/egekaya1/PRT-role-bot",
     external: null,
   },
   {
@@ -35,9 +35,19 @@ const projects = [
     organization: "Team DigiTwin",
     description:
       "Comprehensive database management system for digital twin applications. Engineered with C++ for performance-critical operations, PostgreSQL for data persistence, and CMake for cross-platform build automation.",
-    tags: ["C++", "PostgreSQL", "CMake", "Database Architecture"],
+    tags: ["C++", "PostgreSQL", "Database Architecture"],
+    isNDA: true,
+    github: null, 
+    external: null,
+  },
+  {
+    title: "This Website",
+    organization: "Ege Kaya",
+    description:
+      "Personal portfolio website designed and developed to showcase my projects, research, and experience. Built with Next.js and modern UI frameworks, it features responsive design, modular architecture, and optimized performance. Focused on clean aesthetics, accessibility, and modernity, the site serves as both a professional resume and a demonstration of frontend development best practices.",
+    tags: ["Next.js", "React", "TypeScript", "UI/UX", "Responsive Design", "Web Performance"],
     isNDA: false,
-    github: "#", // Replace with actual GitHub URL
+    github: null, 
     external: null,
   },
 ]
@@ -63,7 +73,6 @@ export function Projects() {
             centered
           />
         </motion.div>
-
         <div className="mt-12 lg:mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <motion.div
@@ -148,7 +157,7 @@ export function Projects() {
                   <CardFooter>
                     <div className="w-full text-center py-2">
                       <Badge variant="outline" className="text-xs">
-                        Under NDA - Code not publicly available
+                        Code not publicly available
                       </Badge>
                     </div>
                   </CardFooter>
