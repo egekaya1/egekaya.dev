@@ -1,19 +1,46 @@
+import dynamic from "next/dynamic"
 import { Hero } from "@/components/sections/hero"
 import { About } from "@/components/sections/about"
-import { Experience } from "@/components/sections/experience"
-import { Projects } from "@/components/sections/projects"
-import { Research } from "@/components/sections/research"
-import { Resume } from "@/components/sections/resume"
-import { Contact } from "@/components/sections/contact"
+
+// Lazy load below-the-fold sections
+const TechStack = dynamic(() => import("@/components/sections/tech-stack").then(mod => ({ default: mod.TechStack })), {
+  loading: () => <div className="section-padding container-custom"><div className="h-96 animate-pulse bg-secondary/20 rounded-lg" /></div>
+})
+
+const Experience = dynamic(() => import("@/components/sections/experience").then(mod => ({ default: mod.Experience })), {
+  loading: () => <div className="section-padding container-custom"><div className="h-96 animate-pulse bg-secondary/20 rounded-lg" /></div>
+})
+
+const Projects = dynamic(() => import("@/components/sections/projects").then(mod => ({ default: mod.Projects })), {
+  loading: () => <div className="section-padding container-custom"><div className="h-96 animate-pulse bg-secondary/20 rounded-lg" /></div>
+})
+
+const Research = dynamic(() => import("@/components/sections/research").then(mod => ({ default: mod.Research })), {
+  loading: () => <div className="section-padding container-custom"><div className="h-96 animate-pulse bg-secondary/20 rounded-lg" /></div>
+})
+
+const Resume = dynamic(() => import("@/components/sections/resume").then(mod => ({ default: mod.Resume })), {
+  loading: () => <div className="section-padding container-custom"><div className="h-96 animate-pulse bg-secondary/20 rounded-lg" /></div>
+})
+
+const Testimonials = dynamic(() => import("@/components/sections/testimonials").then(mod => ({ default: mod.Testimonials })), {
+  loading: () => <div className="section-padding container-custom"><div className="h-96 animate-pulse bg-secondary/20 rounded-lg" /></div>
+})
+
+const Contact = dynamic(() => import("@/components/sections/contact").then(mod => ({ default: mod.Contact })), {
+  loading: () => <div className="section-padding container-custom"><div className="h-96 animate-pulse bg-secondary/20 rounded-lg" /></div>
+})
 
 export default function Home() {
   return (
-    <main>
+    <main id="main" role="main" aria-label="Main content">
       <Hero />
       <About />
+      <TechStack />
       <Experience />
       <Projects />
       <Research />
+      <Testimonials />
       <Resume />
       <Contact />
     </main>

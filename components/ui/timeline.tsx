@@ -1,19 +1,19 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 
-interface TimelineProps extends React.HTMLAttributes<HTMLDivElement> {
+interface TimelineProps extends React.HTMLAttributes<HTMLOListElement> {
   children: React.ReactNode
 }
 
 export function Timeline({ children, className, ...props }: TimelineProps) {
   return (
-    <div className={cn("relative space-y-8", className)} {...props}>
+    <ol className={cn("relative space-y-8", className)} role="list" aria-label="Experience timeline" {...props}>
       {children}
-    </div>
+    </ol>
   )
 }
 
-interface TimelineItemProps extends React.HTMLAttributes<HTMLDivElement> {
+interface TimelineItemProps extends React.HTMLAttributes<HTMLLIElement> {
   children: React.ReactNode
   isLast?: boolean
 }
@@ -25,7 +25,7 @@ export function TimelineItem({
   ...props
 }: TimelineItemProps) {
   return (
-    <div className={cn("relative pb-8", className)} {...props}>
+    <li className={cn("relative pb-8", className)} {...props}>
       {/* Connector line */}
       {!isLast && (
         <span
@@ -43,7 +43,7 @@ export function TimelineItem({
         {/* Content */}
         <div className="flex-1 min-w-0">{children}</div>
       </div>
-    </div>
+    </li>
   )
 }
 
@@ -53,6 +53,7 @@ interface TimelineContentProps extends React.HTMLAttributes<HTMLDivElement> {
   period?: string
   description?: string
   tags?: string[]
+  achievements?: string[]
 }
 
 export function TimelineContent({
@@ -61,6 +62,7 @@ export function TimelineContent({
   period,
   description,
   tags,
+  achievements,
   className,
   ...props
 }: TimelineContentProps) {
@@ -74,9 +76,9 @@ export function TimelineContent({
           )}
         </div>
         {period && (
-          <span className="text-sm text-muted-foreground whitespace-nowrap">
+          <time className="text-sm text-muted-foreground whitespace-nowrap">
             {period}
-          </span>
+          </time>
         )}
       </div>
 
@@ -84,6 +86,19 @@ export function TimelineContent({
         <p className="text-sm text-muted-foreground leading-relaxed">
           {description}
         </p>
+      )}
+
+      {achievements && achievements.length > 0 && (
+        <div className="flex flex-wrap gap-2 pt-2">
+          {achievements.map((achievement, index) => (
+            <span
+              key={index}
+              className="inline-flex items-center rounded-md bg-primary/10 border border-primary/20 px-2.5 py-1 text-xs font-medium text-primary"
+            >
+              ✓ {achievement}
+            </span>
+          ))}
+        </div>
       )}
 
       {tags && tags.length > 0 && (

@@ -141,17 +141,19 @@ export function Contact() {
                       htmlFor="name"
                       className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
-                      Name
+                      Name <span className="text-destructive">*</span>
                     </label>
                     <Input
                       id="name"
                       placeholder="Your name"
                       {...register("name")}
                       aria-invalid={errors.name ? "true" : "false"}
+                      aria-describedby={errors.name ? "name-error" : undefined}
                       disabled={submitStatus === "loading"}
+                      required
                     />
                     {errors.name && (
-                      <p className="text-sm text-destructive">
+                      <p id="name-error" className="text-sm text-destructive" role="alert">
                         {errors.name.message}
                       </p>
                     )}
@@ -162,7 +164,7 @@ export function Contact() {
                       htmlFor="email"
                       className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
-                      Email
+                      Email <span className="text-destructive">*</span>
                     </label>
                     <Input
                       id="email"
@@ -170,10 +172,12 @@ export function Contact() {
                       placeholder="your.email@example.com"
                       {...register("email")}
                       aria-invalid={errors.email ? "true" : "false"}
+                      aria-describedby={errors.email ? "email-error" : undefined}
                       disabled={submitStatus === "loading"}
+                      required
                     />
                     {errors.email && (
-                      <p className="text-sm text-destructive">
+                      <p id="email-error" className="text-sm text-destructive" role="alert">
                         {errors.email.message}
                       </p>
                     )}
@@ -184,7 +188,7 @@ export function Contact() {
                       htmlFor="message"
                       className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
-                      Message
+                      Message <span className="text-destructive">*</span>
                     </label>
                     <Textarea
                       id="message"
@@ -192,10 +196,12 @@ export function Contact() {
                       rows={5}
                       {...register("message")}
                       aria-invalid={errors.message ? "true" : "false"}
+                      aria-describedby={errors.message ? "message-error" : undefined}
                       disabled={submitStatus === "loading"}
+                      required
                     />
                     {errors.message && (
-                      <p className="text-sm text-destructive">
+                      <p id="message-error" className="text-sm text-destructive" role="alert">
                         {errors.message.message}
                       </p>
                     )}

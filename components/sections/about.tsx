@@ -58,30 +58,64 @@ export function About() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="space-y-6"
           >
-            <div className="prose prose-neutral dark:prose-invert max-w-none">
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                I&apos;m a Computer Engineering student at{" "}
-                <span className="text-foreground font-semibold">
-                  Politecnico di Torino
-                </span>
-                , driven by a passion for creating innovative solutions at the
-                intersection of technology and design.
-              </p>
+            <div className="space-y-6">
+              <div className="space-y-3">
+                <h3 className="text-xl font-semibold">Who I Am</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-1">→</span>
+                    <span className="text-base leading-relaxed">
+                      3rd-year Computer Engineering student at{" "}
+                      <span className="text-foreground font-semibold">
+                        Politecnico di Torino
+                      </span>{" "}
+                      with 27/30 GPA and Full Scholarship
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-1">→</span>
+                    <span className="text-base leading-relaxed">
+                      Front End Developer Intern at Parma Calcio 1913, building production-grade applications
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-1">→</span>
+                    <span className="text-base leading-relaxed">
+                      Full-stack developer with experience in React, Next.js, TypeScript, AWS, and Python
+                    </span>
+                  </li>
+                </ul>
+              </div>
 
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                My journey spans from embedded systems development to full-stack
-                web applications, with a particular focus on front-end
-                technologies and AI-assisted development. I thrive in
-                collaborative environments and enjoy contributing to student
-                organizations that push technological boundaries.
-              </p>
-
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                Beyond code, I&apos;m fascinated by the connections between
-                disciplines—from physics to art, biology to language learning.
-                This multidisciplinary approach shapes how I think about
-                problems and build solutions.
-              </p>
+              <div className="space-y-3">
+                <h3 className="text-xl font-semibold">What I Do</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li className="flex items-start gap-3">
+                    <span className="text-cyan-500 mt-1">✓</span>
+                    <span className="text-base leading-relaxed">
+                      Build scalable web applications with modern frameworks (React, Next.js, TypeScript)
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-cyan-500 mt-1">✓</span>
+                    <span className="text-base leading-relaxed">
+                      Develop problem-solving software for real-time applications (C++, Python)
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-cyan-500 mt-1">✓</span>
+                    <span className="text-base leading-relaxed">
+                      Design and optimize database architectures (PostgreSQL, Supabase)
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-cyan-500 mt-1">✓</span>
+                    <span className="text-base leading-relaxed">
+                      Contribute to open-source and research projects exploring AI and CS
+                    </span>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             {/* Education Card */}

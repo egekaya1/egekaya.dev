@@ -56,7 +56,7 @@
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
+  --color-muted-foreground: oklch(0.45 0.046 257.417);
   --accent: oklch(0.968 0.007 247.896);
   --accent-foreground: oklch(0.208 0.042 265.755);
   --destructive: oklch(0.577 0.245 27.325);
@@ -90,7 +90,7 @@
   --secondary: oklch(0.279 0.041 260.031);
   --secondary-foreground: oklch(0.984 0.003 247.858);
   --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
+  --muted-foreground: oklch(0.75 0.04 256.788);
   --accent: oklch(0.279 0.041 260.031);
   --accent-foreground: oklch(0.984 0.003 247.858);
   --destructive: oklch(0.704 0.191 22.216);
@@ -135,16 +135,75 @@
   * {
     scroll-behavior: smooth;
   }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Enhanced focus visibility for keyboard navigation */
+  *:focus-visible {
+    outline: 2px solid oklch(0.488 0.243 264.376);
+    outline-offset: 2px;
+  }
 }
 
 @layer utilities {
+  /* Enhanced typography for long-form content */
+  .prose-enhanced {
+    @apply leading-relaxed;
+  }
+
+  .prose-enhanced :is(h2){
+    scroll-margin-top: 7rem;
+  }
+
+  .prose-enhanced :is(h2,h3){
+    @apply font-semibold;
+  }
+
+  .prose-enhanced :is(p){
+    @apply my-4;
+  }
+
+  .prose-enhanced :is(ul,ol){
+    @apply my-4;
+  }
+
+  .prose-enhanced code:not(pre code){
+    @apply px-1.5 py-0.5 rounded bg-secondary/60;
+  }
+
+  .prose-enhanced pre code{
+    @apply text-sm;
+  }
+
+  .prose-enhanced blockquote{
+    @apply border-l-4 border-primary/40 pl-4 italic text-muted-foreground;
+  }
+
+  .prose-enhanced hr{
+    @apply my-8 border-border/60;
+  }
+  /* Focus states for accessibility */
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
   /* Text gradient utilities */
   .text-gradient {
-    @apply bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent;
+    @apply bg-linear-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent;
   }
 
   .text-gradient-accent {
-    @apply bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 bg-clip-text text-transparent;
+    @apply bg-linear-to-r from-cyan-500 via-blue-500 to-purple-500 bg-clip-text text-transparent;
   }
 
   /* Container utilities */
@@ -188,6 +247,19 @@
     box-shadow: 0 12px 24px -10px oklch(0.5 0.1 264 / 0.15);
   }
 
+  /* Button micro-interactions */
+  button, a[role="button"] {
+    transition: all 0.2s ease;
+  }
+
+  button:hover, a[role="button"]:hover {
+    transform: scale(1.02);
+  }
+
+  button:active, a[role="button"]:active {
+    transform: scale(0.98);
+  }
+
   /* Underline animation */
   .underline-animate {
     position: relative;
@@ -208,3 +280,141 @@
     width: 100%;
   }
 }
+
+/* ============================================
+   RETRO MODE STYLES (Konami Code Easter Egg)
+   ============================================ */
+html.retro-mode {
+  --retro-green: #00ff00;
+  --retro-amber: #ffaa00;
+  --retro-bg: #000000;
+  --retro-border: #00ff00;
+}
+
+html.retro-mode,
+html.retro-mode body {
+  background: var(--retro-bg) !important;
+  color: var(--retro-green) !important;
+}
+
+html.retro-mode * {
+  font-family: "Courier New", monospace !important;
+  text-shadow: 0 0 5px var(--retro-green) !important;
+  color: var(--retro-green) !important;
+}
+
+html.retro-mode h1,
+html.retro-mode h2,
+html.retro-mode h3,
+html.retro-mode h4,
+html.retro-mode h5,
+html.retro-mode h6 {
+  color: var(--retro-amber) !important;
+  text-shadow: 0 0 10px var(--retro-amber) !important;
+}
+
+html.retro-mode [class*="bg-"],
+html.retro-mode div,
+html.retro-mode section,
+html.retro-mode nav {
+  background: rgba(0, 255, 0, 0.05) !important;
+  border-color: var(--retro-border) !important;
+}
+
+html.retro-mode button,
+html.retro-mode a {
+  background: var(--retro-bg) !important;
+  color: var(--retro-green) !important;
+  border: 2px solid var(--retro-border) !important;
+  box-shadow: 0 0 10px var(--retro-green) !important;
+}
+
+html.retro-mode button:hover,
+html.retro-mode a:hover {
+  background: var(--retro-green) !important;
+  color: var(--retro-bg) !important;
+  box-shadow: 0 0 20px var(--retro-green) !important;
+}
+
+html.retro-mode img {
+  filter: hue-rotate(120deg) saturate(300%) brightness(0.8) !important;
+  border: 2px solid var(--retro-border) !important;
+}
+
+/* Scanline effect */
+html.retro-mode::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* CRT flicker animation */
+@keyframes retro-flicker {
+  0% {
+    opacity: 0.97;
+  }
+  5% {
+    opacity: 0.98;
+  }
+  10% {
+    opacity: 0.96;
+  }
+  15% {
+    opacity: 0.99;
+  }
+  20% {
+    opacity: 0.97;
+  }
+  100% {
+    opacity: 0.97;
+  }
+}
+
+html.retro-mode body {
+  animation: retro-flicker 0.15s infinite !important;
+}
+
+/* Terminal cursor */
+@keyframes retro-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+html.retro-mode h1::after {
+  content: "_";
+  animation: retro-blink 1s infinite;
+}
+
+/* ============================================
+   PROSE LINK STYLES (Articles & Case Studies)
+   ============================================ */
+@layer base {
+  .prose a {
+    @apply underline text-blue-600 dark:text-blue-400;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+    word-break: break-word;
+  }
+  .prose a:hover {
+    @apply text-blue-700 dark:text-blue-300;
+  }
+}
+
