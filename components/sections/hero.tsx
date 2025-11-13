@@ -42,7 +42,7 @@ export function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex justify-center overflow-hidden items-start pt-20 pb-24 md:items-center md:pt-0 md:pb-0">
       {/* 3D Background */}
       <ThreeBackground />
       
@@ -202,7 +202,7 @@ export function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
         onClick={handleScrollDown}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer group"
+        className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 cursor-pointer group"
         aria-label="Scroll down"
       >
         <div className="flex flex-col items-center gap-2">

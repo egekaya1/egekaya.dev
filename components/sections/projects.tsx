@@ -20,6 +20,7 @@ const projects = [
     isNDA: true,
     github: null,
     external: null,
+    caseStudy: "/case-studies/parma-internal-platform",
   },
   {
     title: "Discord Bot Automation",
@@ -54,7 +55,8 @@ const projects = [
     metrics: ["95+ Lighthouse", "WCAG AA", "<1s Load Time"],
     isNDA: false,
     github: "https://github.com/egekaya1/egekaya.dev", 
-    external: "https://egekaya.dev",
+    external: null,
+    caseStudy: "/case-studies/portfolio-website",
   },
 ]
 
