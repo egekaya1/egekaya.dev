@@ -158,13 +158,95 @@ export default function CaseStudy() {
           <section>
             <h2 className="text-3xl font-bold mb-4">Performance & Accessibility</h2>
             <div className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none">
+              <h3>Initial Challenges</h3>
+              <p>
+                The first Lighthouse audit revealed significant performance issues despite using Next.js. Mobile performance scored only 58/100 with a 5.7s LCP - far from production-ready.
+              </p>
+
+              <h3>Optimization Journey: 58 → 100/100</h3>
+
+              <h4>1. Sitemap Crisis (SEO Fix)</h4>
+              <p>
+                The sitemap was using hash fragments (<code>/#about</code>, <code>/#tech-stack</code>) which search engines ignore. Fixed by removing hash entries and only including actual pages.
+              </p>
+
+              <h4>2. Image Optimization (Biggest Impact)</h4>
               <ul>
-                <li>Optimized images with <code>next/image</code> and correct <code>sizes</code> attributes</li>
-                <li>Script strategy tuned; non‑critical work deferred to client components</li>
-                <li>Semantic landmarks and correct heading order</li>
-                <li>Focus states and color contrast meeting WCAG AA</li>
-                <li>Consistent link styling: blue and underlined globally</li>
+                <li>Converted 1.3MB PNG profile image to 81KB WebP (94% reduction)</li>
+                <li>Maintained imperceptible visual quality at 90% compression</li>
+                <li>Improved LCP by ~2 seconds</li>
               </ul>
+
+              <h4>3. Deferred Three.js Loading (Bundle Reduction)</h4>
+              <ul>
+                <li>Three.js bundle (865KB) was blocking initial render for 292ms</li>
+                <li>Implemented smart deferral: CSS gradients show immediately, Three.js loads after 100ms</li>
+                <li>Reduced initial bundle from 865KB to ~250KB (71% reduction)</li>
+              </ul>
+
+              <h4>4. Code Splitting Easter Eggs</h4>
+              <ul>
+                <li>Moved retro mode CSS (136 lines) to dynamically loaded file</li>
+                <li>Loads only when Konami code is activated</li>
+                <li>Reduced initial CSS by 35%</li>
+              </ul>
+
+              <h4>5. Framer Motion Optimization</h4>
+              <ul>
+                <li>Deferred animation initialization using <code>initial: false</code> pattern</li>
+                <li>Content appears immediately, animations enable on next tick</li>
+                <li>Reduced element render delay from 3,270ms to 1,300ms (60% improvement)</li>
+              </ul>
+
+              <h4>6. Accessibility Improvements</h4>
+              <ul>
+                <li>Added descriptive <code>aria-label</code> to case study links</li>
+                <li>Fixed semantic HTML structure for screen readers</li>
+                <li>Achieved 100/100 accessibility score</li>
+              </ul>
+
+              <h4>7. Security Headers</h4>
+              <ul>
+                <li>Added HSTS with <code>includeSubDomains</code> and <code>preload</code></li>
+                <li>Implemented X-Frame-Options, X-Content-Type-Options</li>
+                <li>Configured Referrer-Policy and Permissions-Policy</li>
+              </ul>
+
+              <h3>Final Results</h3>
+              <p><strong>Mobile Performance:</strong></p>
+              <ul>
+                <li>Performance: 58 → <strong>87/100</strong> (+29 points)</li>
+                <li>FCP: 2.7s → <strong>1.0s</strong> (63% faster)</li>
+                <li>LCP: 5.7s → <strong>2.4s</strong> (58% faster)</li>
+                <li>TBT: 470ms → <strong>400ms</strong> (15% faster)</li>
+                <li>Speed Index: 5.7s → <strong>2.9s</strong> (49% faster)</li>
+              </ul>
+
+              <p><strong>Desktop Performance: Perfect 100/100</strong></p>
+              <ul>
+                <li>FCP: 0.3s | LCP: 0.5s | TBT: 50ms | CLS: 0.001</li>
+              </ul>
+
+              <p><strong>All Other Metrics: 100/100</strong></p>
+              <ul>
+                <li>Accessibility: 100/100</li>
+                <li>Best Practices: 100/100</li>
+                <li>SEO: 100/100</li>
+              </ul>
+
+              <h3>Technical Implementation</h3>
+              <ul>
+                <li>Optimized images with <code>next/image</code> and WebP format</li>
+                <li>Dynamic imports for heavy libraries (Three.js, retro CSS)</li>
+                <li>Smart animation deferral with Framer Motion</li>
+                <li>Semantic landmarks and correct heading order</li>
+                <li>WCAG AA compliance for focus states and color contrast</li>
+                <li>Comprehensive security headers in Next.js config</li>
+              </ul>
+
+              <p>
+                <em>Read the full technical breakdown in the <a href="/blog/optimizing-nextjs-performance">detailed blog post</a>.</em>
+              </p>
             </div>
           </section>
 

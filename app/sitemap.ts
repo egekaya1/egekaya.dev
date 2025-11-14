@@ -18,13 +18,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/blog/postgresql-query-optimization`,
+      url: `${baseUrl}/blog/optimizing-nextjs-performance`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/blog/optimizing-nextjs-performance`,
+      url: `${baseUrl}/blog/postgresql-query-optimization`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,

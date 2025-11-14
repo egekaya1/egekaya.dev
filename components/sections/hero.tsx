@@ -20,7 +20,7 @@ export function Hero() {
     // Enable animations after initial render to improve LCP
     setEnableAnimations(true)
 
-    // Defer Three.js loading to after initial render
+    // Small delay for Three.js
     const timer = setTimeout(() => {
       setShowThreeBackground(true)
     }, 100)
@@ -56,8 +56,23 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex justify-center overflow-hidden items-start pt-20 pb-24 md:items-center md:pt-0 md:pb-0">
+      {/* CSS Gradient Preview - Instant appearance, 0 performance overhead */}
+      <div
+        className="absolute inset-0 -z-10 transition-opacity duration-500"
+        style={{
+          opacity: showThreeBackground ? 0 : 1,
+          background: 'radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 50%)',
+          animation: 'gradient-shift 8s ease-in-out infinite'
+        }}
+      />
+
       {/* 3D Background - deferred loading */}
-      {showThreeBackground && <ThreeBackground />}
+      <div
+        className="absolute inset-0 -z-10 transition-opacity duration-500"
+        style={{ opacity: showThreeBackground ? 1 : 0 }}
+      >
+        {showThreeBackground && <ThreeBackground />}
+      </div>
 
       {/* Background gradients */}
       <div className="absolute inset-0 -z-10">

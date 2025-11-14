@@ -27,11 +27,11 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     slug: "optimizing-nextjs-performance",
-    title: "Optimizing Next.js Performance: From 60 to 95+ Lighthouse Score",
-    description: "A comprehensive guide on achieving 95+ Lighthouse scores in production Next.js applications. Learn about image optimization, code splitting, and server-side rendering strategies.",
-    publishedAt: "2025-11-10",
-    readingTime: "8 min read",
-    tags: ["Next.js", "Performance", "Web Vitals"],
+    title: "Next.js Performance Optimization: 58 → 100 Lighthouse Score",
+    description: "Complete guide to achieving 100/100 Lighthouse score in Next.js. Real portfolio case study: WebP optimization, Three.js deferring, code splitting, accessibility, and security headers.",
+    publishedAt: "2025-11-14",
+    readingTime: "15 min read",
+    tags: ["Performance", "Lighthouse", "Next.js", "Case Study"],
     featured: true,
   },
   {

@@ -141,6 +141,7 @@ export function Projects() {
                       >
                         <a
                           href={project.caseStudy}
+                          aria-label={`View case study for ${project.title}`}
                           className="inline-flex items-center justify-center gap-2"
                         >
                           Case Study
