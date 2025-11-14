@@ -9,10 +9,23 @@ import Image from "next/image"
 
 const ThreeBackground = dynamic(
   () => import("@/components/three-background").then((mod) => ({ default: mod.ThreeBackground })),
-  { ssr: false }
+  { ssr: false, loading: () => null }
 )
 
 export function Hero() {
+  const [showThreeBackground, setShowThreeBackground] = React.useState(false)
+  const [enableAnimations, setEnableAnimations] = React.useState(false)
+
+  React.useEffect(() => {
+    // Enable animations after initial render to improve LCP
+    setEnableAnimations(true)
+
+    // Defer Three.js loading to after initial render
+    const timer = setTimeout(() => {
+      setShowThreeBackground(true)
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [])
   const handleScrollToProjects = () => {
     const element = document.querySelector("#projects")
     if (element) {
@@ -43,9 +56,9 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex justify-center overflow-hidden items-start pt-20 pb-24 md:items-center md:pt-0 md:pb-0">
-      {/* 3D Background */}
-      <ThreeBackground />
-      
+      {/* 3D Background - deferred loading */}
+      {showThreeBackground && <ThreeBackground />}
+
       {/* Background gradients */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
@@ -56,14 +69,14 @@ export function Hero() {
         <div className="flex flex-col items-center text-center space-y-8">
           {/* Profile Photo */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={enableAnimations ? { opacity: 0, scale: 0.9 } : false}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             className="relative"
           >
             <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
               <Image
-                src="/profile.png"
+                src="/profile.webp"
                 alt="Ege Kaya - Computer Engineering Student and Software Developer"
                 fill
                 className="object-cover"
@@ -76,7 +89,7 @@ export function Hero() {
 
           {/* Tagline */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={enableAnimations ? { opacity: 0, y: 20 } : false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 backdrop-blur-sm border border-border/50"
@@ -86,7 +99,7 @@ export function Hero() {
 
           {/* Main Heading */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={enableAnimations ? { opacity: 0, y: 20 } : false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
             className="space-y-4"
@@ -104,7 +117,7 @@ export function Hero() {
 
           {/* Location */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={enableAnimations ? { opacity: 0, y: 20 } : false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex items-center gap-2 text-muted-foreground"
@@ -115,7 +128,7 @@ export function Hero() {
 
           {/* Description */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={enableAnimations ? { opacity: 0, y: 20 } : false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
             className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed"
@@ -127,7 +140,7 @@ export function Hero() {
 
           {/* CTA Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={enableAnimations ? { opacity: 0, y: 20 } : false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4"
@@ -198,7 +211,7 @@ export function Hero() {
 
       {/* Scroll Indicator */}
       <motion.button
-        initial={{ opacity: 0 }}
+        initial={enableAnimations ? { opacity: 0 } : false}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
         onClick={handleScrollDown}

@@ -95,7 +95,7 @@ export default function RootLayout({
     '@type': 'Person',
     name: 'Ege Kaya',
     url: 'https://egekaya.dev',
-    image: 'https://egekaya.dev/profile.png',
+    image: 'https://egekaya.dev/profile.webp',
     jobTitle: 'Computer Engineering Student & Front End Developer',
     worksFor: {
       '@type': 'Organization',
