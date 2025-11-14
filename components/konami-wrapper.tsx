@@ -25,7 +25,12 @@ export function KonamiWrapper({ children }: { children: ReactNode }) {
         // Play retro beep sound using Web Audio API
         const playSound = async () => {
           try {
-            const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)()
+            // Prefer standard AudioContext, fall back to webkitAudioContext with a typed cast to avoid `any`
+            const AudioCtor = typeof AudioContext !== "undefined"
+              ? AudioContext
+              : (globalThis as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext
+            if (!AudioCtor) throw new Error("Web Audio API is not supported in this browser")
+            const audioContext = new AudioCtor()
             
             // Resume context if suspended (required for autoplay policy)
             if (audioContext.state === 'suspended') {
