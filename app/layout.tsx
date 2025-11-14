@@ -80,6 +80,9 @@ export const metadata: Metadata = {
     description: "Computer Engineering student at Politecnico di Torino. Building production-grade applications with React, Next.js, and TypeScript.",
     images: ["/opengraph-image"],
   },
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({
