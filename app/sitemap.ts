@@ -12,6 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: `${baseUrl}/blog/lecturelens-ai-study-planner`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/blog`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
@@ -55,6 +61,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/case-studies/portfolio-website`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/case-studies/lecturelens-platform`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.9,

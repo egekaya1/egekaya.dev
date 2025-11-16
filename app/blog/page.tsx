@@ -35,6 +35,16 @@ const blogPosts: BlogPost[] = [
     featured: true,
   },
   {
+    slug: "lecturelens-ai-study-planner",
+    title: "LectureLens: AI Study Planner with Next.js + Supabase",
+    description:
+      "Open-source study companion: ingest course materials to generate summaries, flashcards, Q&A, and schedules — built with React, Next.js, and Supabase.",
+    publishedAt: "2025-11-16",
+    readingTime: "9 min read",
+    tags: ["Next.js", "Supabase", "AI", "Open Source"],
+    featured: true,
+  },
+  {
     slug: "aws-s3-cloudfront-integration",
     title: "CDN Optimization with AWS CloudFront + S3: A Real-World Case Study",
     description: "How I shipped a fast, secure, and low-cost static site on S3 + CloudFront: OAC, cache policies (max-age, s-maxage, stale-while-revalidate, stale-if-error), versioning, and concrete performance gains..",
