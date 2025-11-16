@@ -11,6 +11,30 @@ import { Github, ExternalLink, Lock } from "lucide-react"
 
 const projects = [
   {
+    title: "LectureLens",
+    organization: "Open Source",
+    description:
+      "AI-powered study companion that turns course material into summaries, flashcards, interactive Q&A, and a personalized study schedule.",
+    tags: ["Next.js", "React", "TypeScript", "Supabase"],
+    metrics: ["Open Source", "Study Planner"],
+    isNDA: false,
+    github: "https://github.com/egekaya1/LectureLens",
+    external: "https://lecture-lens-nine.vercel.app/",
+    caseStudy: "/case-studies/lecturelens-platform",
+  },
+  {
+    title: "This Website!",
+    organization: "Personal Project",
+    description:
+      "Modern portfolio website built with Next.js 16 and TypeScript, achieving 95+ Lighthouse score across all metrics. Implements server-side rendering, optimized image loading, and accessibility best practices (WCAG AA). Features dark mode, responsive design, and form validation with 99.9% uptime on Vercel.",
+    tags: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4"],
+    metrics: ["95+ Lighthouse", "WCAG AA", "<1s Load Time"],
+    isNDA: false,
+    github: "https://github.com/egekaya1/egekaya.dev", 
+    external: null,
+    caseStudy: "/case-studies/portfolio-website",
+  },
+  {
     title: "Internal Web Application",
     organization: "Parma Calcio 1913",
     description:
@@ -21,18 +45,6 @@ const projects = [
     github: null,
     external: null,
     caseStudy: "/case-studies/parma-internal-platform",
-  },
-  {
-    title: "Discord Bot Automation",
-    organization: "PoliTo Organization",
-    description:
-      "Automated role assignment system for 200+ member university Discord server, reducing manual role management time from 2 hours/week to 5 minutes/month. Built with Discord.js and Node.js, integrated with Supabase for real-time data synchronization. Handles 1000+ role assignments with 99.9% uptime.",
-    tags: ["Discord.js", "Node.js", "Supabase", "API Integration"],
-    metrics: ["200+ Members", "95% Time Reduction", "1000+ Assignments"],
-    isNDA: false,
-    github: "https://github.com/egekaya1/PRT-role-bot",
-    external: null,
-    caseStudy: "/case-studies/discord-bot-automation",
   },
   {
     title: "DigiTwin Database System",
@@ -47,16 +59,16 @@ const projects = [
     caseStudy: "/case-studies/digitwin-database",
   },
   {
-    title: "This Website!",
-    organization: "Personal Project",
+    title: "Discord Bot Automation",
+    organization: "PoliTo Organization",
     description:
-      "Modern portfolio website built with Next.js 16 and TypeScript, achieving 95+ Lighthouse score across all metrics. Implements server-side rendering, optimized image loading, and accessibility best practices (WCAG AA). Features dark mode, responsive design, and form validation with 99.9% uptime on Vercel.",
-    tags: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4"],
-    metrics: ["95+ Lighthouse", "WCAG AA", "<1s Load Time"],
+      "Automated role assignment system for 200+ member university Discord server, reducing manual role management time from 2 hours/week to 5 minutes/month. Built with Discord.js and Node.js, integrated with Supabase for real-time data synchronization. Handles 1000+ role assignments with 99.9% uptime.",
+    tags: ["Discord.js", "Node.js", "Supabase", "API Integration"],
+    metrics: ["200+ Members", "95% Time Reduction", "1000+ Assignments"],
     isNDA: false,
-    github: "https://github.com/egekaya1/egekaya.dev", 
+    github: "https://github.com/egekaya1/PRT-role-bot",
     external: null,
-    caseStudy: "/case-studies/portfolio-website",
+    caseStudy: "/case-studies/discord-bot-automation",
   },
 ]
 
