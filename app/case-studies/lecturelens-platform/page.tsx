@@ -3,12 +3,14 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, Calendar, BookOpen, Brain, Layers, ExternalLink, Github } from "lucide-react"
+import { ArrowLeft, BookOpen, Brain, Layers, ExternalLink, Github, Calendar } from "lucide-react"
+import { ContentArticle } from "@/components/content-article"
+import { PostHeader } from "@/components/post-header"
 
 export const metadata: Metadata = {
   title: "Case Study: LectureLens — AI Study Planner with Next.js + Supabase | Ege Kaya",
   description:
-    "Open-source AI study planner: ingest PDFs & notes, generate summaries, flashcards, interactive Q&A, and structured schedules (Next.js + Supabase).",
+    "(WIP) Open-source AI study planner: ingest PDFs & notes, generate summaries, flashcards, interactive Q&A, and structured schedules (Next.js + Supabase).",
   openGraph: {
     title: "Case Study: LectureLens — Next.js + Supabase (Open Source)",
     url: "https://egekaya.dev/case-studies/lecturelens-platform",
@@ -16,59 +18,33 @@ export const metadata: Metadata = {
 }
 
 export default function CaseStudy() {
+  const readingTime = "11 min read"
   return (
     <main className="section-padding">
-      <div className="container-custom max-w-5xl">
+      <div className="container-custom max-w-4xl">
         <Link href="/#projects">
           <Button variant="ghost" size="sm" className="mb-8">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Projects
           </Button>
         </Link>
-
-        <article className="space-y-12">
-          {/* Hero */}
-          <div>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <Badge>Next.js</Badge>
-              <Badge>React</Badge>
-              <Badge>Supabase</Badge>
-              <Badge>TypeScript</Badge>
-              <Badge>Open Source</Badge>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-              Case Study: LectureLens — AI Study Planner
-            </h1>
-            <p className="text-xl text-muted-foreground mb-6">
-              LectureLens converts raw course materials (PDFs, notes, slides) into distilled summaries, targeted flashcards,
-              interactive Q&amp;A, and a milestone-driven study schedule using an incremental AI processing pipeline.
-            </p>
-            <div className="flex items-center gap-2 flex-wrap">
-              <Button variant="outline" size="sm" asChild>
-                <a
-                  href="https://lecture-lens-nine.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2"
-                >
-                  <ExternalLink className="h-4 w-4" /> Live Demo
-                </a>
-              </Button>
-              <Button variant="outline" size="sm" asChild>
-                <a
-                  href="https://github.com/egekaya1/LectureLens"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2"
-                >
-                  <Github className="h-4 w-4" /> Source Code
-                </a>
-              </Button>
-            </div>
-          </div>
+        <ContentArticle>
+          <PostHeader
+            title="Case Study: LectureLens — AI Study Planner"
+            badges={["Next.js", "React", "Supabase", "TypeScript", "Open Source", "Work In Progress"]}
+            readingTime={readingTime}
+            externalLinks={[
+              { label: "Live Demo", href: "https://lecture-lens-nine.vercel.app/", icon: <ExternalLink className="h-4 w-4" /> },
+              { label: "Source Code", href: "https://github.com/egekaya1/LectureLens", icon: <Github className="h-4 w-4" /> },
+            ]}
+          />
+          <p className="lead">
+            LectureLens converts raw course materials (PDFs, notes, slides) into distilled summaries, targeted flashcards,
+            interactive Q&amp;A, and a milestone-driven study schedule using an incremental AI processing pipeline.
+          </p>
 
           {/* Key Metrics / Highlights */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 not-prose">
             <Card>
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
@@ -123,10 +99,53 @@ export default function CaseStudy() {
             </Card>
           </div>
 
+          {/* Current Status */}
+          <section>
+            <h2>Current Status (WIP)</h2>
+            <div className="text-sm">
+              <p>
+                LectureLens is in an MVP build cycle. Core schema and row level security policies are codified. Next focus: completing auth flows, wiring the processing trigger, and surfacing topic extraction in the dashboard before moving into flashcards, practice Q&amp;A, and semantic search.
+              </p>
+              <div className="grid md:grid-cols-2 gap-6 not-prose mt-4">
+                <div className="rounded-lg border p-4">
+                  <h3 className="font-semibold mb-2">Implemented</h3>
+                  <ul className="list-disc ml-5 space-y-1 text-xs md:text-sm">
+                    <li>Postgres schema (lectures, chunks, topics)</li>
+                    <li>RLS policies (migrations committed)</li>
+                    <li>Edge function scaffold for processing pipeline</li>
+                    <li>Initial upload flow prototype</li>
+                  </ul>
+                </div>
+                <div className="rounded-lg border p-4">
+                  <h3 className="font-semibold mb-2">In Progress / Next</h3>
+                  <ul className="list-disc ml-5 space-y-1 text-xs md:text-sm">
+                    <li>Auth UI (signup / signin / reset)</li>
+                    <li>Processing trigger + status badges</li>
+                    <li>Lecture detail & topic navigation</li>
+                    <li>Flashcards & study mode (Milestone 3)</li>
+                    <li>Practice Q&amp;A + quiz mode (Milestone 4)</li>
+                    <li>Semantic search & RAG (Milestone 5)</li>
+                    <li>Study plans & reminders (Milestone 6)</li>
+                  </ul>
+                </div>
+              </div>
+              <h3 className="mt-6">Milestone Roadmap</h3>
+              <ol className="list-decimal ml-5 space-y-1 text-xs md:text-sm">
+                <li>M1: Auth foundation & processing integration</li>
+                <li>M2: Lecture detail pages & topic UX</li>
+                <li>M3: Flashcards & study mode</li>
+                <li>M4: Practice Q&amp;A generation</li>
+                <li>M5: Semantic search & retrieval‑augmented answers</li>
+                <li>M6: Study schedules & progress tracking</li>
+                <li>M7: Deployment, analytics & polish</li>
+              </ol>
+            </div>
+          </section>
+
           {/* Problem */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">The Challenge</h2>
-            <div className="prose prose-neutral dark:prose-invert max-w-none">
+            <h2>The Challenge</h2>
+            <div>
               <p>
                 Students juggle heterogeneous materials (slides, lecture notes, textbook PDFs) that vary in density and
                 formatting. Translating this into a sustainable plan with spaced repetition and concept reinforcement is
@@ -137,8 +156,8 @@ export default function CaseStudy() {
 
           {/* Solution */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">The Solution</h2>
-            <div className="prose prose-neutral dark:prose-invert max-w-none">
+            <h2>The Solution</h2>
+            <div>
               <h3>Product Flow</h3>
               <ol>
                 <li>Import course material (notes, PDFs, slides)</li>
@@ -186,7 +205,7 @@ export default function CaseStudy() {
 
           {/* Results */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Results & Impact</h2>
+            <h2>Results & Impact</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <Card className="border-2">
                 <CardContent className="pt-6">
@@ -215,8 +234,8 @@ export default function CaseStudy() {
 
           {/* Challenges & Lessons */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Challenges & Lessons</h2>
-            <div className="prose prose-neutral dark:prose-invert max-w-none">
+            <h2>Challenges & Lessons</h2>
+            <div>
               <ul>
                 <li><strong>Noisy PDFs:</strong> Hyphenated line breaks and multi-column layouts required normalization heuristics to prevent fragmented prompts.</li>
                 <li><strong>Duplicate Concepts:</strong> Overlapping slide + note content inflated card counts; similarity checks trimmed 20–30% redundant candidates.</li>
@@ -229,8 +248,8 @@ export default function CaseStudy() {
 
           {/* Next Steps */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Next Steps</h2>
-            <div className="prose prose-neutral dark:prose-invert max-w-none">
+            <h2>Next Steps</h2>
+            <div>
               <ul>
                 <li>Vector embeddings (pgvector) for semantic retrieval in Q&amp;A.</li>
                 <li>Adaptive spaced repetition using historical success rate per card.</li>
@@ -240,9 +259,15 @@ export default function CaseStudy() {
             </div>
           </section>
 
+          <section>
+            <div className="not-prose p-4 rounded-lg border bg-muted/30 text-xs md:text-sm">
+              <p><strong>Note:</strong> This case study reflects an in-progress build. Impact metrics and advanced features (semantic search, adaptive scheduling) will be updated as milestones are delivered.</p>
+            </div>
+          </section>
+
           {/* Tech Stack */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Tech Stack</h2>
+            <h2>Tech Stack</h2>
             <div className="flex flex-wrap gap-3">
               <Badge variant="outline" className="text-sm py-2 px-4">Next.js</Badge>
               <Badge variant="outline" className="text-sm py-2 px-4">React</Badge>
@@ -253,7 +278,7 @@ export default function CaseStudy() {
           </section>
 
           {/* CTA */}
-          <section className="border-t pt-8">
+          <section className="border-t pt-8 not-prose">
             <div className="text-center">
               <h3 className="text-2xl font-bold mb-4">Interested in learning tools?</h3>
               <p className="text-muted-foreground mb-6">
@@ -264,7 +289,7 @@ export default function CaseStudy() {
               </Button>
             </div>
           </section>
-        </article>
+        </ContentArticle>
       </div>
     </main>
   )

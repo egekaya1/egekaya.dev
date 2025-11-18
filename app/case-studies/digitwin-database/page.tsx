@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, Database, TrendingUp, Zap, Server } from "lucide-react"
+import { ContentArticle } from "@/components/content-article"
+import { PostHeader } from "@/components/post-header"
 
 export const metadata: Metadata = {
   title: "Case Study: DigiTwin Database System — 50K+/day, 40% Faster Queries | Ege Kaya",
@@ -16,41 +18,33 @@ export const metadata: Metadata = {
 }
 
 export default function CaseStudy() {
+  const readingTime = "10 min read"
   return (
     <main className="section-padding">
-      <div className="container-custom max-w-5xl">
+      <div className="container-custom max-w-4xl">
         <Link href="/#projects">
           <Button variant="ghost" size="sm" className="mb-8">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Projects
           </Button>
         </Link>
-
-        <article className="space-y-12">
-          {/* Hero Section */}
-          <div>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <Badge>C++</Badge>
-              <Badge>PostgreSQL</Badge>
-              <Badge>CMake</Badge>
-              <Badge>Performance</Badge>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-              Case Study: DigiTwin High‑Performance Database System
-            </h1>
-            <p className="text-xl text-muted-foreground mb-6">
-              Engineered database management system for structural monitoring, processing 50,000+ 
-              daily sensor readings with 40% performance improvement
-            </p>
-            <div className="flex items-center gap-2">
-              <Badge variant="outline" className="bg-amber-500/10 border-amber-500/20">
-                🔒 Proprietary - Code not publicly available
-              </Badge>
-            </div>
+        <ContentArticle>
+          <PostHeader
+            title="Case Study: DigiTwin High‑Performance Database System"
+            badges={["C++", "PostgreSQL", "CMake", "Performance"]}
+            readingTime={readingTime}
+          />
+          <p className="lead">
+            Engineered database management system for structural monitoring, processing 50,000+ daily sensor readings with 40% performance improvement
+          </p>
+          <div className="not-prose mb-8">
+            <Badge variant="outline" className="bg-amber-500/10 border-amber-500/20">
+              🔒 Proprietary - Code not publicly available
+            </Badge>
           </div>
 
           {/* Key Metrics */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 not-prose">
             <Card>
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
@@ -107,8 +101,8 @@ export default function CaseStudy() {
 
           {/* Challenge */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">The Challenge</h2>
-            <div className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none">
+            <h2>The Challenge</h2>
+            <div>
               <p>
                 The DigiTwin research project at Politecnico di Torino required a database system 
                 to monitor structural integrity of buildings using IoT sensors. The system faced 
@@ -140,8 +134,8 @@ export default function CaseStudy() {
 
           {/* Solution */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">The Solution</h2>
-            <div className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none">
+            <h2>The Solution</h2>
+            <div>
               <p>
                 I designed and implemented a high-performance C++ data processing pipeline with optimized 
                 PostgreSQL integration, focusing on throughput and query performance.
@@ -231,7 +225,7 @@ target_link_libraries(digitwin_processor
 
           {/* Results */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Results & Impact</h2>
+            <h2>Results & Impact</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <Card className="border-2">
                 <CardContent className="pt-6">
@@ -260,8 +254,8 @@ target_link_libraries(digitwin_processor
 
           {/* Technical Challenges */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Technical Challenges Overcome</h2>
-            <div className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none">
+            <h2>Technical Challenges Overcome</h2>
+            <div>
               <h3>1. Memory Management</h3>
               <p>
                 C++ manual memory management required careful attention to prevent leaks in long-running 
@@ -290,8 +284,8 @@ target_link_libraries(digitwin_processor
 
           {/* Lessons Learned */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Lessons Learned</h2>
-            <div className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none">
+            <h2>Lessons Learned</h2>
+            <div>
               <ul>
                 <li>
                   <strong>Profiling before optimizing</strong> - Used Valgrind and gprof to identify 
@@ -318,7 +312,7 @@ target_link_libraries(digitwin_processor
 
           {/* Tech Stack */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Tech Stack</h2>
+            <h2>Tech Stack</h2>
             <div className="flex flex-wrap gap-3">
               <Badge variant="outline" className="text-sm py-2 px-4">C++17</Badge>
               <Badge variant="outline" className="text-sm py-2 px-4">PostgreSQL 14</Badge>
@@ -330,7 +324,7 @@ target_link_libraries(digitwin_processor
           </section>
 
           {/* CTA */}
-          <section className="border-t pt-8">
+          <section className="border-t pt-8 not-prose">
             <div className="text-center">
               <h3 className="text-2xl font-bold mb-4">Need high-performance data processing?</h3>
               <p className="text-muted-foreground mb-6">
@@ -341,7 +335,7 @@ target_link_libraries(digitwin_processor
               </Button>
             </div>
           </section>
-        </article>
+        </ContentArticle>
       </div>
     </main>
   )

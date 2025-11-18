@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, Cloud, ServerCog, Shield, GaugeCircle } from "lucide-react"
+import { ContentArticle } from "@/components/content-article"
+import { PostHeader } from "@/components/post-header"
 
 export const metadata: Metadata = {
   title: "Case Study: Parma Calcio Internal Platform — Faster Ops with Next.js + CloudFront + S3 | Ege Kaya",
@@ -16,41 +18,33 @@ export const metadata: Metadata = {
 }
 
 export default function CaseStudy() {
+  const readingTime = "9 min read"
   return (
     <main className="section-padding">
-      <div className="container-custom max-w-5xl">
+      <div className="container-custom max-w-4xl">
         <Link href="/#projects">
           <Button variant="ghost" size="sm" className="mb-8">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Projects
           </Button>
         </Link>
-
-        <article className="space-y-12">
-          {/* Hero */}
-          <div>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <Badge>Next.js</Badge>
-              <Badge>TypeScript</Badge>
-              <Badge>CloudFront + S3</Badge>
-              <Badge>PostgreSQL</Badge>
-              <Badge>Automation</Badge>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-              Case Study: Parma Calcio Internal Operations Platform
-            </h1>
-            <p className="text-xl text-muted-foreground mb-6">
-              Delivered secure document and media delivery, automated workflows, and responsive UI for 50+ staff — reducing data entry time by 35% and enabling faster teamwide communication.
-            </p>
-            <div className="flex items-center gap-2">
-              <Badge variant="outline" className="bg-amber-500/10 border-amber-500/20">
-                🔒 Proprietary — Code not publicly available
-              </Badge>
-            </div>
+        <ContentArticle>
+          <PostHeader
+            title="Case Study: Parma Calcio Internal Operations Platform"
+            badges={["Next.js", "TypeScript", "CloudFront + S3", "PostgreSQL", "Automation"]}
+            readingTime={readingTime}
+          />
+          <p className="lead">
+            Delivered secure document and media delivery, automated workflows, and responsive UI for 50+ staff — reducing data entry time by 35% and enabling faster teamwide communication.
+          </p>
+          <div className="not-prose mb-8">
+            <Badge variant="outline" className="bg-amber-500/10 border-amber-500/20">
+              🔒 Proprietary — Code not publicly available
+            </Badge>
           </div>
 
           {/* Key Metrics */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 not-prose">
             <Card>
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
@@ -107,8 +101,8 @@ export default function CaseStudy() {
 
           {/* Context & Goals */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Context & Goals</h2>
-            <div className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none">
+            <h2>Context & Goals</h2>
+            <div>
               <p>
                 Parma Calcio 1913 - a modern internal platform to streamline day‑to‑day operations across analysis, coaching, and administrative teams. The legacy version made it difficult to share updated documents and training videos quickly, and manual workflows caused duplicate data entry.
               </p>
@@ -123,8 +117,8 @@ export default function CaseStudy() {
 
           {/* Architecture */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Architecture Overview</h2>
-            <div className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none">
+            <h2>Architecture Overview</h2>
+            <div>
               <ol>
                 <li><strong>API layer</strong> for workflows (requests, approvals, notifications)</li>
                 <li><strong>PostgreSQL</strong> for transactional data with RLS‑style constraints implemented at the app tier</li>
@@ -140,8 +134,8 @@ export default function CaseStudy() {
 
           {/* Features Delivered */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">What I Delivered</h2>
-            <div className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none">
+            <h2>What I Delivered</h2>
+            <div>
               <ul>
                 <li>
                   <strong>Edge‑cached documents and videos</strong> with sensible cache policies (immutable versioned keys, short TTL for listings). P95 video start time under 1.2s for common assets.
@@ -164,7 +158,7 @@ export default function CaseStudy() {
 
           {/* Results */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Results & Impact</h2>
+            <h2>Results & Impact</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <Card className="border-2">
                 <CardContent className="pt-6">
@@ -191,8 +185,8 @@ export default function CaseStudy() {
 
           {/* Challenges */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Key Challenges & Solutions</h2>
-            <div className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none">
+            <h2>Key Challenges & Solutions</h2>
+            <div>
               <h3>Secure media delivery without public buckets</h3>
               <p>
                 I enforced private S3 buckets with CloudFront OAC and restrictive bucket policies, ensuring media is only accessible via CloudFront. Time‑boxed access was provided with pre‑signed URLs for specific roles.
@@ -212,7 +206,7 @@ export default function CaseStudy() {
 
           {/* Tech Stack */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Tech Stack</h2>
+            <h2>Tech Stack</h2>
             <div className="flex flex-wrap gap-3">
               <Badge variant="outline" className="text-sm py-2 px-4">Next.js 16</Badge>
               <Badge variant="outline" className="text-sm py-2 px-4">React 19</Badge>
@@ -224,7 +218,7 @@ export default function CaseStudy() {
           </section>
 
           {/* CTA */}
-          <section className="border-t pt-8">
+          <section className="border-t pt-8 not-prose">
             <div className="text-center">
               <h3 className="text-2xl font-bold mb-4">Need help developing internal tools?</h3>
               <p className="text-muted-foreground mb-6">
@@ -235,7 +229,7 @@ export default function CaseStudy() {
               </Button>
             </div>
           </section>
-        </article>
+        </ContentArticle>
       </div>
     </main>
   )

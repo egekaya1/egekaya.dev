@@ -3,7 +3,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, ExternalLink, Calendar, Users, TrendingUp, Zap } from "lucide-react"
+import { ArrowLeft, ExternalLink, Users, TrendingUp, Zap, Calendar } from "lucide-react"
+import { ContentArticle } from "@/components/content-article"
+import { PostHeader } from "@/components/post-header"
 
 export const metadata: Metadata = {
   title: "Discord Bot Automation - Case Study | Ege Kaya",
@@ -15,49 +17,31 @@ export const metadata: Metadata = {
 }
 
 export default function CaseStudy() {
+  const readingTime = "8 min read"
   return (
     <main className="section-padding">
-      <div className="container-custom max-w-5xl">
+      <div className="container-custom max-w-4xl">
         <Link href="/#projects">
           <Button variant="ghost" size="sm" className="mb-8">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Projects
           </Button>
         </Link>
-
-        <article className="space-y-12">
-          {/* Hero Section */}
-          <div>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <Badge>Discord.js</Badge>
-              <Badge>Node.js</Badge>
-              <Badge>Supabase</Badge>
-              <Badge>Automation</Badge>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-              Discord Bot Automation for PoliTo Organization
-            </h1>
-            <p className="text-xl text-muted-foreground mb-6">
-              Automated role assignment system for 200+ member university Discord server, 
-              reducing manual management time by 95%
-            </p>
-            <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm" asChild>
-                <a
-                  href="https://github.com/egekaya1/PRT-role-bot"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  View Source Code
-                </a>
-              </Button>
-            </div>
-          </div>
+        <ContentArticle>
+          <PostHeader
+            title="Discord Bot Automation for PoliTo Organization"
+            badges={["Discord.js", "Node.js", "Supabase", "Automation"]}
+            readingTime={readingTime}
+            externalLinks={[
+              { label: "View Source Code", href: "https://github.com/egekaya1/PRT-role-bot", icon: <ExternalLink className="h-4 w-4" /> },
+            ]}
+          />
+          <p className="lead">
+            Automated role assignment system for 200+ member university Discord server, reducing manual management time by 95%
+          </p>
 
           {/* Key Metrics */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 not-prose">
             <Card>
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
@@ -114,8 +98,8 @@ export default function CaseStudy() {
 
           {/* Challenge */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">The Challenge</h2>
-            <div className="prose prose-neutral dark:prose-invert max-w-none">
+            <h2>The Challenge</h2>
+            <div>
               <p>
                 The PoliTo student organization managed a Discord server for 200+ engineering students. 
                 Each semester, new students joined and needed appropriate course-specific roles for access 
@@ -133,8 +117,8 @@ export default function CaseStudy() {
 
           {/* Solution */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">The Solution</h2>
-            <div className="prose prose-neutral dark:prose-invert max-w-none">
+            <h2>The Solution</h2>
+            <div>
               <p>
                 I developed a Discord bot that automates the entire role assignment process with real-time 
                 synchronization and audit logging.
@@ -206,7 +190,7 @@ async function assignRole(member, roleId) {
 
           {/* Results */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Results & Impact</h2>
+            <h2>Results & Impact</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <Card className="border-2">
                 <CardContent className="pt-6">
@@ -233,8 +217,8 @@ async function assignRole(member, roleId) {
 
           {/* Lessons Learned */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Lessons Learned</h2>
-            <div className="prose prose-neutral dark:prose-invert max-w-none">
+            <h2>Lessons Learned</h2>
+            <div>
               <ul>
                 <li>
                   <strong>Start with MVP</strong> - Initially built basic role assignment, then added 
@@ -259,7 +243,7 @@ async function assignRole(member, roleId) {
 
           {/* Tech Stack */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Tech Stack</h2>
+            <h2>Tech Stack</h2>
             <div className="flex flex-wrap gap-3">
               <Badge variant="outline" className="text-sm py-2 px-4">Discord.js v14</Badge>
               <Badge variant="outline" className="text-sm py-2 px-4">Node.js 18</Badge>
@@ -270,7 +254,7 @@ async function assignRole(member, roleId) {
           </section>
 
           {/* CTA */}
-          <section className="border-t pt-8">
+          <section className="border-t pt-8 not-prose">
             <div className="text-center">
               <h3 className="text-2xl font-bold mb-4">Interested in automation solutions?</h3>
               <p className="text-muted-foreground mb-6">
@@ -281,7 +265,7 @@ async function assignRole(member, roleId) {
               </Button>
             </div>
           </section>
-        </article>
+        </ContentArticle>
       </div>
     </main>
   )

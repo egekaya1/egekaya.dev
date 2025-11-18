@@ -1,8 +1,9 @@
 import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Calendar, Clock } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
+import { ContentArticle } from "@/components/content-article"
+import { PostHeader } from "@/components/post-header"
 
 export const metadata: Metadata = {
   title: "PostgreSQL in Production: 40% Faster Queries (Case Notes) | Ege Kaya",
@@ -27,29 +28,14 @@ export default function BlogPost() {
           </Button>
         </Link>
 
-        <article className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none prose-a:underline prose-a:text-blue-600 hover:prose-a:text-blue-700 dark:prose-a:text-blue-400 dark:hover:prose-a:text-blue-300 wrap-break-word">
-          {/* Header */}
-          <div className="not-prose mb-8">
-            <div className="flex flex-wrap gap-2 mb-4">
-              <Badge>PostgreSQL</Badge>
-              <Badge>Database</Badge>
-              <Badge>Performance</Badge>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-              PostgreSQL in Production: 40% Faster Queries (Case Notes)
-            </h1>
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                <time dateTime="2024-11-01">November 1, 2024</time>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>12 min read</span>
-              </div>
-            </div>
-          </div>
-
+        <ContentArticle>
+          <PostHeader
+            title="PostgreSQL in Production: 40% Faster Queries (Case Notes)"
+            badges={["PostgreSQL", "Database", "Performance"]}
+            date={{ label: "November 1, 2024", dateTime: "2024-11-01" }}
+            readingTime="12 min read"
+          />
+          <hr />
           <hr />
 
           {/* Content */}
@@ -361,7 +347,7 @@ ORDER BY pg_total_relation_size(schemaname||'.'||tablename) DESC;`}</code></pre>
               .
             </p>
           </div>
-        </article>
+        </ContentArticle>
       </div>
     </main>
   )

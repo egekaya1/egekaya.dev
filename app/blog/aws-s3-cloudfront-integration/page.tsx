@@ -1,8 +1,9 @@
 import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Calendar, Clock } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
+import { ContentArticle } from "@/components/content-article"
+import { PostHeader } from "@/components/post-header"
 
 export const metadata: Metadata = {
   title: "CDN Optimization with AWS CloudFront + S3: A Real-World Case Study | Ege Kaya",
@@ -27,29 +28,13 @@ export default function BlogPost() {
           </Button>
         </Link>
 
-        <article className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none prose-a:underline prose-a:text-blue-600 hover:prose-a:text-blue-700 dark:prose-a:text-blue-400 dark:hover:prose-a:text-blue-300 wrap-break-word">
-          {/* Header */}
-          <div className="not-prose mb-8">
-            <div className="flex flex-wrap gap-2 mb-4">
-              <Badge>AWS</Badge>
-              <Badge>CloudFront</Badge>
-              <Badge>S3</Badge>
-              <Badge>CDN</Badge>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-              CDN Optimization with AWS CloudFront + S3: A Real-World Case Study
-            </h1>
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                <time dateTime="2024-11-05">November 5, 2024</time>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>10 min read</span>
-              </div>
-            </div>
-          </div>
+        <ContentArticle>
+          <PostHeader
+            title="CDN Optimization with AWS CloudFront + S3: A Real-World Case Study"
+            badges={["AWS", "CloudFront", "S3", "CDN"]}
+            date={{ label: "November 5, 2024", dateTime: "2024-11-05" }}
+            readingTime="10 min read"
+          />
           <hr />
 
           {/* Content */}
@@ -271,7 +256,7 @@ Cache-Control: public, max-age=86400, s-maxage=604800, stale-while-revalidate=60
               .
             </p>
           </div>
-        </article>
+        </ContentArticle>
       </div>
     </main>
   )
