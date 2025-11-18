@@ -6,6 +6,8 @@ import { useInView } from "react-intersection-observer"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { MilestoneBar } from "@/components/ui/milestone-bar"
+import type { Milestone } from "@/components/ui/milestone-bar"
 import { Button } from "@/components/ui/button"
 import { Github, ExternalLink, Lock } from "lucide-react"
 
@@ -14,9 +16,31 @@ const projects = [
     title: "LectureLens",
     organization: "Open Source",
     description:
-      "AI-powered study companion that turns course material into summaries, flashcards, interactive Q&A, and a personalized study schedule.",
-    tags: ["Next.js", "React", "TypeScript", "Supabase"],
-    metrics: ["Open Source", "Study Planner"],
+      "(WIP) AI-powered study companion: ingest PDFs & notes → summaries, flashcards, interactive Q&A and milestone-based study schedules. Incremental AI pipeline with secure per-user isolation.",
+    tags: [
+      "Next.js App Router",
+      "TypeScript",
+      "Supabase (Auth + RLS)",
+      "PostgreSQL",
+      "Edge Functions",
+      "AI Pipeline"
+    ],
+    metrics: [
+      "Schema+RLS", 
+      "Chunking Pipeline", 
+      "Edge Fn Scaffold", 
+      "Embeddings Ready", 
+      "M1 In Progress"
+    ],
+    milestones: [
+      { label: "M1 Auth & Processing", status: "done" },
+      { label: "M2 Lecture Detail", status: "in-progress" },
+      { label: "M3 Flashcards", status: "pending" },
+      { label: "M4 Q&A", status: "pending" },
+      { label: "M5 Semantic Search", status: "pending" },
+      { label: "M6 Study Schedules", status: "pending" },
+      { label: "M7 Polish & Beta", status: "pending" }
+    ] as Milestone[],
     isNDA: false,
     github: "https://github.com/egekaya1/LectureLens",
     external: "https://lecture-lens-nine.vercel.app/",
@@ -122,6 +146,12 @@ export function Projects() {
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {project.description}
                   </p>
+
+                  {project.milestones && (
+                    <div className="mt-4">
+                      <MilestoneBar milestones={project.milestones} />
+                    </div>
+                  )}
 
                   {project.metrics && (
                     <div className="flex flex-wrap gap-2 mt-4 mb-4">

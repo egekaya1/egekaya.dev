@@ -1,8 +1,9 @@
 import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Calendar, Clock } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
+import { ContentArticle } from "@/components/content-article"
+import { PostHeader } from "@/components/post-header"
 
 export const metadata: Metadata = {
   title: "Next.js Performance Optimization: 58 → 100 Lighthouse Score | Ege Kaya",
@@ -27,30 +28,13 @@ export default function BlogPost() {
           </Button>
         </Link>
 
-        <article className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none prose-a:underline prose-a:text-blue-600 hover:prose-a:text-blue-700 dark:prose-a:text-blue-400 dark:hover:prose-a:text-blue-300 wrap-break-word">
-          {/* Header */}
-          <div className="not-prose mb-8">
-            <div className="flex flex-wrap gap-2 mb-4">
-              <Badge>Performance</Badge>
-              <Badge>Lighthouse</Badge>
-              <Badge>Next.js</Badge>
-              <Badge>Case Study</Badge>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-              Next.js Performance Optimization: 58 → 100 Lighthouse Score
-            </h1>
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                <time dateTime="2025-11-14">November 14, 2025</time>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>15 min read</span>
-              </div>
-            </div>
-          </div>
-
+        <ContentArticle>
+          <PostHeader
+            title="Next.js Performance Optimization: 58 → 100 Lighthouse Score"
+            badges={["Performance", "Lighthouse", "Next.js", "Case Study"]}
+            date={{ label: "November 14, 2025", dateTime: "2025-11-14" }}
+            readingTime="15 min read"
+          />
           {/* Content */}
           <h2>The Challenge</h2>
           <p>
@@ -502,7 +486,7 @@ const geistSans = Geist({
           <p className="text-muted-foreground text-sm mt-12">
             Have questions about performance optimization? Feel free to <Link href="/#contact">reach out</Link>!
           </p>
-        </article>
+        </ContentArticle>
       </div>
     </main>
   )

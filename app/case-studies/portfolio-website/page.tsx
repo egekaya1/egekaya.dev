@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowLeft, Rocket, Sparkles, Image as ImageIcon, Accessibility, BarChart3 } from "lucide-react"
+import { ContentArticle } from "@/components/content-article"
+import { PostHeader } from "@/components/post-header"
 
 export const metadata: Metadata = {
   title: "Case Study: egekaya.dev — 95+ Lighthouse, App Router, Tailwind v4 | Ege Kaya",
@@ -16,36 +18,28 @@ export const metadata: Metadata = {
 }
 
 export default function CaseStudy() {
+  const readingTime = "14 min read"
   return (
     <main className="section-padding">
-      <div className="container-custom max-w-5xl">
+      <div className="container-custom max-w-4xl">
         <Link href="/#projects">
           <Button variant="ghost" size="sm" className="mb-8">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Projects
           </Button>
         </Link>
-
-        <article className="space-y-12">
-          {/* Hero */}
-          <div>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <Badge>Next.js 16</Badge>
-              <Badge>React 19</Badge>
-              <Badge>TypeScript</Badge>
-              <Badge>Tailwind CSS v4</Badge>
-              <Badge>r3f</Badge>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-              Case Study: egekaya.dev Portfolio Website
-            </h1>
-            <p className="text-xl text-muted-foreground mb-6">
-              A performance‑focused, accessible portfolio with a playful twist — Three.js background, Konami retro mode, and writing‑first typography.
-            </p>
-          </div>
+        <ContentArticle>
+          <PostHeader
+            title="Case Study: egekaya.dev Portfolio Website"
+            badges={["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "r3f"]}
+            readingTime={readingTime}
+          />
+          <p className="lead">
+            A performance‑focused, accessible portfolio with a playful twist — Three.js background, Konami retro mode, and writing‑first typography.
+          </p>
 
           {/* Metrics */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 not-prose">
             <Card>
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
@@ -102,8 +96,8 @@ export default function CaseStudy() {
 
           {/* Goals */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Project Goals</h2>
-            <div className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none">
+            <h2>Project Goals</h2>
+            <div>
               <ul>
                 <li><strong>Fast by default</strong> with aggressive image optimization and minimal JS</li>
                 <li><strong>Accessible</strong> navigation and content that reads well on mobile</li>
@@ -115,8 +109,8 @@ export default function CaseStudy() {
 
           {/* Architecture & Decisions */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Architecture & Key Decisions</h2>
-            <div className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none">
+            <h2>Architecture & Key Decisions</h2>
+            <div>
               <h3>Next.js App Router with React 19</h3>
               <p>
                 The site uses Next.js 16 App Router for file‑system routes, streaming, and metadata per page. React 19 upgrades enable smaller bundle sizes and better concurrent rendering.
@@ -156,8 +150,8 @@ export default function CaseStudy() {
 
           {/* Performance & A11y */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Performance & Accessibility</h2>
-            <div className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none">
+            <h2>Performance & Accessibility</h2>
+            <div>
               <h3>Initial Challenges</h3>
               <p>
                 The first Lighthouse audit revealed significant performance issues despite using Next.js. Mobile performance scored only 58/100 with a 5.7s LCP - far from production-ready.
@@ -252,8 +246,8 @@ export default function CaseStudy() {
 
           {/* What I Built */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">What I Built</h2>
-            <div className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none">
+            <h2>What I Built</h2>
+            <div>
               <ul>
                 <li>Home hero with responsive image sizing and mobile‑first spacing (no navbar overlap)</li>
                 <li>Projects grid with case study first, code second</li>
@@ -266,8 +260,8 @@ export default function CaseStudy() {
 
           {/* Lessons */}
           <section>
-            <h2 className="text-3xl font-bold mb-4">Lessons & Trade‑offs</h2>
-            <div className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none">
+            <h2>Lessons & Trade‑offs</h2>
+            <div>
               <ul>
                 <li><strong>Small UX fixes matter</strong>: Anchor navigation and mobile spacing improved perceived quality a lot.</li>
                 <li><strong>Keep effects optional</strong>: Three.js and Konami add personality without hurting performance.</li>
@@ -277,7 +271,7 @@ export default function CaseStudy() {
           </section>
 
           {/* CTA */}
-          <section className="border-t pt-8">
+          <section className="border-t pt-8 not-prose">
             <div className="text-center">
               <h3 className="text-2xl font-bold mb-4">Want a fast, accessible site?</h3>
               <p className="text-muted-foreground mb-6">
@@ -288,7 +282,7 @@ export default function CaseStudy() {
               </Button>
             </div>
           </section>
-        </article>
+        </ContentArticle>
       </div>
     </main>
   )

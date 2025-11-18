@@ -1,17 +1,18 @@
 import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Calendar, Clock, ExternalLink, Github } from "lucide-react"
+import { ArrowLeft, ExternalLink, Github, Cpu, Database, Boxes, Binary, ShieldCheck } from "lucide-react"
+import { ContentArticle } from "@/components/content-article"
+import { PostHeader } from "@/components/post-header"
 
 export const metadata: Metadata = {
   title: "LectureLens: AI Study Planner with Next.js + Supabase | Ege Kaya",
   description:
-    "Open-source AI study planner: ingest PDFs & notes, generate summaries, flashcards, interactive Q&A, and a structured schedule using Next.js + Supabase.",
+    "(WIP) Open-source AI study planner: ingest PDFs & notes, generate summaries, flashcards, interactive Q&A, and a structured schedule using Next.js + Supabase.",
   openGraph: {
     title: "LectureLens: AI Study Planner (Open Source)",
     description:
-      "Ingest course material and get summaries, flashcards, Q&A, and a study plan. Built with Next.js + Supabase.",
+      "(Work In Progress) Ingest course material and get summaries, flashcards, Q&A, and a study plan. Built with Next.js + Supabase.",
     url: "https://egekaya.dev/blog/lecturelens-ai-study-planner",
   },
 }
@@ -27,55 +28,32 @@ export default function BlogPost() {
           </Button>
         </Link>
 
-        <article className="prose prose-neutral dark:prose-invert prose-enhanced max-w-none prose-a:underline prose-a:text-blue-600 hover:prose-a:text-blue-700 dark:prose-a:text-blue-400 dark:hover:prose-a:text-blue-300 wrap-break-word">
-          {/* Header */}
-          <div className="not-prose mb-8">
-            <div className="flex flex-wrap gap-2 mb-4">
-              <Badge>Next.js</Badge>
-              <Badge>Supabase</Badge>
-              <Badge>AI</Badge>
-              <Badge>Open Source</Badge>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-              LectureLens: AI Study Planner with Next.js + Supabase
-            </h1>
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                <time dateTime="2025-11-16">November 16, 2025</time>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4" />
-                <span>9 min read</span>
-              </div>
-            </div>
-          </div>
+        <ContentArticle>
+          <PostHeader
+            title="LectureLens: AI Study Planner with Next.js + Supabase"
+            badges={[
+              "Next.js App Router",
+              "TypeScript",
+              "Supabase Auth + RLS",
+              "PostgreSQL",
+              "Edge Functions",
+              "Chunking Pipeline",
+              "Embeddings (pgvector)",
+              "Flashcards (Planned)",
+              "RAG Q&A (Planned)",
+              "Work In Progress",
+            ]}
+            date={{ label: "November 16, 2025", dateTime: "2025-11-16" }}
+            readingTime="9 min read"
+            externalLinks={[
+              { label: "Live Demo", href: "https://lecture-lens-nine.vercel.app/", icon: <ExternalLink className="h-4 w-4" /> },
+              { label: "Source Code", href: "https://github.com/egekaya1/LectureLens", icon: <Github className="h-4 w-4" /> },
+            ]}
+          />
 
           <p className="lead">
-            LectureLens helps students turn raw course materials into a practical study program: concise summaries,
-            flashcards, interactive Q&amp;A, and a calendar-ready schedule. The app is open source and built with
-            React, Next.js, and Supabase.
+            LectureLens converts raw lecture material (PDF slides, notes, transcripts) into structured topics, concise summaries, flashcards, interactive Q&amp;A, and a milestone‑driven study schedule. This post documents the <strong>active MVP build phase</strong> — schema + RLS are codified, processing pipeline scaffold exists, and upcoming milestones focus on auth UX, topic navigation, spaced repetition, and semantic search.
           </p>
-
-          <div className="not-prose mt-6 flex flex-wrap gap-3">
-            <a
-              href="https://lecture-lens-nine.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm underline"
-            >
-              <ExternalLink className="h-4 w-4" /> Live Demo
-            </a>
-            <a
-              href="https://github.com/egekaya1/LectureLens"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm underline"
-            >
-              <Github className="h-4 w-4" /> Source Code
-            </a>
-          </div>
-
           <hr />
 
           <h2>Problem</h2>
@@ -101,71 +79,90 @@ export default function BlogPost() {
             <li><strong>Next.js:</strong> UI, routing, server actions</li>
             <li><strong>Supabase:</strong> Auth, Postgres, and row-level security rules</li>
             <li><strong>TypeScript:</strong> End-to-end types for safer feature work</li>
+            <li><strong>Edge Functions:</strong> Deterministic processing stages with service role isolation</li>
+            <li><strong>pgvector (planned):</strong> Semantic retrieval for RAG Q&amp;A</li>
           </ul>
 
           <h2>AI Processing Pipeline</h2>
           <p>
-            Although the public README focuses on core features, internally the pipeline treats each uploaded document as a
-            sequence of processing stages designed to preserve semantic structure while limiting token usage:
+            Internally the pipeline treats each uploaded document as a sequence of processing stages designed to preserve semantic structure while limiting token usage:
           </p>
           <ol>
-            <li><strong>Text Extraction:</strong> Raw PDF text is segmented into logical blocks (headings, paragraphs, lists) to avoid merging unrelated concepts.</li>
-            <li><strong>Chunking & Normalization:</strong> Blocks are grouped into chunks under a target token budget (e.g. ~1–2k tokens) with light cleanup (whitespace, duplicate heading collapse).</li>
-            <li><strong>Summarization Pass:</strong> Each chunk is summarized independently; a consolidation pass merges overlapping summaries and enforces consistent terminology.</li>
-            <li><strong>Flashcard Generation:</strong> For factual or definition-rich segments, prompt templates produce Q&A pairs (priority: definitions → processes → edge cases). Near-duplicate cards are deduped by fuzzy matching.</li>
-            <li><strong>Q&A Interactive Mode:</strong> User questions reference stored chunk embeddings (future: vector index) to inject relevant context before answering.</li>
-            <li><strong>Schedule Synthesis:</strong> Summaries + card counts feed a heuristic that splits material into milestones (intro, drilling, review). Spaced repetition intervals are tuned by difficulty (definition vs conceptual vs procedural).</li>
+            <li><strong>Text Extraction:</strong> Segment PDF text into logical blocks (headings, paragraphs, lists).</li>
+            <li><strong>Chunking & Normalization:</strong> Group blocks under a token budget with cleanup (hyphen join, heading dedupe).</li>
+            <li><strong>Summarization Pass:</strong> Summarize each chunk; consolidation merges overlap and enforces terminology.</li>
+            <li><strong>Flashcard Generation (planned):</strong> Prompt templates classify facts/processes/edge cases, dedupe similar cards.</li>
+            <li><strong>Q&A Mode (planned):</strong> Embed chunks, retrieve top‑N, inject into answer synthesis prompt.</li>
+            <li><strong>Schedule Synthesis (planned):</strong> Use summary difficulty + card density to allocate milestone focus windows.</li>
           </ol>
-
-          <h3>Data Model Considerations</h3>
-          <ul>
-            <li><strong>Documents:</strong> Metadata (title, source filename, processing state) + normalized text blocks.</li>
-            <li><strong>Cards:</strong> question, answer, source_block_ids[], difficulty, next_review_at.</li>
-            <li><strong>Schedules:</strong> milestone_day, target_blocks, review_focus (new vs mature).</li>
-          </ul>
+          <div className="not-prose mt-4 grid sm:grid-cols-3 gap-4">
+            <div className="flex items-center gap-2 text-xs font-medium"><Cpu className="h-4 w-4" /> Deterministic sequencing</div>
+            <div className="flex items-center gap-2 text-xs font-medium"><Database className="h-4 w-4" /> Relational artifacts</div>
+            <div className="flex items-center gap-2 text-xs font-medium"><Boxes className="h-4 w-4" /> Adaptive chunk sizing</div>
+            <div className="flex items-center gap-2 text-xs font-medium"><Binary className="h-4 w-4" /> Similarity dedupe</div>
+            <div className="flex items-center gap-2 text-xs font-medium"><ShieldCheck className="h-4 w-4" /> RLS isolation</div>
+          </div>
 
           <h3>Token & Performance Constraints</h3>
           <ul>
-            <li>Chunking prevents hitting provider token limits and reduces latency variance.</li>
-            <li>Consolidation step avoids summary drift where later chunks rephrase earlier concepts inconsistently.</li>
-            <li>Flashcard dedupe prevents redundant drilling (especially glossary sections repeating terms).</li>
+            <li>Chunking bounds latency variance + cost.</li>
+            <li>Consolidation reduces summary drift & duplication.</li>
+            <li>Dedupe prevents redundant glossary‑style flashcards.</li>
           </ul>
 
           <h2>Challenges & Mitigations</h2>
           <ul>
-            <li><strong>PDF Noise:</strong> Line-break heavy content or hyphenated words cause fragmented context → employ normalization and word rejoining heuristics.</li>
-            <li><strong>Duplicate Content:</strong> Slides + notes with overlapping bullet points → similarity scoring before generating cards.</li>
-            <li><strong>Token Budget:</strong> Large textbooks exceed single-pass limits → incremental summarization tree (chunk → section → global).</li>
-            <li><strong>Context Precision:</strong> Q&A answers hallucinate if context is too broad → narrow selection to top-N semantically closest blocks (future: embedding store).</li>
-            <li><strong>Scheduling Fairness:</strong> Over-emphasis on early dense chapters → weight milestones by normalized token density, not raw length.</li>
+            <li><strong>PDF Noise:</strong> Normalization & rejoining heuristics.</li>
+            <li><strong>Duplicate Content:</strong> Fuzzy similarity scoring pre‑generation.</li>
+            <li><strong>Large Lectures:</strong> Incremental hierarchical summarization tree.</li>
+            <li><strong>Hallucinations:</strong> Narrow retrieval (top‑N chunk context) before answer synthesis.</li>
+            <li><strong>Scheduling Bias:</strong> Weight milestones by normalized concept density.</li>
           </ul>
 
-          <h2>Future Improvements</h2>
-          <ul>
-            <li>Vector index for semantic retrieval (Supabase pgvector or external service).</li>
-            <li>Adaptive spaced repetition using per-card success history.</li>
-            <li>Export schedule to external calendars (ICS generation).</li>
-            <li>Collaborative sets with per-user mastery scoring.</li>
-          </ul>
+          <h2>Roadmap Status (WIP)</h2>
+          <p className="text-muted-foreground text-sm">Current build cycle; implemented vs upcoming milestones.</p>
+          <div className="grid md:grid-cols-2 gap-6 not-prose">
+            <div className="rounded-lg border p-4 space-y-2">
+              <h3 className="font-semibold">Implemented</h3>
+              <ul className="list-disc ml-5 text-sm">
+                <li>Schema: lectures, chunks, topics</li>
+                <li>RLS policies (migrations)</li>
+                <li>Edge function scaffold</li>
+                <li>Upload flow prototype</li>
+              </ul>
+            </div>
+            <div className="rounded-lg border p-4 space-y-2">
+              <h3 className="font-semibold">Next / In Progress</h3>
+              <ul className="list-disc ml-5 text-sm">
+                <li>Auth UI</li>
+                <li>Processing trigger + status badges</li>
+                <li>Lecture detail + topic navigation</li>
+                <li>Flashcards & study mode</li>
+                <li>Practice Q&amp;A + quiz mode</li>
+                <li>Semantic search & RAG</li>
+                <li>Study schedules & reminders</li>
+              </ul>
+            </div>
+          </div>
+          <h3 className="mt-8">Milestones</h3>
+          <ol className="list-decimal ml-5 text-sm space-y-1">
+            <li>M1: Auth + processing integration</li>
+            <li>M2: Lecture detail + topic UX</li>
+            <li>M3: Flashcards & study mode</li>
+            <li>M4: Practice Q&amp;A generation</li>
+            <li>M5: Semantic search (vector + hybrid)</li>
+            <li>M6: Study schedules & tracking</li>
+            <li>M7: Deployment & analytics</li>
+          </ol>
+          <div className="mt-6 p-4 rounded-md border bg-muted/40 not-prose">
+            <p className="text-xs text-muted-foreground">Post‑MVP: ICS export, adaptive spaced repetition, shared study sets, semantic rerank refinement.</p>
+          </div>
 
-          <h2>Why This Stack</h2>
-          <p>
-            Supabase provides an excellent developer experience for auth and data, while Next.js simplifies server/
-            client boundaries and streaming UI. Together they enable fast iteration and a clean mental model.
-          </p>
-
-          <h2>Roadmap Snapshot</h2>
-          <ul>
-            <li>Calendar export (ICS + provider sync)</li>
-            <li>Adaptive spaced repetition tuning</li>
-            <li>Team/shared study sets with permission tiers</li>
-            <li>Embeddings + semantic rerank for Q&A context</li>
-          </ul>
-
-          <p className="text-muted-foreground text-sm mt-12">
-            Feedback or ideas? <Link href="/#contact">Reach out</Link> — I’d love to hear them.
-          </p>
-        </article>
+          <p className="text-muted-foreground text-sm mt-12">Feedback or ideas? <Link href="/#contact">Reach out</Link> — I’d love to hear them.</p>
+          <div className="not-prose mt-10 p-4 rounded-lg border bg-muted/30">
+            <p className="text-sm"><strong>Note:</strong> Roadmap sections are aspirational until shipped; page updates track milestone delivery.</p>
+          </div>
+        </ContentArticle>
       </div>
     </main>
   )
