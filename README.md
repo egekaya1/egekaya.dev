@@ -131,54 +131,6 @@ egekaya.dev/
 
 ---
 
-## 🚀 Getting Started
-
-### Prerequisites
-- **Node.js 20+** (for App Router features)
-- **npm** or **pnpm**
-
-### Installation
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/egekaya1/egekaya.dev.git
-cd egekaya.dev
-```
-
-2. **Install dependencies**
-```bash
-npm install
-```
-
-3. **Set up environment variables**
-
-Create a `.env.local` file in the root directory:
-
-```env
-# Email (Resend)
-RESEND_API_KEY=your_resend_api_key
-CONTACT_EMAIL=your_email@example.com
-
-# Analytics (optional)
-NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
-```
-
-4. **Run the development server**
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Build for Production
-
-```bash
-npm run build
-npm start
-```
-
----
-
 ## 📝 Content Management
 
 ### Adding a Blog Post
