@@ -13,8 +13,8 @@ const navItems = [
   { name: "Tech Stack", href: "#tech-stack" },
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
-  { name: "Testimonials", href: "#testimonials" },
   { name: "Research", href: "#research" },
+  { name: "Testimonials", href: "#testimonials" },
   { name: "Blog", href: "/blog", external: true },
   { name: "Contact", href: "#contact" },
 ]
