@@ -26,6 +26,15 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "git-sim-interactive-git-visualization",
+    title: "Git-Sim: Simulating Rebase, Merge, Reset & Cherry-Pick Safely",
+    description: "Deep technical dive: commit graph modeling, conflict prediction heuristics, safety scoring, virtual hashes, and snapshot system for safe exploration of advanced Git operations.",
+    publishedAt: "2025-11-23",
+    readingTime: "18 min read",
+    tags: ["Git", "Simulation", "Python", "CLI"],
+    featured: true,
+  },
+  {
     slug: "optimizing-nextjs-performance",
     title: "Next.js Performance Optimization: 58 → 100 Lighthouse Score",
     description: "Complete guide to achieving 100/100 Lighthouse score in Next.js. Real portfolio case study: WebP optimization, Three.js deferring, code splitting, accessibility, and security headers.",
