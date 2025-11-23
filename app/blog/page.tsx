@@ -27,11 +27,11 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     slug: "git-sim-interactive-git-visualization",
-    title: "Git-Sim: Simulating Rebase, Merge, Reset & Cherry-Pick Safely",
-    description: "Deep technical dive: commit graph modeling, conflict prediction heuristics, safety scoring, virtual hashes, and snapshot system for safe exploration of advanced Git operations.",
+    title: "GitSimulator: Production-Grade Git Simulation Engine",
+    description: "Deep technical dive into GitSimulator: 135+ tests, automated CI/CD, interactive TUI, plugin architecture, and advanced conflict prediction. Learn how a production-ready CLI makes dangerous Git commands safe to explore.",
     publishedAt: "2025-11-23",
-    readingTime: "18 min read",
-    tags: ["Git", "Simulation", "Python", "CLI"],
+    readingTime: "22 min read",
+    tags: ["Git", "Python", "CLI", "Testing", "CI/CD"],
     featured: true,
   },
   {

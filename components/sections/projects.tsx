@@ -47,26 +47,27 @@ const projects = [
     caseStudy: "/case-studies/lecturelens-platform",
   },
   {
-    title: "Git-Sim",
+    title: "GitSimulator",
     organization: "Open Source",
     description:
-      "Deep Git operation simulation engine: dry-run rebase, merge, reset, cherry-pick with visual commit graphs, conflict prediction heuristics, and safety scoring. Designed for education & CI pre-flight analysis. Upcoming PyPI distribution: pip install git-sim (soon).",
+      "Production-grade Git simulation engine: dry-run rebase, merge, reset, cherry-pick with visual commit graphs, conflict prediction (3 certainty levels), and safety analysis. 135+ tests, automated CI/CD, interactive TUI, plugin architecture. Available on PyPI: pipx install gitsimulator (v1.0.1).",
     tags: [
-      "Python",
-      "CLI",
-      "Git Internals",
-      "Simulation",
-      "Visualization"
+      "Python 3.11+",
+      "Dulwich",
+      "Rich",
+      "Typer",
+      "Textual",
+      "CI/CD"
     ],
     metrics: [
-      "Rebase/Merge/Reset",
-      "Conflict Prediction",
-      "Safety Scoring",
-      "Snapshots",
-      "TUI Soon"
+      "135+ Tests",
+      "95%+ Coverage",
+      "PyPI v1.0.1",
+      "3-Level Conflict Detection",
+      "Interactive TUI"
     ],
     isNDA: false,
-    github: "https://github.com/egekaya1/GitSim",
+    github: "https://github.com/egekaya1/GitSimulator",
     external: null,
     caseStudy: "/case-studies/git-sim",
   },
