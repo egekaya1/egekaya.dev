@@ -26,6 +26,15 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "machine-learning-roadmap-from-numpy-to-production",
+    title: "My Machine Learning Journey: From NumPy to Production PyTorch",
+    description: "A personal roadmap through machine learning: Python foundations, NumPy, Pandas, scikit-learn, PyTorch with Apple Silicon MPS, deep learning architectures, MLOps, and production deployment. Lessons learned and the path forward.",
+    publishedAt: "2025-11-24",
+    readingTime: "18 min read",
+    tags: ["Python", "PyTorch", "Machine Learning", "Deep Learning", "MLOps"],
+    featured: true,
+  },
+  {
     slug: "git-sim-interactive-git-visualization",
     title: "GitSimulator: Production-Grade Git Simulation Engine",
     description: "Deep technical dive into GitSimulator: 135+ tests, automated CI/CD, interactive TUI, plugin architecture, and advanced conflict prediction. Learn how a production-ready CLI makes dangerous Git commands safe to explore.",

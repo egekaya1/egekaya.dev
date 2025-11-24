@@ -18,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/blog/machine-learning-roadmap-from-numpy-to-production`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/blog/git-sim-interactive-git-visualization`,
       lastModified: currentDate,
       changeFrequency: 'monthly',

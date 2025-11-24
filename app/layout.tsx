@@ -21,7 +21,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://egekaya.dev"),
-  title: "Ege Kaya | Software Engineer Portfolio - React, Next.js, TypeScript",
+  title: "Ege Kaya | Software Engineer",
   description: "Portfolio of Ege Kaya - Computer Engineering student at Politecnico di Torino (27/30 GPA) and Front End Developer at Parma Calcio 1913. Specialized in React, Next.js, TypeScript, AWS and Python. Building production-grade full-stack applications in Torino, Italy.",
   keywords: [
     "Ege Kaya",
@@ -62,21 +62,21 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://egekaya.dev",
-    title: "Ege Kaya | Software Engineer Portfolio",
+    title: "Ege Kaya | Software Engineer",
     description: "Computer Engineering student at Politecnico di Torino and Front End Developer at Parma Calcio 1913. Specialized in React, Next.js, TypeScript, AWS, and Python.",
-    siteName: "Ege Kaya Portfolio",
+    siteName: "Ege Kaya | Software Engineer",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Ege Kaya - Software Engineer Portfolio",
+        alt: "Ege Kaya - Software Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ege Kaya | Software Engineer Portfolio",
+    title: "Ege Kaya | Software Engineer",
     description: "Computer Engineering student at Politecnico di Torino. Building production-grade applications with React, Next.js, and TypeScript.",
     images: ["/opengraph-image"],
   },
