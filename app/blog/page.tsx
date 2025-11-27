@@ -26,6 +26,15 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
   {
+    slug: "coremetric-ml-anomaly-detection",
+    title: "CoreMetric: ML-Powered System Monitoring on macOS",
+    description: "Building a privacy-first system monitor that uses neural networks and the Apple Neural Engine to detect anomalies. Learn how CoreMetric combines PyTorch, Metal Performance Shaders, CoreML, and SwiftUI to create an intelligent monitoring system with <1% CPU overhead.",
+    publishedAt: "2025-11-27",
+    readingTime: "18 min read",
+    tags: ["Machine Learning", "SwiftUI", "CoreML", "PyTorch", "macOS"],
+    featured: true,
+  },
+  {
     slug: "machine-learning-roadmap-from-numpy-to-production",
     title: "My Machine Learning Journey: From NumPy to Production PyTorch",
     description: "A personal roadmap through machine learning: Python foundations, NumPy, Pandas, scikit-learn, PyTorch with Apple Silicon MPS, deep learning architectures, MLOps, and production deployment. Lessons learned and the path forward.",

@@ -13,6 +13,40 @@ import { Github, ExternalLink, Lock } from "lucide-react"
 
 const projects = [
   {
+    title: "CoreMetric",
+    organization: "Open Source",
+    description:
+      "(WIP) Privacy-first macOS system monitor using ML-powered anomaly detection. Unlike traditional monitors with hard-coded thresholds, CoreMetric uses a Reconstruction Autoencoder running on Apple Neural Engine to learn your usage patterns and detect subtle anomalies—memory leaks, crypto-miners, frozen processes—with <1% CPU overhead.",
+    tags: [
+      "SwiftUI",
+      "CoreML",
+      "PyTorch",
+      "Metal (MPS)",
+      "IOKit",
+      "Darwin Kernel"
+    ],
+    metrics: [
+      "<1% CPU Overhead",
+      "ANE Inference",
+      "Zero Cloud Dependencies",
+      "Real-time Detection",
+      "24h Training Window"
+    ],
+    milestones: [
+      { label: "M1 Data Collection Pipeline", status: "done" },
+      { label: "M2 PyTorch Training", status: "done" },
+      { label: "M3 CoreML Conversion", status: "done" },
+      { label: "M4 Swift Collector", status: "done" },
+      { label: "M5 Dashboard UI", status: "done" },
+      { label: "M6 Anomaly Alerts", status: "pending" },
+      { label: "M7 Polish & Debug", status: "pending" }
+    ] as Milestone[],
+    isNDA: false,
+    github: "https://github.com/egekaya1/CoreMetric",
+    external: null,
+    caseStudy: "/case-studies/coremetric",
+  },
+  {
     title: "LectureLens",
     organization: "Open Source",
     description:
@@ -26,10 +60,10 @@ const projects = [
       "AI Pipeline"
     ],
     metrics: [
-      "Schema+RLS", 
-      "Chunking Pipeline", 
-      "Edge Fn Scaffold", 
-      "Embeddings Ready", 
+      "Schema+RLS",
+      "Chunking Pipeline",
+      "Edge Fn Scaffold",
+      "Embeddings Ready",
       "M1 In Progress"
     ],
     milestones: [
