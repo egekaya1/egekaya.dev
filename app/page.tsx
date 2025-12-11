@@ -7,6 +7,10 @@ const TechStack = dynamic(() => import("@/components/sections/tech-stack").then(
   loading: () => <div className="section-padding container-custom"><div className="h-96 animate-pulse bg-secondary/20 rounded-lg" /></div>
 })
 
+const LeetCodeStats = dynamic(() => import("@/components/sections/leetcode-stats").then(mod => ({ default: mod.LeetCodeStats })), {
+  loading: () => <div className="section-padding container-custom"><div className="h-96 animate-pulse bg-secondary/20 rounded-lg" /></div>
+})
+
 const Experience = dynamic(() => import("@/components/sections/experience").then(mod => ({ default: mod.Experience })), {
   loading: () => <div className="section-padding container-custom"><div className="h-96 animate-pulse bg-secondary/20 rounded-lg" /></div>
 })
@@ -41,6 +45,7 @@ export default function Home() {
       <Hero />
       <About />
       <TechStack />
+      <LeetCodeStats />
       <Experience />
       <Projects />
       <Research />

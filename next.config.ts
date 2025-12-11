@@ -5,11 +5,11 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'github-readme-stats.vercel.app',
+        hostname: 'github-profile-summary-cards.vercel.app',
       },
       {
         protocol: 'https',
-        hostname: 'github-readme-streak-stats.herokuapp.com',
+        hostname: 'leetcode-stats.vercel.app',
       },
     ],
   },

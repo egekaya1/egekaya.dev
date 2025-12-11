@@ -115,27 +115,44 @@ export function TechStack() {
           className="mt-16 flex flex-col items-center gap-6"
         >
           <h3 className="text-2xl font-bold text-center">GitHub Activity</h3>
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-4 w-full max-w-4xl">
-            <Card className="flex-1 w-full border-2">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-6xl">
+            {/* GitHub Stats Card */}
+            <Card className="border-2">
               <CardContent className="pt-6 flex items-center justify-center">
                 <Image
-                  src="https://github-readme-stats.vercel.app/api?username=egekaya1&show_icons=true&theme=transparent&hide_border=true&title_color=6366f1&icon_color=06b6d4&text_color=64748b&bg_color=00000000"
+                  src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=egekaya1&theme=github_dark"
                   alt="Ege Kaya's GitHub Stats"
-                  width={495}
-                  height={195}
-                  className="w-full max-w-md"
+                  width={350}
+                  height={200}
+                  className="w-full"
                   unoptimized
                 />
               </CardContent>
             </Card>
-            <Card className="flex-1 w-full border-2">
+
+            {/* GitHub Most Used Languages */}
+            <Card className="border-2">
               <CardContent className="pt-6 flex items-center justify-center">
                 <Image
-                  src="https://github-readme-streak-stats.herokuapp.com?user=egekaya1&theme=transparent&hide_border=true&ring=6366f1&fire=06b6d4&currStreakLabel=64748b&sideLabels=64748b&dates=64748b&background=00000000"
-                  alt="Ege Kaya's GitHub Streak"
-                  width={495}
-                  height={195}
-                  className="w-full max-w-md"
+                  src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=egekaya1&theme=github_dark"
+                  alt="Ege Kaya's Most Used Languages"
+                  width={350}
+                  height={200}
+                  className="w-full"
+                  unoptimized
+                />
+              </CardContent>
+            </Card>
+
+            {/* GitHub Profile Details - Full Width */}
+            <Card className="border-2 lg:col-span-2">
+              <CardContent className="pt-6 flex items-center justify-center overflow-x-auto">
+                <Image
+                  src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=egekaya1&theme=github_dark"
+                  alt="Ege Kaya's GitHub Profile Details"
+                  width={800}
+                  height={200}
+                  className="w-full"
                   unoptimized
                 />
               </CardContent>

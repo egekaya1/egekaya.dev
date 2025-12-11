@@ -1,24 +1,23 @@
 "use client"
 
-import * as React from "react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Trophy, Target, TrendingUp, Code2 } from "lucide-react"
+import { Target, TrendingUp, Code2 } from "lucide-react"
+import Image from "next/image"
 
-// In a real implementation, you'd fetch this from LeetCode GraphQL API
-// For now, using static data as an example
+// Updated with real data from LeetCode profile
 const leetcodeStats = {
-  totalSolved: 247,
-  easy: 95,
-  medium: 120,
-  hard: 32,
-  ranking: 125000,
-  acceptanceRate: 68.5,
+  totalSolved: 69,
+  easy: 44,
+  medium: 23,
+  hard: 2,
+  ranking: 0, // Not prominently displayed
+  acceptanceRate: 53.2,
   recentSubmissions: [
-    { title: "Two Sum", difficulty: "Easy", status: "Accepted" },
-    { title: "Binary Tree Level Order Traversal", difficulty: "Medium", status: "Accepted" },
+    { title: "Function Composition", difficulty: "Easy", status: "Accepted" },
+    { title: "Array Reduce Transformation", difficulty: "Easy", status: "Accepted" },
     { title: "LRU Cache", difficulty: "Medium", status: "Accepted" },
   ],
 }
@@ -43,11 +42,32 @@ export function LeetCodeStats() {
             Competitive Programming
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Practicing algorithmic problem-solving on LeetCode to sharpen technical skills
+            Practicing algorithmic problem-solving on LeetCode to sharpen my technical skills.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* LeetCode Stats Card using API */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex justify-center mb-8"
+        >
+          <Card className="border-2 overflow-hidden max-w-2xl w-full">
+            <CardContent className="pt-6 flex items-center justify-center">
+              <Image
+                src="https://leetcode-stats.vercel.app/api?username=egekaya&theme=dark"
+                alt="Ege Kaya's LeetCode Stats"
+                width={500}
+                height={200}
+                className="w-full"
+                unoptimized
+              />
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Total Solved */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -66,30 +86,6 @@ export function LeetCodeStats() {
               <CardContent>
                 <div className="text-3xl font-bold">{leetcodeStats.totalSolved}</div>
                 <p className="text-xs text-muted-foreground mt-1">problems</p>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          {/* Ranking */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <Card className="border-2 hover-lift">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-sm font-medium text-muted-foreground">
-                    Global Rank
-                  </CardTitle>
-                  <Trophy className="h-5 w-5 text-amber-500" />
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold">
-                  {leetcodeStats.ranking.toLocaleString()}
-                </div>
-                <p className="text-xs text-muted-foreground mt-1">worldwide</p>
               </CardContent>
             </Card>
           </motion.div>
