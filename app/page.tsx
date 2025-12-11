@@ -23,6 +23,10 @@ const Resume = dynamic(() => import("@/components/sections/resume").then(mod => 
   loading: () => <div className="section-padding container-custom"><div className="h-96 animate-pulse bg-secondary/20 rounded-lg" /></div>
 })
 
+const Awards = dynamic(() => import("@/components/sections/awards").then(mod => ({ default: mod.Awards })), {
+  loading: () => <div className="section-padding container-custom"><div className="h-96 animate-pulse bg-secondary/20 rounded-lg" /></div>
+})
+
 const Testimonials = dynamic(() => import("@/components/sections/testimonials").then(mod => ({ default: mod.Testimonials })), {
   loading: () => <div className="section-padding container-custom"><div className="h-96 animate-pulse bg-secondary/20 rounded-lg" /></div>
 })
@@ -40,6 +44,7 @@ export default function Home() {
       <Experience />
       <Projects />
       <Research />
+      <Awards />
       <Testimonials />
       <Resume />
       <Contact />

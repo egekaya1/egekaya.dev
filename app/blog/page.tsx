@@ -46,7 +46,7 @@ const blogPosts: BlogPost[] = [
   {
     slug: "git-sim-interactive-git-visualization",
     title: "GitSimulator: Production-Grade Git Simulation Engine",
-    description: "Deep technical dive into GitSimulator: 135+ tests, automated CI/CD, interactive TUI, plugin architecture, and advanced conflict prediction. Learn how a production-ready CLI makes dangerous Git commands safe to explore.",
+    description: "Deep technical dive into GitSimulator (3rd Place, GitKon 2025 Game Jam): 135+ tests, automated CI/CD, interactive TUI, plugin architecture, and advanced conflict prediction. Learn how a production-ready CLI makes dangerous Git commands safe to explore.",
     publishedAt: "2025-11-23",
     readingTime: "22 min read",
     tags: ["Git", "Python", "CLI", "Testing", "CI/CD"],

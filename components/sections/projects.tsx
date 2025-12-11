@@ -32,15 +32,6 @@ const projects = [
       "Real-time Detection",
       "24h Training Window"
     ],
-    milestones: [
-      { label: "M1 Data Collection Pipeline", status: "done" },
-      { label: "M2 PyTorch Training", status: "done" },
-      { label: "M3 CoreML Conversion", status: "done" },
-      { label: "M4 Swift Collector", status: "done" },
-      { label: "M5 Dashboard UI", status: "done" },
-      { label: "M6 Anomaly Alerts", status: "pending" },
-      { label: "M7 Polish & Debug", status: "pending" }
-    ] as Milestone[],
     isNDA: false,
     github: "https://github.com/egekaya1/CoreMetric",
     external: null,
@@ -68,8 +59,8 @@ const projects = [
     ],
     milestones: [
       { label: "M1 Auth & Processing", status: "done" },
-      { label: "M2 Lecture Detail", status: "in-progress" },
-      { label: "M3 Flashcards", status: "pending" },
+      { label: "M2 Lecture Detail", status: "done" },
+      { label: "M3 Flashcards", status: "in-progress" },
       { label: "M4 Q&A", status: "pending" },
       { label: "M5 Semantic Search", status: "pending" },
       { label: "M6 Study Schedules", status: "pending" },
@@ -84,7 +75,7 @@ const projects = [
     title: "GitSimulator",
     organization: "Open Source",
     description:
-      "Production-grade Git simulation engine: dry-run rebase, merge, reset, cherry-pick with visual commit graphs, conflict prediction (3 certainty levels), and safety analysis. 135+ tests, automated CI/CD, interactive TUI, plugin architecture. Available on PyPI: pipx install gitsimulator (v1.0.1).",
+      "Production-grade Git simulation engine: dry-run rebase, merge, reset, cherry-pick with visual commit graphs, conflict prediction (3 certainty levels), and safety analysis. Awarded 3rd Place at GitKon Game Jam 2025. 135+ tests, automated CI/CD, interactive TUI, plugin architecture. Available on PyPI: pipx install gitsimulator (v1.0.1).",
     tags: [
       "Python 3.11+",
       "Dulwich",
@@ -94,6 +85,7 @@ const projects = [
       "CI/CD"
     ],
     metrics: [
+      "🏆 GitKon 2025 3rd Place",
       "135+ Tests",
       "95%+ Coverage",
       "PyPI v1.0.1",
@@ -214,11 +206,21 @@ export function Projects() {
 
                   {project.metrics && (
                     <div className="flex flex-wrap gap-2 mt-4 mb-4">
-                      {project.metrics.map((metric) => (
-                        <Badge key={metric} variant="outline" className="bg-primary/5">
-                          {metric}
-                        </Badge>
-                      ))}
+                      {project.metrics.map((metric) => {
+                        const isAward = metric.includes("🏆") || metric.toLowerCase().includes("gitkon")
+                        return (
+                          <Badge
+                            key={metric}
+                            variant={isAward ? "default" : "outline"}
+                            className={isAward
+                              ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold border-0 shadow-md hover:shadow-lg transition-shadow ring-1 ring-amber-600/50"
+                              : "bg-primary/5"
+                            }
+                          >
+                            {metric}
+                          </Badge>
+                        )
+                      })}
                     </div>
                   )}
 

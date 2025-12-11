@@ -39,10 +39,32 @@ export default function BlogPostGitSimulator() {
         <ContentArticle>
           <PostHeader
             title="GitSimulator: Production-Grade Git Simulation Engine"
-            badges={["Python 3.11+", "Dulwich", "Rich", "Typer", "Textual", "135+ Tests"]}
+            badges={["🏆 GitKon 2025 3rd Place", "Python 3.11+", "Dulwich", "Rich", "Typer", "Textual", "135+ Tests"]}
             date={{ label: "November 23, 2025", dateTime: "2025-11-23" }}
             readingTime="22 min read"
           />
+
+          <div className="bg-amber-500/10 border-l-4 border-amber-500 p-4 mb-8 rounded-r">
+            <p className="text-sm font-medium mb-2">
+              <strong>Update (Dec 2025):</strong> GitSimulator won 3rd Place at the GitKon 2025 Game Jam, organized by GitKraken.
+            </p>
+            <details className="mt-3">
+              <summary className="text-sm text-primary hover:underline cursor-pointer">
+                View official announcement →
+              </summary>
+              <div className="mt-4 flex justify-center">
+                <iframe
+                  src="https://www.linkedin.com/embed/feed/update/urn:li:share:7404631806588751873?collapsed=1"
+                  height="541"
+                  width="504"
+                  frameBorder="0"
+                  allowFullScreen
+                  title="GitKon 2025 Game Jam Award Announcement"
+                  className="max-w-full"
+                />
+              </div>
+            </details>
+          </div>
 
           <h2>Overview</h2>
           <p>

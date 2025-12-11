@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, GitBranch, Shield, Zap, FileDiff } from "lucide-react"
+import { ArrowLeft, GitBranch, Shield, Zap, FileDiff, Trophy } from "lucide-react"
 import { ContentArticle } from "@/components/content-article"
 import { PostHeader } from "@/components/post-header"
 
@@ -38,7 +38,7 @@ export default function CaseStudyGitSimulator() {
         <ContentArticle>
           <PostHeader
             title="Case Study: GitSimulator — Production-Grade Git Simulation"
-            badges={["Python 3.11+", "Dulwich", "Rich", "Textual", "135+ Tests", "CI/CD", "PyPI"]}
+            badges={["🏆 GitKon 2025 3rd Place", "Python 3.11+", "Dulwich", "Rich", "Textual", "135+ Tests", "CI/CD", "PyPI"]}
             readingTime={readingTime}
           />
 
@@ -47,7 +47,7 @@ export default function CaseStudyGitSimulator() {
           </p>
 
           {/* Metrics */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 not-prose">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 not-prose">
             <Card>
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
@@ -100,6 +100,19 @@ export default function CaseStudyGitSimulator() {
                 </div>
               </CardContent>
             </Card>
+            <Card>
+              <CardContent className="pt-6">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-amber-500/10">
+                    <Trophy className="h-5 w-5 text-amber-500" />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold">3rd Place</div>
+                    <div className="text-sm text-muted-foreground">GitKon Game Jam 2025</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
           <section>
@@ -116,6 +129,13 @@ export default function CaseStudyGitSimulator() {
             </ul>
             <p>
               <strong>GitSimulator&apos;s Solution:</strong> A safe, read-only simulation environment with visual feedback, conflict prediction, safety analysis, and educational explanations—all backed by production-grade infrastructure (135+ tests, CI/CD, plugin architecture).
+            </p>
+          </section>
+
+          <section>
+            <h2>Recognition</h2>
+            <p>
+              GitSimulator was awarded <strong>3rd Place at GitKon Game Jam 2025</strong>, hosted by GitKraken. The competition challenged developers to build games or tools that make Git more playful, turning Git&apos;s notorious pain points into engaging mechanics. GitSimulator was recognized for its innovative approach to Git visualization, educational impact through safe command exploration, and focus on preventing costly mistakes in production environments. The project stood out for combining technical rigor (135+ tests, automated CI/CD) with practical utility (conflict prediction, safety analysis) and educational value (interactive TUI, explain mode).
             </p>
           </section>
 
