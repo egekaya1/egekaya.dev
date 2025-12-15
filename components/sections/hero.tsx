@@ -89,14 +89,14 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="relative"
           >
-            <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
+            <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
               <Image
                 src="/profile.webp"
                 alt="Ege Kaya - Computer Engineering Student and Software Developer"
                 fill
-                className="object-cover"
+                className="object-cover object-[center_30%]"
                 priority
-                sizes="(max-width: 640px) 192px, (max-width: 1024px) 224px, 256px"
+                sizes="(max-width: 640px) 224px, (max-width: 1024px) 256px, 288px"
               />
             </div>
             <div className="absolute -inset-1 rounded-full bg-linear-to-r from-primary/20 via-cyan-500/20 to-purple-500/20 blur-xl -z-10" />
