@@ -14,7 +14,7 @@ const navItems = [
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
   { name: "Research", href: "#research" },
-  { name: "Recognition", href: "#awards" },
+  { name: "Achievements", href: "#awards" },
   { name: "Testimonials", href: "#testimonials" },
   { name: "Blog", href: "/blog", external: true },
   { name: "Contact", href: "#contact" },

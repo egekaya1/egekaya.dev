@@ -37,7 +37,6 @@ const recognitions = [
       "Competed in Reply's European-wide Student Clash focused on Agentic AI, joined by 700+ students from 8 top universities across Europe. Designed and scaled innovative AI Agent projects that transform business operations and empower society through autonomous, intelligent systems.",
     icon: Sparkles,
     category: "Hackathon",
-    highlight: "700+ Participants",
   },
   {
     title: "Google Cloud Datacenter Hackathon 2025",
@@ -47,15 +46,6 @@ const recognitions = [
       "Selected for exclusive hands-on datacenter hackathon hosted by Google Cloud in Turin. Worked directly with production-grade hardware including servers, managed switches, fiber optics, and Linux systems. Competed in team-based challenges simulating real-world datacenter operations, supported by Google's datacenter engineers from Turin and Milan facilities.",
     icon: Server,
     category: "Hackathon",
-  },
-  {
-    title: "200+ Users Served Across Production Systems",
-    organization: "Parma Calcio 1913 & PoliTo Rocket Team",
-    year: "2024–Present",
-    description:
-      "Built and deployed production systems serving 50+ staff members at Parma Calcio and 150+ team members at PoliTo Rocket Team. Reduced operational workflow time by 50% and administrative overhead by 95% through full-stack automation and real-time data processing.",
-    icon: Users,
-    category: "Professional Impact",
   },
 ]
 
@@ -75,8 +65,8 @@ export function Awards() {
           transition={{ duration: 0.5 }}
         >
           <SectionHeading
-            title="Recognition & Impact"
-            subtitle="Awards, achievements, and measurable contributions"
+            title="Awards & Achievements"
+            subtitle="Some of my recent Awards and Achievements"
             centered
           />
         </motion.div>
