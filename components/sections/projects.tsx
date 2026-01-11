@@ -13,6 +13,29 @@ import { Github, ExternalLink, Lock } from "lucide-react"
 
 const projects = [
   {
+    title: "Timber Co.",
+    organization: "Personal Project",
+    description:
+      "(WIP) Bird's-eye view strategy game where you build a timber empire from the ground up. Command workers to cut forests, process wood into refined materials, automate production chains, and scale operations. Features resource management, worker AI, and progression systems built with Java and JavaFX.",
+    tags: [
+      "Java",
+      "JavaFX",
+      "Game Development",
+      "Resource Management",
+      "AI Systems"
+    ],
+    metrics: [
+      "Worker Automation",
+      "Production Chains",
+      "Resource Economy",
+      "Bird's-eye View"
+    ],
+    isNDA: false,
+    github: null,
+    external: null,
+    caseStudy: null,
+  },
+  {
     title: "CoreMetric",
     organization: "Open Source",
     description:
@@ -144,6 +167,30 @@ const projects = [
     github: "https://github.com/egekaya1/PRT-role-bot",
     external: null,
     caseStudy: "/case-studies/discord-bot-automation",
+  },
+  {
+    title: "NIOChatServer",
+    organization: "Open Source",
+    description:
+      "Real-time WebSocket chat application built with Swift NIO for high-performance asynchronous networking. Features non-blocking I/O, concurrent connection handling, and event-driven architecture. Demonstrates modern Swift server-side development with efficient resource utilization.",
+    tags: ["Swift", "SwiftNIO", "WebSocket", "Async/Await", "Server-Side"],
+    metrics: ["Non-blocking I/O", "Event-Driven", "Real-time Messaging"],
+    isNDA: false,
+    github: "https://github.com/egekaya1/NIOChatServer",
+    external: null,
+    caseStudy: null,
+  },
+  {
+    title: "Notes App",
+    organization: "Personal Project",
+    description:
+      "Feature-rich desktop notes application with clean JavaFX interface for organizing and managing personal notes. Includes note categorization, search functionality, and persistent storage. Built with modern Java practices and MVC architecture.",
+    tags: ["Java", "JavaFX", "MVC", "Desktop App", "UI/UX"],
+    metrics: ["Rich Text Editor", "Category System", "Search & Filter"],
+    isNDA: false,
+    github: "https://github.com/egekaya1/Notes-App",
+    external: null,
+    caseStudy: null,
   },
 ]
 
