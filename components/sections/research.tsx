@@ -11,10 +11,10 @@ import { FileText, Presentation } from "lucide-react"
 const research = [
   {
     type: "Report",
-    title: "Eligibility of Artificial Intelligence in University-Level Lecturing",
+    title: "Evaluating the Pedagogical and Cognitive Impacts of LLMs on Engineering Education",
     role: "Co-author",
     description:
-      "Investigated the potential and limitations of AI-assisted teaching in higher education. Analyzed pedagogical implications, technological feasibility, and student outcomes when integrating AI tools into university lectures.",
+      "Conducted in collaboration with IEEE Fellow Prof. Paolo Montuschi at Politecnico di Torino. Investigated the pedagogical potential and cognitive impact of LLMs and AI agents on university-level engineering education. Analyzed student outcomes and teaching methodologies.",
     icon: FileText,
     tags: ["Artificial Intelligence", "Education Technology", "Research"],
   },
@@ -46,7 +46,7 @@ export function Research() {
         >
           <SectionHeading
             title="Research & Contributions"
-            subtitle="Looking out for research opportunities actively"
+            subtitle="Exploring AI, education technology, and computer architecture"
             centered
           />
         </motion.div>

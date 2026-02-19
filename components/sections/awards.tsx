@@ -21,6 +21,16 @@ const recognitions = [
     highlight: "3rd Place",
   },
   {
+    title: "KU Leuven Programme Scholarship",
+    organization: "KU Leuven",
+    year: "2026",
+    description:
+      "Awarded the Programme Scholarship with a 70% tuition waiver for the M.Sc. in Computer Science (Artificial Intelligence). Granted to only 10 students across the programme, recognizing academic excellence and research potential.",
+    icon: GraduationCap,
+    category: "Academic Honor",
+    highlight: "70% Tuition Waiver",
+  },
+  {
     title: "Full Merit Scholarship",
     organization: "Politecnico di Torino",
     year: "2023–2026",

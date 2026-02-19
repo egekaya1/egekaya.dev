@@ -92,7 +92,7 @@ export function Hero() {
             <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
               <Image
                 src="/profile.webp"
-                alt="Ege Kaya - Computer Engineering Student and Software Developer"
+                alt="Ege Kaya - Computer Engineer, AI Researcher, and Incoming M.Sc. Candidate at KU Leuven"
                 fill
                 className="object-cover object-[center_30%]"
                 priority
@@ -123,9 +123,9 @@ export function Hero() {
               <span className="block">Ege Kaya</span>
             </h1>
             <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl">
-              Computer Engineering Student &{" "}
+              Computer Engineer &{" "}
               <span className="text-gradient-accent font-semibold">
-                Software Developer
+                AI Researcher
               </span>
             </p>
           </motion.div>
@@ -148,9 +148,9 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.25 }}
             className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed"
           >
-            Currently building production-grade full-stack applications at Parma Calcio 1913.
-            Experienced in React/Next.js, Python and problem solving.
-            3rd-year at Politecnico di Torino with 27/30 GPA and full ride scholarship.
+            Computer Engineer and incoming M.Sc. candidate in Computer Science (AI) at KU Leuven.
+            Research Assistant under IEEE Fellow Prof. Paolo Montuschi, with experience in
+            AI systems, full-stack development, and embedded firmware engineering.
           </motion.p>
 
           {/* CTA Buttons */}

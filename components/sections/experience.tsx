@@ -8,49 +8,40 @@ import { Timeline, TimelineItem, TimelineContent } from "@/components/ui/timelin
 
 const experiences = [
   {
+    title: "Research Assistant – AI",
+    subtitle: "Politecnico di Torino – Prof. Paolo Montuschi (IEEE Fellow)",
+    period: "2026 – Present",
+    description:
+      "Designing and implementing machine learning models to analyze and predict student academic performance. Building scalable data pipelines and evaluation frameworks for large educational datasets. Designing and deploying AI-based class support systems integrated within university infrastructure.",
+    tags: ["Python", "PyTorch", "Data Pipelines", "ML"],
+    achievements: ["IEEE Fellow Supervisor", "ML Models", "Educational AI"],
+  },
+  {
     title: "Front-end Developer Intern",
     subtitle: "Parma Calcio 1913",
-    period: "Sep 2024 - Present",
+    period: "Sep 2025 – Feb 2026",
     description:
-      "Architected and deployed 20+ full-stack production features serving 50+ staff members, reducing operational workflow time by 50% in most cases. Implemented AWS S3 data storage.Implemented real-time data, video and document processing. Collaborated with cross-functional teams to deliver features with 95+ Lighthouse performance scores.",
-    tags: ["AWS Lambda", "Next.js", "TypeScript", "CI/CD"],
-    achievements: ["20+ Features Shipped", "50+ Users", "50% Time Saved", "Interdepartmental Communication"],
+      "Built and deployed 20+ production full-stack features (React, TypeScript) used by 50+ staff, reducing operational workflow time by 50%. Integrated AWS S3, CDN delivery, and real-time data pipelines; achieved Lighthouse performance scores consistently above 95.",
+    tags: ["Next.js", "TypeScript", "AWS S3", "CDN", "CI/CD"],
+    achievements: ["20+ Features Shipped", "50+ Users", "Lighthouse 95+", "50% Time Saved"],
   },
   {
-    title: "Full Stack Developer",
+    title: "Full-Stack & Embedded Developer",
     subtitle: "PoliTo Rocket Team",
-    period: "Mar 2024 - Present",
+    period: "Feb 2025 – Feb 2026",
     description:
-      "Building internal tools and web applications for 150+ team members across engineering disciplines. Developed Discord bot automation reducing administrative overhead by 95%. Implemented Supabase-backed authentication and real-time database synchronization handling 1000+ daily operations.",
-    tags: ["Next.js", "Supabase", "PostgreSQL", "Discord.js"],
-    achievements: ["150+ Team Members", "95% Admin Time Saved", "1000+ Daily Ops"],
-  },
-  {
-    title: "Staff Volunteer",
-    subtitle: "Italian Tech Week (ITW) 2025",
-    period: "Sep 2025",
-    description:
-      "Supported logistics and operations for Italy's largest technology conference with 5000+ attendees. Coordinated speaker sessions, facilitated networking between 100+ startups and investors, and managed registration systems ensuring smooth event flow.",
-    tags: ["Event Management", "Coordination", "Tech Community"],
-    achievements: ["5000+ Attendees", "100+ Startups", "Smooth Flow"],
-  },
-  {
-    title: "Embedded Developer",
-    subtitle: "PoliTo Rocket Team",
-    period: "Mar 2024 - May 2024",
-    description:
-      "Developed embedded C++ software for STM32-based rocket flight computer, processing 100+ sensor readings per second. Worked on real-time telemetry system with <10ms latency for critical flight data. Optimized memory usage by 30% through efficient data structures and buffer management.",
-    tags: ["C++", "STM32", "Real-Time Systems", "I2C/SPI"],
-    achievements: ["100+ Readings/sec", "<10ms Latency", "30% Memory Saved"],
+      "Developed internal web platforms for 150+ members, automating 1,000+ daily operations and reducing administrative overhead by 95%. Implemented STM32 flight firmware in C/C++ under real-time constraints; built drivers, watchdog systems, and performed SWD debugging.",
+    tags: ["Next.js", "Supabase", "C/C++", "STM32", "PostgreSQL"],
+    achievements: ["150+ Team Members", "95% Admin Time Saved", "STM32 Firmware", "SWD Debugging"],
   },
   {
     title: "Database Developer",
-    subtitle: "Team DigiTwin - PoliTo",
-    period: "Mar 2024 - Jul 2024",
+    subtitle: "Team DigiTwin – PoliTo",
+    period: "Feb 2025 – Jul 2025",
     description:
-      "Designed PostgreSQL database schema from scratch handling capable of up to 50,000+ daily sensor readings for structural monitoring. Optimized query performance achieving 80% faster response times through indexing and query optimization. Implemented automated data pipeline processing 2GB+ of telemetry data weekly.",
+      "Designed and optimized PostgreSQL systems ingesting 50,000+ sensor readings/day; improved query performance by 40%. Implemented automated data pipeline processing 2GB+ of telemetry data weekly for structural monitoring.",
     tags: ["PostgreSQL", "C++", "Data Engineering", "Performance Optimization"],
-    achievements: ["50K+ Records/Day", "80% Query Speedup", "2GB+ Data/Week"],
+    achievements: ["50K+ Records/Day", "40% Query Improvement", "2GB+ Data/Week"],
   },
 ]
 

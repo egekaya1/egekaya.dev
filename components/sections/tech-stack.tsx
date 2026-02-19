@@ -24,6 +24,9 @@ const techStack: TechItem[] = [
   { name: "C++", category: "Language", icon: "C++" },
   { name: "MATLAB", category: "Language", icon: "𝓜" },
   { name: "SQL", category: "Language", icon: "SQL" },
+  { name: "Swift", category: "Language", icon: "🍎" },
+  { name: "Go", category: "Language", icon: "🔵" },
+  { name: "Rust", category: "Language", icon: "🦀" },
 
   // Web fundamentals
   { name: "HTML", category: "Web", icon: "HTML" },
@@ -33,6 +36,11 @@ const techStack: TechItem[] = [
   { name: "React", category: "Framework", icon: "⚛️" },
   { name: "Next.js", category: "Framework", icon: "▲" },
   { name: "Tailwind CSS", category: "Framework", icon: "🎨" },
+
+  // Frameworks (continued)
+  { name: "Spring Boot", category: "Framework", icon: "🍃" },
+  { name: "PyTorch", category: "Framework", icon: "🔥" },
+  { name: "PostgreSQL", category: "Database", icon: "🐘" },
 
   // Cloud / Runtime / Tools (more specific)
   { name: "AWS", category: "Cloud", icon: "☁️" },

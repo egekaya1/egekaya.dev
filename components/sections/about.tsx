@@ -22,7 +22,7 @@ const interests = [
 
 const stats = [
   { label: "GPA", value: "27/30" },
-  { label: "Year", value: "3rd" },
+  { label: "Year", value: "Final" },
   { label: "Languages", value: "3" },
   { label: "Organizations", value: "3+" },
   { label: "Projects", value: "5+" },
@@ -65,23 +65,26 @@ export function About() {
                   <li className="flex items-start gap-3">
                     <span className="text-primary mt-1">→</span>
                     <span className="text-base leading-relaxed">
-                      3rd-year Computer Engineering student at{" "}
+                      Final-year Computer Engineering student at{" "}
                       <span className="text-foreground font-semibold">
                         Politecnico di Torino
                       </span>{" "}
-                      with 27/30 GPA and Full Scholarship
+                      with 27/30 GPA and Full Scholarship, incoming M.Sc. in CS (AI) at{" "}
+                      <span className="text-foreground font-semibold">
+                        KU Leuven
+                      </span>
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-primary mt-1">→</span>
                     <span className="text-base leading-relaxed">
-                      Front End Developer Intern at Parma Calcio 1913, building production-grade applications
+                      Research Assistant under IEEE Fellow Prof. Paolo Montuschi at Politecnico di Torino
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-primary mt-1">→</span>
                     <span className="text-base leading-relaxed">
-                      Full-stack developer with experience in React, Next.js, TypeScript, AWS, and Python
+                      Full-stack developer with experience in React, Next.js, TypeScript, AWS, Python, and AI/ML systems
                     </span>
                   </li>
                 </ul>
@@ -118,28 +121,51 @@ export function About() {
               </div>
             </div>
 
-            {/* Education Card */}
-            <Card className="border-2">
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-2 rounded-lg bg-primary/10">
-                    <GraduationCap className="h-6 w-6 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-lg">
-                      Computer Engineering
-                    </h3>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      Politecnico di Torino
-                    </p>
-                    <div className="flex items-center gap-4 mt-3">
-                      <Badge variant="secondary">GPA: 27/30</Badge>
-                      <Badge variant="secondary">3rd Year</Badge>
+            {/* Education Cards */}
+            <div className="space-y-4">
+              <Card className="border-2">
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 rounded-lg bg-primary/10">
+                      <GraduationCap className="h-6 w-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-lg">
+                        M.Sc. Computer Science – AI Specialisation
+                      </h3>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        KU Leuven
+                      </p>
+                      <div className="flex items-center gap-4 mt-3">
+                        <Badge variant="secondary">2026–2028</Badge>
+                        <Badge variant="secondary">Programme Scholarship</Badge>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+              <Card className="border-2">
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 rounded-lg bg-primary/10">
+                      <GraduationCap className="h-6 w-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-lg">
+                        B.Sc. Computer Engineering
+                      </h3>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Politecnico di Torino
+                      </p>
+                      <div className="flex items-center gap-4 mt-3">
+                        <Badge variant="secondary">GPA: 27/30</Badge>
+                        <Badge variant="secondary">2023–2026</Badge>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
 
             {/* Languages Card */}
             <Card className="border-2">
@@ -225,12 +251,12 @@ export function About() {
                       <li className="flex items-start gap-2">
                         <span className="text-green-500 mt-1">→</span>
                         <span>
-                          Pursuing Master&apos;s programs in Computer Science
+                          Starting M.Sc. in Computer Science (AI) at KU Leuven
                         </span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-green-500 mt-1">→</span>
-                        <span>Advancing Italian language proficiency</span>
+                        <span>Continuing AI research under Prof. Montuschi</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-green-500 mt-1">→</span>
