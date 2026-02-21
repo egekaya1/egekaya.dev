@@ -78,7 +78,7 @@ export function About() {
                   <li className="flex items-start gap-3">
                     <span className="text-primary mt-1">→</span>
                     <span className="text-base leading-relaxed">
-                      Research Assistant under IEEE Fellow Prof. Paolo Montuschi at Politecnico di Torino
+                      Research Assistant under IEEE Fellow and Vice Rector Prof. Paolo Montuschi at Politecnico di Torino
                     </span>
                   </li>
                   <li className="flex items-start gap-3">

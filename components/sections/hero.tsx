@@ -148,8 +148,8 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.25 }}
             className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed"
           >
-            Computer Engineer and incoming M.Sc. candidate in Computer Science (AI) at KU Leuven.
-            Research Assistant under IEEE Fellow Prof. Paolo Montuschi, with experience in
+            Computer Engineering graduate from Politecnico di Torino in June and incoming M.Sc. candidate in Computer Science with an AI focus at KU Leuven.
+            Research Assistant at Politecnico di Torino, with experience in
             AI systems, full-stack development, and embedded firmware engineering.
           </motion.p>
 

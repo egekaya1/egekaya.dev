@@ -9,7 +9,7 @@ import { Timeline, TimelineItem, TimelineContent } from "@/components/ui/timelin
 const experiences = [
   {
     title: "Research Assistant – AI",
-    subtitle: "Politecnico di Torino – Prof. Paolo Montuschi (IEEE Fellow)",
+    subtitle: "Politecnico di Torino – Prof. Paolo Montuschi",
     period: "2026 – Present",
     description:
       "Designing and implementing machine learning models to analyze and predict student academic performance. Building scalable data pipelines and evaluation frameworks for large educational datasets. Designing and deploying AI-based class support systems integrated within university infrastructure.",

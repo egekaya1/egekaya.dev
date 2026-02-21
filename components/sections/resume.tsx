@@ -15,7 +15,7 @@ import {
   Linkedin as LinkedinIcon
 } from "lucide-react"
 
-const summary = `Computer Engineer and incoming M.Sc. candidate in Computer Science (Artificial Intelligence) at KU Leuven. Research Assistant under IEEE Fellow Prof. Paolo Montuschi, with experience in AI systems, production-grade full-stack development, and embedded firmware engineering.`
+const summary = `Computer Engineer and incoming M.Sc. candidate in Computer Science (Artificial Intelligence) at KU Leuven. Research Assistant under Prof. Paolo Montuschi, with experience in AI systems, production-grade full-stack development, and embedded firmware engineering.`
 
 const skills = [
   "Python",
@@ -45,7 +45,7 @@ const skills = [
 const experience = [
   {
     title: "Research Assistant – AI",
-    company: "Politecnico di Torino – Prof. Paolo Montuschi (IEEE Fellow)",
+    company: "Politecnico di Torino – Prof. Paolo Montuschi",
     period: "2026 – Present",
     description:
       "Designing and implementing ML models to predict student academic performance. Building scalable data pipelines for educational datasets. Deploying AI-based class support systems within university infrastructure.",
