@@ -78,7 +78,7 @@ export default async function Image() {
             }}
           >
               <span>Computer Engineering Student at Politecnico di Torino</span>
-              <span>Front End Developer Intern at Parma Calcio 1913</span>
+              <span>Research Assistant & Full-Stack Developer</span>
           </div>
 
           {/* Tech Stack Badges */}

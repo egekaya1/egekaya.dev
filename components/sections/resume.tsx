@@ -51,7 +51,7 @@ const experience = [
       "Designing and implementing ML models to predict student academic performance. Building scalable data pipelines for educational datasets. Deploying AI-based class support systems within university infrastructure.",
   },
   {
-    title: "Front-end Developer Intern",
+    title: "Full-Stack Developer",
     company: "Parma Calcio 1913",
     period: "Sep 2025 – Feb 2026",
     description:

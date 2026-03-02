@@ -22,12 +22,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://egekaya.dev"),
   title: "Ege Kaya | Software Engineer",
-  description: "Portfolio of Ege Kaya - Computer Engineering student at Politecnico di Torino (27/30 GPA) and Front End Developer at Parma Calcio 1913. Specialized in React, Next.js, TypeScript, AWS and Python. Building production-grade full-stack applications in Torino, Italy.",
+  description: "Portfolio of Ege Kaya - Computer Engineering student at Politecnico di Torino (27/30 GPA), Research Assistant under Prof. Paolo Montuschi, and Full-Stack Developer. Specialized in React, Next.js, TypeScript, AWS and Python. Building production-grade applications in Torino, Italy.",
   keywords: [
     "Ege Kaya",
     "Software Engineer Portfolio",
     "Computer Engineering",
-    "Front End Developer",
+    "Research Assistant",
     "Full Stack Developer",
     "React Developer",
     "Next.js Developer",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://egekaya.dev",
     title: "Ege Kaya | Software Engineer",
-    description: "Computer Engineering student at Politecnico di Torino and Front End Developer at Parma Calcio 1913. Specialized in React, Next.js, TypeScript, AWS, and Python.",
+    description: "Computer Engineering student at Politecnico di Torino, Research Assistant under Prof. Paolo Montuschi, and Full-Stack Developer. Specialized in React, Next.js, TypeScript, AWS, and Python.",
     siteName: "Ege Kaya | Software Engineer",
     images: [
       {
@@ -99,10 +99,10 @@ export default function RootLayout({
     name: 'Ege Kaya',
     url: 'https://egekaya.dev',
     image: 'https://egekaya.dev/profile.webp',
-    jobTitle: 'Computer Engineering Student & Front End Developer',
+    jobTitle: 'Computer Engineering Student & Research Assistant',
     worksFor: {
       '@type': 'Organization',
-      name: 'Parma Calcio 1913',
+      name: 'Politecnico di Torino',
     },
     alumniOf: {
       '@type': 'EducationalOrganization',

@@ -57,7 +57,7 @@ export function Footer() {
           <div className="mt-6 pt-6 border-t border-border/40 text-center">
             <p className="text-xs text-muted-foreground">
               Computer Engineering Student at Politecnico di Torino •{" "}
-              Front End Developer at Parma Calcio 1913
+              Research Assistant under Prof. Paolo Montuschi
             </p>
           </div>
         </div>

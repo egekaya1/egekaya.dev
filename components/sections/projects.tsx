@@ -260,7 +260,7 @@ export function Projects() {
                             key={metric}
                             variant={isAward ? "default" : "outline"}
                             className={isAward
-                              ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold border-0 shadow-md hover:shadow-lg transition-shadow ring-1 ring-amber-600/50"
+                              ? "bg-linear-to-r from-amber-500 to-orange-500 text-white font-semibold border-0 shadow-md hover:shadow-lg transition-shadow ring-1 ring-amber-600/50"
                               : "bg-primary/5"
                             }
                           >

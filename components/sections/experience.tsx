@@ -17,7 +17,7 @@ const experiences = [
     achievements: ["IEEE Fellow Supervisor", "ML Models", "Educational AI"],
   },
   {
-    title: "Front-end Developer Intern",
+    title: "Full-Stack Developer",
     subtitle: "Parma Calcio 1913",
     period: "Sep 2025 – Feb 2026",
     description:
