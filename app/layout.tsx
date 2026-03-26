@@ -3,11 +3,14 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import { GoogleAnalytics } from "@next/third-parties/google"
 import { ThemeProvider } from "next-themes"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { KonamiWrapper } from "@/components/konami-wrapper"
+import { ScrollProgress } from "@/components/scroll-progress"
+import { BackToTop } from "@/components/back-to-top"
+import { PageTransition } from "@/components/page-transition"
+import { CommandPalette } from "@/components/command-palette"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -148,9 +151,10 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
         >
           <KonamiWrapper>
+            <ScrollProgress />
+            <CommandPalette />
             <a
               href="#main"
               className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md focus:shadow-lg"
@@ -160,12 +164,14 @@ export default function RootLayout({
             <Analytics />
             <SpeedInsights />
             <Navbar />
-            {children}
+            <PageTransition>
+              {children}
+            </PageTransition>
             <Footer />
+            <BackToTop />
           </KonamiWrapper>
         </ThemeProvider>
       </body>
-      <GoogleAnalytics gaId="G-XXXXXXXXXX" />
     </html>
   );
 }

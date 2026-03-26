@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 import { ArrowDown, Github, Linkedin, Download, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { scrollToSection } from "@/lib/utils"
 
 const ThreeBackground = dynamic(
   () => import("@/components/three-background").then((mod) => ({ default: mod.ThreeBackground })),
@@ -26,33 +27,8 @@ export function Hero() {
     }, 100)
     return () => clearTimeout(timer)
   }, [])
-  const handleScrollToProjects = () => {
-    const element = document.querySelector("#projects")
-    if (element) {
-      const offset = 80
-      const elementPosition = element.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - offset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      })
-    }
-  }
-
-  const handleScrollDown = () => {
-    const element = document.querySelector("#about")
-    if (element) {
-      const offset = 80
-      const elementPosition = element.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - offset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      })
-    }
-  }
+  const handleScrollToProjects = () => scrollToSection("#projects")
+  const handleScrollDown = () => scrollToSection("#about")
 
   return (
     <section className="relative min-h-screen flex justify-center overflow-hidden items-start pt-20 pb-24 md:items-center md:pt-0 md:pb-0">
@@ -102,14 +78,23 @@ export function Hero() {
             <div className="absolute -inset-1 rounded-full bg-linear-to-r from-primary/20 via-cyan-500/20 to-purple-500/20 blur-xl -z-10" />
           </motion.div>
 
-          {/* Tagline */}
+          {/* Availability + Tagline */}
           <motion.div
             initial={enableAnimations ? { opacity: 0, y: 20 } : false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 backdrop-blur-sm border border-border/50"
+            className="flex flex-col sm:flex-row items-center gap-3"
           >
-            <span className="text-sm font-medium">Computer Engineer • Researcher • Builder</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-xs font-medium text-green-600 dark:text-green-400">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+              </span>
+              Open to opportunities · Sep 2026
+            </div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 backdrop-blur-sm border border-border/50">
+              <span className="text-sm font-medium">Computer Engineer • AI Researcher</span>
+            </div>
           </motion.div>
 
           {/* Main Heading */}

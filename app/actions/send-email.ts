@@ -3,6 +3,7 @@
 import { headers } from "next/headers"
 import { Resend } from "resend"
 
+// Note: resets on cold start — replace with Vercel KV for production durability
 const rateLimitMap = new Map<string, { count: number; last: number }>();
 const RATE_LIMIT_MAX = 3;
 const RATE_LIMIT_WINDOW = 60 * 60 * 1000; // 1 hour
@@ -53,7 +54,7 @@ export async function sendEmail(data: EmailData) {
 
     // Send email using Resend
     await resend.emails.send({
-      from: "Portfolio Contact <onboarding@resend.dev>", // Update this with your verified domain
+      from: "Portfolio Contact <onboarding@resend.dev>", // TODO: update to verified domain (e.g. contact@egekaya.dev)
       to: process.env.CONTACT_EMAIL,
       replyTo: email,
       subject: `Portfolio Contact: Message from ${name}`,

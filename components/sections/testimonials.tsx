@@ -6,8 +6,7 @@ import { useInView } from "react-intersection-observer"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { Card, CardContent } from "@/components/ui/card"
 import { Quote } from "lucide-react"
-// import Image from "next/image"
-
+import { scrollToSection } from "@/lib/utils"
 interface Testimonial {
   name: string
   role: string
@@ -18,8 +17,7 @@ interface Testimonial {
 }
 
 // Keeping data for future use; not rendered until approvals are collected
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const testimonials: Testimonial[] = [
+const _testimonials: Testimonial[] = [
   {
     name: "E. M.",
     role: "Department Head",
@@ -104,16 +102,7 @@ export function Testimonials() {
                     In the meantime, feel free to {""}
                     <a
                       href="#contact"
-                      onClick={(e) => {
-                        e.preventDefault()
-                        const element = document.querySelector("#contact")
-                        if (element) {
-                          const offset = 80
-                          const elementPosition = element.getBoundingClientRect().top
-                          const offsetPosition = elementPosition + window.pageYOffset - offset
-                          window.scrollTo({ top: offsetPosition, behavior: "smooth" })
-                        }
-                      }}
+                      onClick={(e) => { e.preventDefault(); scrollToSection("#contact") }}
                       className="underline text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
                     >
                       reach out

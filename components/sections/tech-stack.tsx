@@ -5,7 +5,6 @@ import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
 
 interface TechItem {
@@ -48,22 +47,6 @@ const techStack: TechItem[] = [
   { name: "Node.js", category: "Runtime", icon: "🟢" },
   { name: "Git", category: "Tool", icon: "🔧" },
 ]
-
-const categoryColors = {
-  Frontend: "from-blue-500 to-cyan-500",
-  Backend: "from-green-500 to-emerald-500",
-  Languages: "from-purple-500 to-pink-500",
-  Tools: "from-orange-500 to-red-500",
-  Embedded: "from-yellow-500 to-amber-500",
-}
-
-const categoryBorderColors = {
-  Frontend: "border-blue-500/20 bg-blue-500/5",
-  Backend: "border-green-500/20 bg-green-500/5",
-  Languages: "border-purple-500/20 bg-purple-500/5",
-  Tools: "border-orange-500/20 bg-orange-500/5",
-  Embedded: "border-yellow-500/20 bg-yellow-500/5",
-}
 
 export function TechStack() {
   const [ref, inView] = useInView({

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft, ExternalLink, Github, Cpu, Database, Boxes, Binary, ShieldCheck } from "lucide-react"
 import { ContentArticle } from "@/components/content-article"
 import { PostHeader } from "@/components/post-header"
+import { TableOfContents } from "@/components/table-of-contents"
 
 export const metadata: Metadata = {
   title: "LectureLens: AI Study Planner with Next.js + Supabase | Ege Kaya",
@@ -20,7 +21,12 @@ export const metadata: Metadata = {
 export default function BlogPost() {
   return (
     <main className="section-padding">
-      <div className="container-custom max-w-4xl">
+      <div className="container-custom">
+        <div className="lg:flex lg:gap-16 lg:items-start">
+          <div className="lg:order-last">
+            <TableOfContents />
+          </div>
+          <div className="flex-1 min-w-0 max-w-4xl">
         <Link href="/blog">
           <Button variant="ghost" size="sm" className="mb-8">
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -163,6 +169,8 @@ export default function BlogPost() {
             <p className="text-sm"><strong>Note:</strong> Roadmap sections are aspirational until shipped; page updates track milestone delivery.</p>
           </div>
         </ContentArticle>
+          </div>
+        </div>
       </div>
     </main>
   )

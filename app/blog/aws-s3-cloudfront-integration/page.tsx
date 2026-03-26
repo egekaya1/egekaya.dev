@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import { ContentArticle } from "@/components/content-article"
 import { PostHeader } from "@/components/post-header"
+import { TableOfContents } from "@/components/table-of-contents"
 
 export const metadata: Metadata = {
   title: "CDN Optimization with AWS CloudFront + S3: A Real-World Case Study | Ege Kaya",
@@ -20,7 +21,12 @@ export const metadata: Metadata = {
 export default function BlogPost() {
   return (
     <main className="section-padding">
-      <div className="container-custom max-w-4xl">
+      <div className="container-custom">
+        <div className="lg:flex lg:gap-16 lg:items-start">
+          <div className="lg:order-last">
+            <TableOfContents />
+          </div>
+          <div className="flex-1 min-w-0 max-w-4xl">
         <Link href="/blog">
           <Button variant="ghost" size="sm" className="mb-8">
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -257,6 +263,8 @@ Cache-Control: public, max-age=86400, s-maxage=604800, stale-while-revalidate=60
             </p>
           </div>
         </ContentArticle>
+          </div>
+        </div>
       </div>
     </main>
   )

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import { ContentArticle } from "@/components/content-article"
 import { PostHeader } from "@/components/post-header"
+import { TableOfContents } from "@/components/table-of-contents"
 
 export const metadata: Metadata = {
   title: "GitSimulator: Production-Grade Git Simulation Engine | Ege Kaya",
@@ -28,7 +29,12 @@ export const metadata: Metadata = {
 export default function BlogPostGitSimulator() {
   return (
     <main className="section-padding">
-      <div className="container-custom max-w-4xl">
+      <div className="container-custom">
+        <div className="lg:flex lg:gap-16 lg:items-start">
+          <div className="lg:order-last">
+            <TableOfContents />
+          </div>
+          <div className="flex-1 min-w-0 max-w-4xl">
         <Link href="/blog">
           <Button variant="ghost" size="sm" className="mb-8">
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -559,6 +565,8 @@ gitsim snapshot create before-rebase`}</code></pre>
             GitHub: <a href="https://github.com/egekaya1/GitSimulator" target="_blank" rel="noopener noreferrer">egekaya1/GitSimulator</a> · PyPI: <code>pipx install gitsimulator</code> (v1.0.1) · CI: <a href="https://github.com/egekaya1/GitSimulator/actions" target="_blank" rel="noopener noreferrer">GitHub Actions</a>
           </p>
         </ContentArticle>
+          </div>
+        </div>
       </div>
     </main>
   )

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import { ContentArticle } from "@/components/content-article"
 import { PostHeader } from "@/components/post-header"
+import { TableOfContents } from "@/components/table-of-contents"
 
 export const metadata: Metadata = {
   title: "My Machine Learning Journey: From NumPy to Production PyTorch | Ege Kaya",
@@ -40,7 +41,12 @@ export const metadata: Metadata = {
 export default function BlogPostMLRoadmap() {
   return (
     <main className="section-padding">
-      <div className="container-custom max-w-4xl">
+      <div className="container-custom">
+        <div className="lg:flex lg:gap-16 lg:items-start">
+          <div className="lg:order-last">
+            <TableOfContents />
+          </div>
+          <div className="flex-1 min-w-0 max-w-4xl">
         <Link href="/blog">
           <Button variant="ghost" size="sm" className="mb-8">
             <ArrowLeft className="mr-2 h-4 w-4" />
@@ -336,6 +342,8 @@ export default function BlogPostMLRoadmap() {
             Resources: <a href="https://pytorch.org/tutorials/" target="_blank" rel="noopener noreferrer">PyTorch Tutorials</a> · <a href="https://scikit-learn.org/stable/getting_started.html" target="_blank" rel="noopener noreferrer">scikit-learn Guide</a> · <a href="https://cs231n.stanford.edu/" target="_blank" rel="noopener noreferrer">CS231n (Stanford CV)</a> · <a href="https://web.stanford.edu/class/cs224n/" target="_blank" rel="noopener noreferrer">CS224n (Stanford NLP)</a> · <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" target="_blank" rel="noopener noreferrer">3Blue1Brown Linear Algebra</a>
           </p>
         </ContentArticle>
+          </div>
+        </div>
       </div>
     </main>
   )

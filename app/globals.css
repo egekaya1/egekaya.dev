@@ -125,15 +125,15 @@
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
     scroll-behavior: smooth;
+    transition: background-color 300ms ease, color 200ms ease;
+  }
+
+  body {
+    transition: background-color 300ms ease;
   }
 
   html::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
-  }
-
-  /* Smooth scroll for anchor links */
-  * {
-    scroll-behavior: smooth;
   }
 
   /* Respect reduced motion preferences */

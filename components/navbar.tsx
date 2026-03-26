@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation"
 import { Moon, Sun, Menu, X, Download } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { cn, scrollToSection } from "@/lib/utils"
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -15,7 +15,6 @@ const navItems = [
   { name: "Projects", href: "#projects" },
   { name: "Research", href: "#research" },
   { name: "Achievements", href: "#awards" },
-  { name: "Testimonials", href: "#testimonials" },
   { name: "Blog", href: "/blog", external: true },
   { name: "Contact", href: "#contact" },
 ]
@@ -35,7 +34,7 @@ export function Navbar() {
       setScrolled(window.scrollY > 50)
     }
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -50,30 +49,15 @@ export function Navbar() {
   ) => {
     setMobileMenuOpen(false)
 
-    // If it's an external link, let Next.js handle it
-    if (external) {
-      return
-    }
+    if (external) return
 
-    // If we're not on the homepage, navigate to homepage with hash
     if (pathname !== "/") {
       router.push("/" + href)
       return
     }
 
-    // We're on homepage, do smooth scroll
     e.preventDefault()
-    const element = document.querySelector(href)
-    if (element) {
-      const offset = 80
-      const elementPosition = element.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - offset
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      })
-    }
+    scrollToSection(href)
   }
 
   return (
