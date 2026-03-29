@@ -5,8 +5,22 @@ import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Trophy, GraduationCap, Users, Sparkles, Server } from "lucide-react"
+import { Trophy, GraduationCap, Sparkles, Server } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  },
+}
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07 } },
+}
 
 const recognitions = [
   {
@@ -53,93 +67,85 @@ const recognitions = [
     organization: "Google Cloud × Intesa Sanpaolo × TIM",
     year: "2025",
     description:
-      "Selected for exclusive hands-on datacenter hackathon hosted by Google Cloud in Turin. Worked directly with production-grade hardware including servers, managed switches, fiber optics, and Linux systems. Competed in team-based challenges simulating real-world datacenter operations, supported by Google's datacenter engineers from Turin and Milan facilities.",
+      "Selected for exclusive hands-on datacenter hackathon hosted by Google Cloud in Turin. Worked directly with production-grade hardware including servers, managed switches, fiber optics, and Linux systems. Competed in team-based challenges simulating real-world datacenter operations.",
     icon: Server,
     category: "Hackathon",
   },
 ]
 
 export function Awards() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 })
 
   return (
     <section id="awards" className="section-padding">
       <div className="container-custom">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={fadeUp}
         >
           <SectionHeading
+            label="Recognition"
             title="Awards & Achievements"
-            subtitle="Some of my recent Awards and Achievements"
-            centered
+            subtitle="Some of my recent awards and achievements"
           />
         </motion.div>
 
-        <div className="mt-12 lg:mt-16 max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
-          {recognitions.map((recognition, index) => (
+        <motion.div
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={stagger}
+          className="mt-16 lg:mt-20 grid md:grid-cols-2 gap-px border border-border rounded-sm overflow-hidden bg-border"
+        >
+          {recognitions.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
+              variants={fadeUp}
+              className={cn(
+                "bg-card",
+                index === recognitions.length - 1 && recognitions.length % 2 !== 0 && "md:col-span-2"
+              )}
             >
-              <Card className="h-full hover-lift border-2 relative overflow-hidden">
-                {/* Gradient accent */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 to-orange-500" />
-
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-lg bg-gradient-to-br from-amber-500/10 to-orange-500/10">
-                      <recognition.icon className="h-6 w-6 text-amber-600 dark:text-amber-400" />
+              <CardHeader className="pt-6 pb-3">
+                <div className="flex items-start gap-3">
+                  <item.icon className="h-4 w-4 mt-0.5 text-muted-foreground shrink-0" />
+                  <div className="flex-1 space-y-1.5">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <p className="label-mono">{item.category}</p>
+                      <p className="label-mono opacity-50">{item.year}</p>
+                      {item.highlight && (
+                        <p className="label-mono text-foreground">{item.highlight}</p>
+                      )}
                     </div>
-                    <div className="flex-1 space-y-2">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <Badge variant="outline" className="bg-amber-500/10 border-amber-500/30">
-                          {recognition.category}
-                        </Badge>
-                        <Badge variant="secondary">{recognition.year}</Badge>
-                        {recognition.highlight && (
-                          <Badge variant="default" className="bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold">
-                            {recognition.highlight}
-                          </Badge>
-                        )}
-                      </div>
-                      <CardTitle className="text-xl leading-tight">
-                        {recognition.title}
-                      </CardTitle>
-                      <CardDescription className="text-base font-medium">
-                        {recognition.organization}
-                      </CardDescription>
-                    </div>
+                    <CardTitle className="text-base font-medium leading-snug">
+                      {item.title}
+                    </CardTitle>
+                    <CardDescription className="text-xs font-medium">
+                      {item.organization}
+                    </CardDescription>
                   </div>
-                </CardHeader>
+                </div>
+              </CardHeader>
 
-                <CardContent className="space-y-4">
-                  <p className="text-muted-foreground leading-relaxed">
-                    {recognition.description}
-                  </p>
-
-                  {recognition.link && (
-                    <a
-                      href={recognition.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-sm text-primary hover:underline"
-                    >
-                      View announcement →
-                    </a>
-                  )}
-                </CardContent>
-              </Card>
+              <CardContent className="pt-0 pb-6">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {item.description}
+                </p>
+                {item.link && (
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center mt-3 text-xs text-muted-foreground hover:text-foreground transition-colors underline-animate"
+                  >
+                    View announcement →
+                  </a>
+                )}
+              </CardContent>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

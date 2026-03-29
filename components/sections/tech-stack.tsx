@@ -4,152 +4,105 @@ import * as React from "react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { SectionHeading } from "@/components/ui/section-heading"
-import { Card, CardContent } from "@/components/ui/card"
 import Image from "next/image"
+import { Card, CardContent } from "@/components/ui/card"
 
 interface TechItem {
   name: string
   category: string
-  icon: string
 }
 
 const techStack: TechItem[] = [
-  // Languages (most general)
-  { name: "Python", category: "Language", icon: "🐍" },
-  { name: "Java", category: "Language", icon: "☕" },
-  { name: "JavaScript", category: "Language", icon: "JS" },
-  { name: "TypeScript", category: "Language", icon: "TS" },
-  { name: "C", category: "Language", icon: "C" },
-  { name: "C++", category: "Language", icon: "C++" },
-  { name: "MATLAB", category: "Language", icon: "𝓜" },
-  { name: "SQL", category: "Language", icon: "SQL" },
-  { name: "Swift", category: "Language", icon: "🍎" },
-  { name: "Go", category: "Language", icon: "🔵" },
-  { name: "Rust", category: "Language", icon: "🦀" },
-
-  // Web fundamentals
-  { name: "HTML", category: "Web", icon: "HTML" },
-  { name: "CSS", category: "Web", icon: "CSS" },
-
+  // Languages
+  { name: "Python", category: "Languages" },
+  { name: "TypeScript", category: "Languages" },
+  { name: "JavaScript", category: "Languages" },
+  { name: "Java", category: "Languages" },
+  { name: "C", category: "Languages" },
+  { name: "C++", category: "Languages" },
+  { name: "Swift", category: "Languages" },
+  { name: "Go", category: "Languages" },
+  { name: "Rust", category: "Languages" },
+  { name: "SQL", category: "Languages" },
+  { name: "MATLAB", category: "Languages" },
   // Frameworks & Libraries
-  { name: "React", category: "Framework", icon: "⚛️" },
-  { name: "Next.js", category: "Framework", icon: "▲" },
-  { name: "Tailwind CSS", category: "Framework", icon: "🎨" },
-
-  // Frameworks (continued)
-  { name: "Spring Boot", category: "Framework", icon: "🍃" },
-  { name: "PyTorch", category: "Framework", icon: "🔥" },
-  { name: "PostgreSQL", category: "Database", icon: "🐘" },
-
-  // Cloud / Runtime / Tools (more specific)
-  { name: "AWS", category: "Cloud", icon: "☁️" },
-  { name: "Docker", category: "Tool", icon: "🐳" },
-  { name: "Node.js", category: "Runtime", icon: "🟢" },
-  { name: "Git", category: "Tool", icon: "🔧" },
+  { name: "React", category: "Frameworks & Libraries" },
+  { name: "Next.js", category: "Frameworks & Libraries" },
+  { name: "Tailwind CSS", category: "Frameworks & Libraries" },
+  { name: "Node.js", category: "Frameworks & Libraries" },
+  { name: "Spring Boot", category: "Frameworks & Libraries" },
+  { name: "PyTorch", category: "Frameworks & Libraries" },
+  { name: "HTML", category: "Frameworks & Libraries" },
+  { name: "CSS", category: "Frameworks & Libraries" },
+  // Infrastructure
+  { name: "PostgreSQL", category: "Infrastructure" },
+  { name: "AWS", category: "Infrastructure" },
+  { name: "Docker", category: "Infrastructure" },
+  { name: "Git", category: "Infrastructure" },
 ]
 
-export function TechStack() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  },
+}
 
-  // Categories removed from UI — rendering as a single logical list
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.04 } },
+}
+
+export function TechStack() {
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 })
+
+  const categoryOrder = ["Languages", "Frameworks & Libraries", "Infrastructure"]
+  const grouped = categoryOrder.map((cat) => ({
+    category: cat,
+    items: techStack.filter((t) => t.category === cat),
+  }))
 
   return (
     <section id="tech-stack" className="section-padding">
       <div className="container-custom">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={fadeUp}
         >
           <SectionHeading
+            label="Skills"
             title="Tech Stack"
             subtitle="Technologies I work with daily"
-            centered
           />
         </motion.div>
 
-        <div className="mt-12 lg:mt-16">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {techStack.map((tech, index) => (
-              <motion.div
-                key={tech.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.3, delay: 0.05 * index }}
-              >
-                <Card className="hover-lift border-2 h-full">
-                  <CardContent className="pt-6">
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-center gap-3">
-                        <div className="text-3xl">{tech.icon}</div>
-                        <div>
-                          <h3 className="font-semibold text-sm">{tech.name}</h3>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* GitHub Stats */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-16 flex flex-col items-center gap-6"
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={stagger}
+          className="mt-16 lg:mt-20 space-y-8"
         >
-          <h3 className="text-2xl font-bold text-center">GitHub Activity</h3>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-6xl">
-            {/* GitHub Stats Card */}
-            <Card className="border-2">
-              <CardContent className="pt-6 flex items-center justify-center">
-                <Image
-                  src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=egekaya1&theme=github_dark"
-                  alt="Ege Kaya's GitHub Stats"
-                  width={350}
-                  height={200}
-                  className="w-full"
-                  unoptimized
-                />
-              </CardContent>
-            </Card>
-
-            {/* GitHub Most Used Languages */}
-            <Card className="border-2">
-              <CardContent className="pt-6 flex items-center justify-center">
-                <Image
-                  src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=egekaya1&theme=github_dark"
-                  alt="Ege Kaya's Most Used Languages"
-                  width={350}
-                  height={200}
-                  className="w-full"
-                  unoptimized
-                />
-              </CardContent>
-            </Card>
-
-            {/* GitHub Profile Details - Full Width */}
-            <Card className="border-2 lg:col-span-2">
-              <CardContent className="pt-6 flex items-center justify-center overflow-x-auto">
-                <Image
-                  src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=egekaya1&theme=github_dark"
-                  alt="Ege Kaya's GitHub Profile Details"
-                  width={800}
-                  height={200}
-                  className="w-full"
-                  unoptimized
-                />
-              </CardContent>
-            </Card>
-          </div>
+          {grouped.map(({ category, items }) => (
+            <motion.div key={category} variants={fadeUp} className="grid grid-cols-[6rem_1fr] gap-6 items-start border-t border-border pt-6">
+              <p className="label-mono pt-0.5">{category}</p>
+              <div className="flex flex-wrap gap-2">
+                {items.map((tech) => (
+                  <span
+                    key={tech.name}
+                    className="inline-flex items-center rounded-sm border border-border px-3 py-1.5 text-sm text-foreground hover:bg-secondary transition-colors duration-200"
+                  >
+                    {tech.name}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
+
       </div>
     </section>
   )

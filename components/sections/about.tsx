@@ -5,19 +5,25 @@ import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { GraduationCap, Languages, Target, BookOpen } from "lucide-react"
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  },
+}
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07 } },
+}
+
 const interests = [
-  "Computer Science",
-  "Artificial Intelligence",
-  "Software Engineering",
-  "Physics",
-  "Biology",
-  "Chemistry",
-  "Mathematics",
-  "Art",
-  "Language Learning",
+  "Computer Science", "Artificial Intelligence", "Software Engineering",
+  "Physics", "Biology", "Chemistry", "Mathematics", "Art", "Language Learning",
 ]
 
 const stats = [
@@ -29,246 +35,185 @@ const stats = [
 ]
 
 export function About() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 })
 
   return (
     <section id="about" className="section-padding">
       <div className="container-custom">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={fadeUp}
         >
           <SectionHeading
-            title="About Me"
+            label="About"
+            title="Who I Am"
             subtitle="Building the future through code and curiosity"
-            centered
           />
         </motion.div>
 
-        <div className="mt-12 lg:mt-16 grid lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* Left Column - Text Content */}
+        <div className="mt-16 lg:mt-20 grid lg:grid-cols-2 gap-12 lg:gap-16">
+          {/* Left Column */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-y-6"
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={stagger}
+            className="space-y-8"
           >
-            <div className="space-y-6">
-              <div className="space-y-3">
-                <h3 className="text-xl font-semibold">Who I Am</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1">→</span>
-                    <span className="text-base leading-relaxed">
-                      Final-year Computer Engineering student at{" "}
-                      <span className="text-foreground font-semibold">
-                        Politecnico di Torino
-                      </span>{" "}
-                      with 27/30 GPA and Full Scholarship, incoming M.Sc. in CS (AI) at{" "}
-                      <span className="text-foreground font-semibold">
-                        KU Leuven
-                      </span>
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1">→</span>
-                    <span className="text-base leading-relaxed">
-                      Research Assistant under IEEE Fellow and Vice Rector Prof. Paolo Montuschi at Politecnico di Torino
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1">→</span>
-                    <span className="text-base leading-relaxed">
-                      Full-stack developer with experience in React, Next.js, TypeScript, AWS, Python, and AI/ML systems
-                    </span>
-                  </li>
-                </ul>
-              </div>
+            <motion.div variants={fadeUp} className="space-y-4">
+              <h3 className="font-display text-2xl font-light">Background</h3>
+              <ul className="space-y-3 text-muted-foreground">
+                <li className="flex items-start gap-3">
+                  <span className="mt-0.75 text-foreground/40 shrink-0">—</span>
+                  <span className="text-sm leading-relaxed">
+                    Final-year Computer Engineering student at{" "}
+                    <span className="text-foreground font-medium">Politecnico di Torino</span>{" "}
+                    with 27/30 GPA and Full Scholarship, incoming M.Sc. in CS (AI) at{" "}
+                    <span className="text-foreground font-medium">KU Leuven</span>
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-0.75 text-foreground/40 shrink-0">—</span>
+                  <span className="text-sm leading-relaxed">
+                    Research Assistant under IEEE Fellow and Vice Rector Prof. Paolo Montuschi at Politecnico di Torino
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-0.75 text-foreground/40 shrink-0">—</span>
+                  <span className="text-sm leading-relaxed">
+                    Full-stack developer with experience in React, Next.js, TypeScript, AWS, Python, and AI/ML systems
+                  </span>
+                </li>
+              </ul>
+            </motion.div>
 
-              <div className="space-y-3">
-                <h3 className="text-xl font-semibold">What I Do</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li className="flex items-start gap-3">
-                    <span className="text-cyan-500 mt-1">✓</span>
-                    <span className="text-base leading-relaxed">
-                      Build scalable web applications with modern frameworks (React, Next.js, TypeScript)
-                    </span>
+            <motion.div variants={fadeUp} className="space-y-4">
+              <h3 className="font-display text-2xl font-light">What I Do</h3>
+              <ul className="space-y-3 text-muted-foreground">
+                {[
+                  "Build scalable web applications with modern frameworks (React, Next.js, TypeScript)",
+                  "Develop problem-solving software for real-time applications (C++, Python)",
+                  "Design and optimize database architectures (PostgreSQL, Supabase)",
+                  "Contribute to open-source and research projects exploring AI and CS",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-0.75 text-foreground/40 shrink-0">—</span>
+                    <span className="text-sm leading-relaxed">{item}</span>
                   </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-cyan-500 mt-1">✓</span>
-                    <span className="text-base leading-relaxed">
-                      Develop problem-solving software for real-time applications (C++, Python)
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-cyan-500 mt-1">✓</span>
-                    <span className="text-base leading-relaxed">
-                      Design and optimize database architectures (PostgreSQL, Supabase)
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-cyan-500 mt-1">✓</span>
-                    <span className="text-base leading-relaxed">
-                      Contribute to open-source and research projects exploring AI and CS
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
+                ))}
+              </ul>
+            </motion.div>
 
-            {/* Education Cards */}
-            <div className="space-y-4">
-              <Card className="border-2">
-                <CardContent className="pt-6">
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-primary/10">
-                      <GraduationCap className="h-6 w-6 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-lg">
-                        M.Sc. Computer Science – AI Specialisation
-                      </h3>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        KU Leuven
-                      </p>
-                      <div className="flex items-center gap-4 mt-3">
-                        <Badge variant="secondary">2026–2028</Badge>
-                        <Badge variant="secondary">Programme Scholarship</Badge>
+            {/* Education */}
+            <motion.div variants={fadeUp} className="space-y-3">
+              {[
+                {
+                  degree: "M.Sc. Computer Science – AI Specialisation",
+                  school: "KU Leuven",
+                  meta: "2026 – 2028 · Programme Scholarship",
+                },
+                {
+                  degree: "B.Sc. Computer Engineering",
+                  school: "Politecnico di Torino",
+                  meta: "2023 – 2026 · GPA 27/30",
+                },
+              ].map((edu) => (
+                <Card key={edu.degree} className="border">
+                  <CardContent className="pt-5 pb-5">
+                    <div className="flex items-start gap-4">
+                      <GraduationCap className="h-5 w-5 mt-0.5 text-muted-foreground shrink-0" />
+                      <div>
+                        <p className="text-sm font-medium">{edu.degree}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{edu.school}</p>
+                        <p className="label-mono mt-2">{edu.meta}</p>
                       </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+              <Card className="border">
+                <CardContent className="pt-5 pb-5">
+                  <div className="flex items-start gap-4">
+                    <Languages className="h-5 w-5 mt-0.5 text-muted-foreground shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium">Languages</p>
+                      <p className="label-mono mt-2">Turkish · English · Italian</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
-              <Card className="border-2">
-                <CardContent className="pt-6">
-                  <div className="flex items-start gap-4">
-                    <div className="p-2 rounded-lg bg-primary/10">
-                      <GraduationCap className="h-6 w-6 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-lg">
-                        B.Sc. Computer Engineering
-                      </h3>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        Politecnico di Torino
-                      </p>
-                      <div className="flex items-center gap-4 mt-3">
-                        <Badge variant="secondary">GPA: 27/30</Badge>
-                        <Badge variant="secondary">2023–2026</Badge>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Languages Card */}
-            <Card className="border-2">
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-2 rounded-lg bg-cyan-500/10">
-                    <Languages className="h-6 w-6 text-cyan-500" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-lg">Languages</h3>
-                    <div className="flex flex-wrap gap-2 mt-3">
-                      <Badge variant="outline">Turkish</Badge>
-                      <Badge variant="outline">English</Badge>
-                      <Badge variant="outline">Italian</Badge>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            </motion.div>
           </motion.div>
 
-          {/* Right Column - Stats & Interests */}
+          {/* Right Column */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={stagger}
             className="space-y-6"
           >
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
-                >
-                  <Card className="text-center hover-lift">
-                    <CardContent className="pt-6">
-                      <div className="text-3xl font-bold text-gradient-accent">
-                        {stat.value}
-                      </div>
-                      <div className="text-sm text-muted-foreground mt-2">
-                        {stat.label}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
+            {/* Stats */}
+            <motion.div variants={fadeUp}>
+              <div className="grid grid-cols-3 gap-px border border-border rounded-sm overflow-hidden">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="bg-card px-4 py-5 text-center">
+                    <p className="font-display text-4xl font-normal tabular-nums">{stat.value}</p>
+                    <p className="label-mono mt-1">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
 
             {/* Interests */}
-            <Card className="border-2">
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-2 rounded-lg bg-purple-500/10">
-                    <BookOpen className="h-6 w-6 text-purple-500" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-lg mb-3">Interests</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {interests.map((interest) => (
-                        <Badge key={interest} variant="secondary">
-                          {interest}
-                        </Badge>
-                      ))}
+            <motion.div variants={fadeUp}>
+              <Card className="border">
+                <CardContent className="pt-5 pb-5">
+                  <div className="flex items-start gap-4">
+                    <BookOpen className="h-5 w-5 mt-0.5 text-muted-foreground shrink-0" />
+                    <div className="flex-1">
+                      <p className="text-sm font-medium mb-3">Interests</p>
+                      <div className="flex flex-wrap gap-2">
+                        {interests.map((interest) => (
+                          <span
+                            key={interest}
+                            className="inline-flex items-center rounded-sm border border-border px-2.5 py-1 text-xs text-muted-foreground"
+                          >
+                            {interest}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </motion.div>
 
             {/* Goals */}
-            <Card className="border-2">
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-2 rounded-lg bg-green-500/10">
-                    <Target className="h-6 w-6 text-green-500" />
+            <motion.div variants={fadeUp}>
+              <Card className="border">
+                <CardContent className="pt-5 pb-5">
+                  <div className="flex items-start gap-4">
+                    <Target className="h-5 w-5 mt-0.5 text-muted-foreground shrink-0" />
+                    <div className="flex-1">
+                      <p className="text-sm font-medium mb-3">Current Goals</p>
+                      <ul className="space-y-2">
+                        {[
+                          "Starting M.Sc. in Computer Science (AI) at KU Leuven",
+                          "Continuing AI research under Prof. Montuschi",
+                          "Contributing to open-source and research projects",
+                        ].map((goal) => (
+                          <li key={goal} className="flex items-start gap-3">
+                            <span className="mt-0.75 text-foreground/40 shrink-0 text-xs">—</span>
+                            <span className="text-sm text-muted-foreground">{goal}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-lg mb-3">Current Goals</h3>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-1">→</span>
-                        <span>
-                          Starting M.Sc. in Computer Science (AI) at KU Leuven
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-1">→</span>
-                        <span>Continuing AI research under Prof. Montuschi</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-500 mt-1">→</span>
-                        <span>
-                          Contributing to open-source and research projects
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </motion.div>
           </motion.div>
         </div>
       </div>

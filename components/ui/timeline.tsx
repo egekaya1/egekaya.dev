@@ -70,7 +70,7 @@ export function TimelineContent({
     <div className={cn("space-y-2", className)} {...props}>
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
         <div className="flex-1">
-          <h3 className="text-lg font-semibold leading-tight">{title}</h3>
+          <h3 className="text-lg font-medium leading-tight">{title}</h3>
           {subtitle && (
             <p className="text-sm text-muted-foreground mt-1">{subtitle}</p>
           )}
@@ -89,24 +89,24 @@ export function TimelineContent({
       )}
 
       {achievements && achievements.length > 0 && (
-        <div className="flex flex-wrap gap-2 pt-2">
+        <div className="flex flex-wrap gap-1.5 pt-2">
           {achievements.map((achievement, index) => (
             <span
               key={index}
-              className="inline-flex items-center rounded-md bg-primary/10 border border-primary/20 px-2.5 py-1 text-xs font-medium text-primary"
+              className="inline-flex items-center rounded-sm border border-border px-2.5 py-1 font-mono text-xs text-muted-foreground"
             >
-              ✓ {achievement}
+              {achievement}
             </span>
           ))}
         </div>
       )}
 
       {tags && tags.length > 0 && (
-        <div className="flex flex-wrap gap-2 pt-2">
+        <div className="flex flex-wrap gap-1.5 pt-2">
           {tags.map((tag, index) => (
             <span
               key={index}
-              className="inline-flex items-center rounded-md bg-secondary px-2 py-1 text-xs font-medium text-secondary-foreground"
+              className="inline-flex items-center rounded-sm bg-secondary px-2 py-1 text-xs text-muted-foreground"
             >
               {tag}
             </span>

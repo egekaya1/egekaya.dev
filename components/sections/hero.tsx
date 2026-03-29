@@ -1,227 +1,192 @@
 "use client"
 
 import * as React from "react"
-import dynamic from "next/dynamic"
 import { motion } from "framer-motion"
-import { ArrowDown, Github, Linkedin, Download, MapPin } from "lucide-react"
+import { Github, Linkedin, Download, MapPin, ArrowDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { scrollToSection } from "@/lib/utils"
 
-const ThreeBackground = dynamic(
-  () => import("@/components/three-background").then((mod) => ({ default: mod.ThreeBackground })),
-  { ssr: false, loading: () => null }
-)
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (delay: number = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number], delay },
+  }),
+}
 
 export function Hero() {
-  const [showThreeBackground, setShowThreeBackground] = React.useState(false)
-  const [enableAnimations, setEnableAnimations] = React.useState(false)
+  const [ready, setReady] = React.useState(false)
 
   React.useEffect(() => {
-    // Enable animations after initial render to improve LCP
-    setEnableAnimations(true)
-
-    // Small delay for Three.js
-    const timer = setTimeout(() => {
-      setShowThreeBackground(true)
-    }, 100)
-    return () => clearTimeout(timer)
+    setReady(true)
   }, [])
-  const handleScrollToProjects = () => scrollToSection("#projects")
-  const handleScrollDown = () => scrollToSection("#about")
 
   return (
-    <section className="relative min-h-screen flex justify-center overflow-hidden items-start pt-20 pb-24 md:items-center md:pt-0 md:pb-0">
-      {/* CSS Gradient Preview - Instant appearance, 0 performance overhead */}
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Subtle grain texture overlay */}
       <div
-        className="absolute inset-0 -z-10 transition-opacity duration-500"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.03] dark:opacity-[0.06]"
         style={{
-          opacity: showThreeBackground ? 0 : 1,
-          background: 'radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(6, 182, 212, 0.15) 0%, transparent 50%)',
-          animation: 'gradient-shift 8s ease-in-out infinite'
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+          backgroundRepeat: "repeat",
+          backgroundSize: "128px 128px",
         }}
       />
 
-      {/* 3D Background - deferred loading */}
-      <div
-        className="absolute inset-0 -z-10 transition-opacity duration-500"
-        style={{ opacity: showThreeBackground ? 1 : 0 }}
-      >
-        {showThreeBackground && <ThreeBackground />}
-      </div>
+      <div className="container-custom w-full pt-24 pb-20 md:pt-0 md:pb-0">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16 md:items-center">
 
-      {/* Background gradients */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-      </div>
+          {/* Left — text */}
+          <div className="space-y-8 order-2 md:order-1">
 
-      <div className="container-custom">
-        <div className="flex flex-col items-center text-center space-y-8">
-          {/* Profile Photo */}
-          <motion.div
-            initial={enableAnimations ? { opacity: 0, scale: 0.9 } : false}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="relative"
-          >
-            <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
-              <Image
-                src="/profile.webp"
-                alt="Ege Kaya - Computer Engineer, AI Researcher, and Incoming M.Sc. Candidate at KU Leuven"
-                fill
-                className="object-cover object-[center_30%]"
-                priority
-                sizes="(max-width: 640px) 224px, (max-width: 1024px) 256px, 288px"
-              />
-            </div>
-            <div className="absolute -inset-1 rounded-full bg-linear-to-r from-primary/20 via-cyan-500/20 to-purple-500/20 blur-xl -z-10" />
-          </motion.div>
-
-          {/* Availability + Tagline */}
-          <motion.div
-            initial={enableAnimations ? { opacity: 0, y: 20 } : false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-col sm:flex-row items-center gap-3"
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-xs font-medium text-green-600 dark:text-green-400">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-              </span>
-              Open to opportunities · Sep 2026
-            </div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 backdrop-blur-sm border border-border/50">
-              <span className="text-sm font-medium">Computer Engineer • AI Researcher</span>
-            </div>
-          </motion.div>
-
-          {/* Main Heading */}
-          <motion.div
-            initial={enableAnimations ? { opacity: 0, y: 20 } : false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="space-y-4"
-          >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
-              <span className="block">Ege Kaya</span>
-            </h1>
-            <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl">
-              Computer Engineer &{" "}
-              <span className="text-gradient-accent font-semibold">
-                AI Researcher
-              </span>
-            </p>
-          </motion.div>
-
-          {/* Location */}
-          <motion.div
-            initial={enableAnimations ? { opacity: 0, y: 20 } : false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex items-center gap-2 text-muted-foreground"
-          >
-            <MapPin className="h-4 w-4" />
-            <span className="text-sm">Torino, Italy</span>
-          </motion.div>
-
-          {/* Description */}
-          <motion.p
-            initial={enableAnimations ? { opacity: 0, y: 20 } : false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed"
-          >
-            Computer Engineering graduate from Politecnico di Torino in June and incoming M.Sc. candidate in Computer Science with an AI focus at KU Leuven.
-            Research Assistant at Politecnico di Torino, with experience in
-            AI systems, full-stack development, and embedded firmware engineering.
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={enableAnimations ? { opacity: 0, y: 20 } : false}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4"
-          >
-            <Button
-              size="lg"
-              onClick={handleScrollToProjects}
-              className="group w-full sm:w-auto"
+            {/* Mono label */}
+            <motion.div
+              custom={0}
+              initial="hidden"
+              animate={ready ? "visible" : "hidden"}
+              variants={fadeUp}
             >
-              View Projects
-              <ArrowDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform" />
-            </Button>
+              <span className="label-mono">Computer Engineer · AI Researcher</span>
+            </motion.div>
 
-            <Button
-              size="lg"
-              variant="outline"
-              asChild
-              className="w-full sm:w-auto"
+            {/* Display name */}
+            <motion.div
+              custom={0.1}
+              initial="hidden"
+              animate={ready ? "visible" : "hidden"}
+              variants={fadeUp}
+              className="space-y-1"
             >
-              <a
-                href="/resume.pdf"
-                download="Ege-Kaya-Resume.pdf"
-                className="inline-flex items-center gap-2"
+              <h1 className="font-display font-normal leading-[0.95] tracking-tight text-[clamp(3.5rem,8vw,7rem)]">
+                Ege<br />Kaya
+              </h1>
+            </motion.div>
+
+            {/* Location + availability */}
+            <motion.div
+              custom={0.2}
+              initial="hidden"
+              animate={ready ? "visible" : "hidden"}
+              variants={fadeUp}
+              className="flex flex-wrap items-center gap-4"
+            >
+              <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                <MapPin className="h-3.5 w-3.5 shrink-0" />
+                <span>Torino, Italy</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/60 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+                </span>
+                <span>Open to opportunities · Sep 2026</span>
+              </div>
+            </motion.div>
+
+            {/* Description */}
+            <motion.p
+              custom={0.3}
+              initial="hidden"
+              animate={ready ? "visible" : "hidden"}
+              variants={fadeUp}
+              className="text-base text-muted-foreground leading-relaxed max-w-md"
+            >
+              Computer Engineering graduate from Politecnico di Torino, incoming M.Sc. in Computer Science (AI) at KU Leuven.
+              Research Assistant at PoliTo under IEEE Fellow Prof. Montuschi — working on AI systems, full-stack development, and embedded firmware.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div
+              custom={0.4}
+              initial="hidden"
+              animate={ready ? "visible" : "hidden"}
+              variants={fadeUp}
+              className="flex flex-wrap items-center gap-3"
+            >
+              <Button
+                size="lg"
+                onClick={() => scrollToSection("#projects")}
+                className="rounded-sm px-6"
               >
-                <Download className="h-4 w-4" />
-                Download Resume
-              </a>
-            </Button>
+                View Projects
+              </Button>
 
-            <div className="flex items-center gap-3">
               <Button
                 size="lg"
                 variant="outline"
                 asChild
+                className="rounded-sm px-6"
               >
+                <a href="/resume.pdf" download="Ege-Kaya-Resume.pdf" className="inline-flex items-center gap-2">
+                  <Download className="h-4 w-4" />
+                  Resume
+                </a>
+              </Button>
+
+              <Button size="lg" variant="ghost" asChild className="rounded-sm px-3">
                 <a
                   href="https://www.linkedin.com/in/ege-kaya/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2"
-                  aria-label="LinkedIn Profile"
+                  aria-label="LinkedIn"
                 >
-                  <Linkedin className="h-4 w-4" />
-                  <span className="hidden sm:inline">LinkedIn</span>
+                  <Linkedin className="h-5 w-5" />
                 </a>
               </Button>
 
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-              >
+              <Button size="lg" variant="ghost" asChild className="rounded-sm px-3">
                 <a
                   href="https://github.com/egekaya1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2"
-                  aria-label="GitHub Profile"
+                  aria-label="GitHub"
                 >
-                  <Github className="h-4 w-4" />
-                  <span className="hidden sm:inline">GitHub</span>
+                  <Github className="h-5 w-5" />
                 </a>
               </Button>
+            </motion.div>
+          </div>
+
+          {/* Right — photo */}
+          <motion.div
+            custom={0.15}
+            initial="hidden"
+            animate={ready ? "visible" : "hidden"}
+            variants={fadeUp}
+            className="flex justify-center md:justify-end order-1 md:order-2"
+          >
+            <div className="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-md lg:h-112">
+              {/* Offset border frame */}
+              <div className="absolute inset-0 translate-x-3 translate-y-3 border border-border rounded-sm" />
+              <div className="relative w-full h-full overflow-hidden rounded-sm border border-border">
+                <Image
+                  src="/profile.webp"
+                  alt="Ege Kaya"
+                  fill
+                  className="object-cover object-[center_30%]"
+                  priority
+                  sizes="(max-width: 640px) 288px, (max-width: 1024px) 384px, 448px"
+                />
+              </div>
             </div>
           </motion.div>
+
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll indicator */}
       <motion.button
-        initial={enableAnimations ? { opacity: 0 } : false}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        onClick={handleScrollDown}
-        className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 cursor-pointer group"
+        initial={{ opacity: 0 }}
+        animate={ready ? { opacity: 1 } : {}}
+        transition={{ duration: 0.5, delay: 0.8 }}
+        onClick={() => scrollToSection("#about")}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 cursor-pointer group flex flex-col items-center gap-2"
         aria-label="Scroll down"
       >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-sm text-muted-foreground">Scroll</span>
-          <ArrowDown className="h-5 w-5 text-muted-foreground group-hover:translate-y-1 transition-transform animate-bounce" />
-        </div>
+        <span className="label-mono text-[10px]">Scroll</span>
+        <ArrowDown className="h-4 w-4 text-muted-foreground group-hover:translate-y-1 transition-transform duration-300" />
       </motion.button>
     </section>
   )

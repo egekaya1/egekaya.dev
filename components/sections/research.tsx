@@ -5,10 +5,33 @@ import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { FileText, Presentation } from "lucide-react"
+import { FileText, Presentation, Microscope } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  },
+}
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.09 } },
+}
 
 const research = [
+  {
+    type: "Evaluation",
+    title: "Gravitational Lens Finder — ML4SCI / DeepLense",
+    role: "GSoC 2026 Applicant",
+    description:
+      "Completed evaluation tests for Google Summer of Code 2026 under ML4SCI / DeepLense. Multi-class substructure classification achieved AUC 0.9919, surpassing the Varma et al. reported baseline on the same dataset. Lens finding under 100:1 class imbalance: AUC 0.9877, recovering 189 of 195 lenses.",
+    icon: Microscope,
+    tags: ["PyTorch", "ResNet-18", "Computer Vision", "Astrophysics", "Class Imbalance"],
+  },
   {
     type: "Report",
     title: "Evaluating the Pedagogical and Cognitive Impacts of LLMs on Engineering Education",
@@ -30,82 +53,78 @@ const research = [
 ]
 
 export function Research() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 })
 
   return (
-    <section id="research" className="section-padding bg-secondary/20">
+    <section id="research" className="section-padding bg-secondary/30">
       <div className="container-custom">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={fadeUp}
         >
           <SectionHeading
+            label="Research"
             title="Research & Contributions"
             subtitle="Exploring AI, education technology, and computer architecture"
-            centered
           />
         </motion.div>
 
-        <div className="mt-12 lg:mt-16 max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
+        <motion.div
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={stagger}
+          className="mt-16 lg:mt-20 grid md:grid-cols-2 gap-px border border-border rounded-sm overflow-hidden bg-border"
+        >
           {research.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
+              variants={fadeUp}
+              className={cn(
+                "bg-card",
+                index === research.length - 1 && research.length % 2 !== 0 && "md:col-span-2"
+              )}
             >
-              <Card className="h-full hover-lift border-2">
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-lg bg-primary/10">
-                      <item.icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <div className="flex-1 space-y-2">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <Badge variant="outline">{item.type}</Badge>
-                        <Badge variant="secondary">{item.role}</Badge>
-                      </div>
-                      <CardTitle className="text-xl leading-tight">
-                        {item.title}
-                      </CardTitle>
-                    </div>
+              <CardHeader className="pt-6 pb-3">
+                <div className="flex items-start gap-3">
+                  <item.icon className="h-4 w-4 mt-0.5 text-muted-foreground shrink-0" />
+                  <div className="space-y-2">
+                    <p className="label-mono">{item.type} · {item.role}</p>
+                    <CardTitle className="text-base font-medium leading-snug">
+                      {item.title}
+                    </CardTitle>
                   </div>
-                </CardHeader>
+                </div>
+              </CardHeader>
 
-                <CardContent className="space-y-4">
-                  <CardDescription className="text-base leading-relaxed">
-                    {item.description}
-                  </CardDescription>
+              <CardContent className="space-y-4 pt-0 pb-6">
+                <CardDescription className="text-sm leading-relaxed">
+                  {item.description}
+                </CardDescription>
 
-                  <div className="flex flex-wrap gap-2">
-                    {item.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="inline-flex items-center rounded-md bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                <div className="flex flex-wrap gap-1.5">
+                  {item.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="inline-flex items-center rounded-sm bg-secondary px-2 py-0.5 text-xs text-muted-foreground"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </CardContent>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Additional Context */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-8 max-w-3xl mx-auto text-center"
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={fadeUp}
+          className="mt-10 max-w-2xl"
         >
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground leading-relaxed">
             Actively exploring research opportunities in the fields of Computer Science, AI, Architecture and more. Open to
             collaborations and academic partnerships.
           </p>

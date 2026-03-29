@@ -4,16 +4,11 @@ import * as React from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { SectionHeading } from "@/components/ui/section-heading"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { MilestoneBar } from "@/components/ui/milestone-bar"
-import type { Milestone } from "@/components/ui/milestone-bar"
 import { Button } from "@/components/ui/button"
 import { Github, ExternalLink, Lock } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 type Category = "All" | "Web" | "ML / AI" | "Systems" | "Tools"
-
 const FILTERS: Category[] = ["All", "Web", "ML / AI", "Systems", "Tools"]
 
 interface Project {
@@ -22,7 +17,6 @@ interface Project {
   description: string
   tags: string[]
   metrics: string[]
-  milestones?: Milestone[]
   category: Category
   isNDA: boolean
   github: string | null
@@ -35,7 +29,7 @@ const projects: Project[] = [
     title: "Gravitational Lens Finder",
     organization: "GSoC 2026 Applicant — ML4SCI / DeepLense",
     description:
-      "Completed evaluation tests for Google Summer of Code 2026 under ML4SCI / DeepLense. Multi-class substructure classification: AUC 0.9919, surpassing the Varma et al. reported baseline on the same dataset. Lens finding under 100:1 class imbalance: AUC 0.9877, 189 of 195 lenses recovered. Proposed Phase 2 applies domain-adversarial adaptation to close the sim-to-real gap on real HSC-SSP survey data.",
+      "Completed evaluation tests for Google Summer of Code 2026 under ML4SCI / DeepLense. Multi-class substructure classification: AUC 0.9919, surpassing the Varma et al. reported baseline on the same dataset. Lens finding under 100:1 class imbalance: AUC 0.9877, 189 of 195 lenses recovered.",
     tags: ["PyTorch", "ResNet-18", "Computer Vision", "Python", "Class Imbalance", "Astrophysics"],
     metrics: ["AUC 0.9919", "96.9% Sensitivity", "100:1 Imbalance"],
     category: "ML / AI",
@@ -48,7 +42,7 @@ const projects: Project[] = [
     title: "AI-Generated Text Detector",
     organization: "MALTO Hackathon",
     description:
-      "6-class classifier distinguishing human writing from 5 LLM sources (DeepSeek, Grok, Claude, Gemini, ChatGPT) on a heavily imbalanced dataset. Ensemble of 3 TF-IDF models — word n-grams, char n-grams, and 20 handcrafted stylometric features — with meta-learner stacking. Top 10 finish out of all participants.",
+      "6-class classifier distinguishing human writing from 5 LLM sources on a heavily imbalanced dataset. Ensemble of 3 TF-IDF models — word n-grams, char n-grams, and 20 handcrafted stylometric features — with meta-learner stacking. Top 10 finish.",
     tags: ["Python", "scikit-learn", "NLP", "TF-IDF", "Ensemble", "Stacking"],
     metrics: ["Top 10 Finish", "F1 0.9370 (OOF)", "6-Class"],
     category: "ML / AI",
@@ -61,9 +55,9 @@ const projects: Project[] = [
     title: "Timber Co.",
     organization: "Personal Project",
     description:
-      "(WIP) Bird's-eye view strategy game where you build a timber empire from the ground up. Command workers to cut forests, process wood into refined materials, automate production chains, and scale operations. Features resource management, worker AI, and progression systems built with Java and JavaFX.",
+      "(WIP) Bird's-eye view strategy game — build a timber empire. Command workers to cut forests, process wood into refined materials, automate production chains, and scale operations. Resource management, worker AI, progression systems built with Java and JavaFX.",
     tags: ["Java", "JavaFX", "Game Development", "Resource Management", "AI Systems"],
-    metrics: ["Worker Automation", "Production Chains", "Resource Economy", "Bird's-eye View"],
+    metrics: ["Worker Automation", "Production Chains", "Resource Economy"],
     category: "Systems",
     isNDA: false,
     github: null,
@@ -74,9 +68,9 @@ const projects: Project[] = [
     title: "CoreMetric",
     organization: "Open Source",
     description:
-      "(WIP) Privacy-first macOS system monitor using ML-powered anomaly detection. Unlike traditional monitors with hard-coded thresholds, CoreMetric uses a Reconstruction Autoencoder running on Apple Neural Engine to learn your usage patterns and detect subtle anomalies—memory leaks, crypto-miners, frozen processes—with <1% CPU overhead.",
+      "(WIP) Privacy-first macOS system monitor using ML-powered anomaly detection. A Reconstruction Autoencoder on Apple Neural Engine learns your usage patterns and detects memory leaks, crypto-miners, and frozen processes with <1% CPU overhead.",
     tags: ["SwiftUI", "CoreML", "PyTorch", "Metal (MPS)", "IOKit", "Darwin Kernel"],
-    metrics: ["<1% CPU Overhead", "ANE Inference", "Zero Cloud Dependencies", "Real-time Detection", "24h Training Window"],
+    metrics: ["<1% CPU Overhead", "ANE Inference", "Zero Cloud Dependencies"],
     category: "ML / AI",
     isNDA: false,
     github: "https://github.com/egekaya1/CoreMetric",
@@ -87,18 +81,9 @@ const projects: Project[] = [
     title: "LectureLens",
     organization: "Open Source",
     description:
-      "(WIP) AI-powered study companion: ingest PDFs & notes → summaries, flashcards, interactive Q&A and milestone-based study schedules. Incremental AI pipeline with secure per-user isolation.",
-    tags: ["Next.js App Router", "TypeScript", "Supabase (Auth + RLS)", "PostgreSQL", "Edge Functions", "AI Pipeline"],
-    metrics: ["Schema+RLS", "Chunking Pipeline", "Edge Fn Scaffold", "Embeddings Ready", "M1 In Progress"],
-    milestones: [
-      { label: "M1 Auth & Processing", status: "done" },
-      { label: "M2 Lecture Detail", status: "done" },
-      { label: "M3 Flashcards", status: "in-progress" },
-      { label: "M4 Q&A", status: "pending" },
-      { label: "M5 Semantic Search", status: "pending" },
-      { label: "M6 Study Schedules", status: "pending" },
-      { label: "M7 Polish & Beta", status: "pending" },
-    ] as Milestone[],
+      "(WIP) AI-powered study companion: ingest PDFs & notes → summaries, flashcards, interactive Q&A, and milestone-based study schedules. Incremental AI pipeline with secure per-user isolation.",
+    tags: ["Next.js App Router", "TypeScript", "Supabase (Auth + RLS)", "PostgreSQL", "Edge Functions"],
+    metrics: ["Auth + RLS", "Chunking Pipeline", "M3 Flashcards In Progress"],
     category: "Web",
     isNDA: false,
     github: "https://github.com/egekaya1/LectureLens",
@@ -107,11 +92,11 @@ const projects: Project[] = [
   },
   {
     title: "GitSimulator",
-    organization: "Open Source",
+    organization: "Open Source · GitKon 2025 3rd Place",
     description:
-      "Production-grade Git simulation engine: dry-run rebase, merge, reset, cherry-pick with visual commit graphs, conflict prediction (3 certainty levels), and safety analysis. Awarded 3rd Place at GitKon Game Jam 2025. 135+ tests, automated CI/CD, interactive TUI, plugin architecture. Available on PyPI: pipx install gitsimulator (v1.0.1).",
+      "Production-grade Git simulation engine: dry-run rebase, merge, reset, cherry-pick with visual commit graphs, conflict prediction (3 certainty levels), and safety analysis. 135+ tests, CI/CD, interactive TUI, plugin architecture. Available on PyPI.",
     tags: ["Python 3.11+", "Dulwich", "Rich", "Typer", "Textual", "CI/CD"],
-    metrics: ["🏆 GitKon 2025 3rd Place", "135+ Tests", "95%+ Coverage", "PyPI v1.0.1", "3-Level Conflict Detection", "Interactive TUI"],
+    metrics: ["135+ Tests", "95%+ Coverage", "PyPI v1.0.1", "3-Level Conflict Detection"],
     category: "Tools",
     isNDA: false,
     github: "https://github.com/egekaya1/GitSimulator",
@@ -119,10 +104,10 @@ const projects: Project[] = [
     caseStudy: "/case-studies/git-sim",
   },
   {
-    title: "This Website!",
+    title: "This Website",
     organization: "Personal Project",
     description:
-      "Modern portfolio website built with Next.js 16 and TypeScript, achieving 95+ Lighthouse score across all metrics. Implements server-side rendering, optimized image loading, and accessibility best practices (WCAG AA). Features dark mode, responsive design, and form validation with 99.9% uptime on Vercel.",
+      "Portfolio built with Next.js 16, TypeScript, and Tailwind CSS v4. 95+ Lighthouse score, WCAG AA, dark mode, responsive design, and 99.9% uptime on Vercel.",
     tags: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4"],
     metrics: ["95+ Lighthouse", "WCAG AA", "<1s Load Time"],
     category: "Web",
@@ -135,9 +120,9 @@ const projects: Project[] = [
     title: "Internal Web Application",
     organization: "Parma Calcio 1913",
     description:
-      "Architected and deployed 5+ full-stack features for Parma Calcio's internal operations platform serving 50+ staff members. Reduced data entry time by 35% through automated workflows using Next.js and CloudFront + S3, serving edge-cached documents and training videos to enable faster teamwide communication and data sharing. Implemented responsive UI components with 95+ Lighthouse performance score.",
+      "5+ full-stack features for Parma Calcio's internal platform serving 50+ staff. Reduced data entry time by 35% via automated workflows, CloudFront + S3 edge-cached documents and training videos, and 95+ Lighthouse performance.",
     tags: ["CloudFront + S3", "Next.js", "TypeScript", "PostgreSQL"],
-    metrics: ["50+ Users", "35% Time Saved", "95+ Lighthouse Score"],
+    metrics: ["50+ Users", "35% Time Saved", "95+ Lighthouse"],
     category: "Web",
     isNDA: true,
     github: null,
@@ -148,7 +133,7 @@ const projects: Project[] = [
     title: "DigiTwin Database System",
     organization: "Team DigiTwin",
     description:
-      "Engineered high-performance database management system handling 50,000+ sensor readings per day for structural monitoring. Optimized PostgreSQL queries achieving 40% faster response times. Implemented C++ data processing pipeline with CMake for cross-platform deployment across Linux and embedded systems.",
+      "High-performance database handling 50,000+ sensor readings per day for structural monitoring. Optimized PostgreSQL queries achieving 40% faster response times. C++ data processing pipeline with CMake for cross-platform deployment.",
     tags: ["C++", "PostgreSQL", "CMake", "Data Processing"],
     metrics: ["50K+ Readings/Day", "40% Faster Queries", "Multi-Platform"],
     category: "Systems",
@@ -161,7 +146,7 @@ const projects: Project[] = [
     title: "Discord Bot Automation",
     organization: "PoliTo Organization",
     description:
-      "Automated role assignment system for 200+ member university Discord server, reducing manual role management time from 2 hours/week to 5 minutes/month. Built with Discord.js and Node.js, integrated with Supabase for real-time data synchronization. Handles 1000+ role assignments with 99.9% uptime.",
+      "Automated role assignment for 200+ member university Discord server, cutting manual management from 2 hours/week to 5 minutes/month. Discord.js + Supabase real-time sync. 1000+ role assignments, 99.9% uptime.",
     tags: ["Discord.js", "Node.js", "Supabase", "API Integration"],
     metrics: ["200+ Members", "95% Time Reduction", "1000+ Assignments"],
     category: "Tools",
@@ -174,9 +159,9 @@ const projects: Project[] = [
     title: "NIOChatServer",
     organization: "Open Source",
     description:
-      "Real-time WebSocket chat application built with Swift NIO for high-performance asynchronous networking. Features non-blocking I/O, concurrent connection handling, and event-driven architecture. Demonstrates modern Swift server-side development with efficient resource utilization.",
-    tags: ["Swift", "SwiftNIO", "WebSocket", "Async/Await", "Server-Side"],
-    metrics: ["Non-blocking I/O", "Event-Driven", "Real-time Messaging"],
+      "Real-time WebSocket chat built with Swift NIO for high-performance async networking. Non-blocking I/O, concurrent connection handling, event-driven architecture.",
+    tags: ["Swift", "SwiftNIO", "WebSocket", "Async/Await"],
+    metrics: ["Non-blocking I/O", "Event-Driven", "Real-time"],
     category: "Systems",
     isNDA: false,
     github: "https://github.com/egekaya1/NIOChatServer",
@@ -187,8 +172,8 @@ const projects: Project[] = [
     title: "Notes App",
     organization: "Personal Project",
     description:
-      "Feature-rich desktop notes application with clean JavaFX interface for organizing and managing personal notes. Includes note categorization, search functionality, and persistent storage. Built with modern Java practices and MVC architecture.",
-    tags: ["Java", "JavaFX", "MVC", "Desktop App", "UI/UX"],
+      "Desktop notes application with JavaFX interface. Note categorization, search, and persistent storage. MVC architecture.",
+    tags: ["Java", "JavaFX", "MVC", "Desktop App"],
     metrics: ["Rich Text Editor", "Category System", "Search & Filter"],
     category: "Systems",
     isNDA: false,
@@ -198,8 +183,23 @@ const projects: Project[] = [
   },
 ]
 
+const cardVariant = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  },
+  exit: { opacity: 0, y: 12, transition: { duration: 0.2 } },
+}
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.06 } },
+}
+
 export function Projects() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 })
   const [activeFilter, setActiveFilter] = React.useState<Category>("All")
 
   const filtered = activeFilter === "All"
@@ -211,30 +211,30 @@ export function Projects() {
       <div className="container-custom">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={cardVariant}
         >
           <SectionHeading
+            label="Work"
             title="Projects"
             subtitle="Crafting solutions from concept to deployment"
-            centered
           />
         </motion.div>
 
         {/* Filter Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="flex flex-wrap justify-center gap-2 mt-8"
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+          className="flex flex-wrap gap-2 mt-10"
         >
           {FILTERS.map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
               className={cn(
-                "px-4 py-1.5 rounded-full text-sm font-medium border transition-colors",
+                "px-4 py-1.5 rounded-sm text-sm border transition-colors duration-200",
                 activeFilter === filter
                   ? "bg-primary text-primary-foreground border-primary"
                   : "bg-transparent text-muted-foreground border-border hover:text-foreground hover:border-foreground/40"
@@ -242,7 +242,7 @@ export function Projects() {
             >
               {filter}
               {filter !== "All" && (
-                <span className="ml-1.5 text-xs opacity-60">
+                <span className="ml-1.5 font-mono text-xs opacity-50">
                   {projects.filter((p) => p.category === filter).length}
                 </span>
               )}
@@ -250,130 +250,100 @@ export function Projects() {
           ))}
         </motion.div>
 
-        <div className="mt-10 lg:mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Project grid */}
+        <motion.div
+          key={activeFilter}
+          initial="hidden"
+          animate="visible"
+          variants={stagger}
+          className="mt-10 grid sm:grid-cols-2 gap-4"
+        >
           <AnimatePresence mode="popLayout">
             {filtered.map((project) => (
               <motion.div
                 key={project.title}
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.2 }}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                variants={cardVariant}
+                className="border border-border rounded-sm bg-card flex flex-col p-6 gap-4 transition-colors duration-200 hover:bg-secondary/35 hover:border-foreground/30"
               >
-                <Card className="h-full flex flex-col hover-lift border-2">
-                  <CardHeader>
-                    <div className="flex items-start justify-between gap-2">
-                      <CardTitle className="text-xl">{project.title}</CardTitle>
-                      {project.isNDA && (
-                        <div className="p-2 rounded-lg bg-amber-500/10">
-                          <Lock className="h-4 w-4 text-amber-500" />
-                        </div>
-                      )}
-                    </div>
-                    {project.organization && (
-                      <p className="text-sm text-muted-foreground">
-                        {project.organization}
-                      </p>
-                    )}
-                  </CardHeader>
-
-                  <CardContent className="flex-1">
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {project.description}
-                    </p>
-
-                    {project.milestones && (
-                      <div className="mt-4">
-                        <MilestoneBar milestones={project.milestones} />
-                      </div>
-                    )}
-
-                    {project.metrics && (
-                      <div className="flex flex-wrap gap-2 mt-4 mb-4">
-                        {project.metrics.map((metric) => {
-                          const isAward = metric.includes("🏆") || metric.toLowerCase().includes("gitkon")
-                          return (
-                            <Badge
-                              key={metric}
-                              variant={isAward ? "default" : "outline"}
-                              className={isAward
-                                ? "bg-linear-to-r from-amber-500 to-orange-500 text-white font-semibold border-0 shadow-md hover:shadow-lg transition-shadow ring-1 ring-amber-600/50"
-                                : "bg-primary/5"
-                              }
-                            >
-                              {metric}
-                            </Badge>
-                          )
-                        })}
-                      </div>
-                    )}
-
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {project.tags.map((tag) => (
-                        <Badge key={tag} variant="secondary">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-
-                  {(project.github || project.external || project.caseStudy) && (
-                    <CardFooter className="flex gap-2 flex-wrap">
-                      {project.caseStudy && (
-                        <Button variant="default" size="sm" asChild className="flex-1">
-                          <a
-                            href={project.caseStudy}
-                            aria-label={`View case study for ${project.title}`}
-                            className="inline-flex items-center justify-center gap-2"
-                          >
-                            Case Study
-                          </a>
-                        </Button>
-                      )}
-                      {project.github && (
-                        <Button variant="outline" size="sm" asChild className="flex-1">
-                          <a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2"
-                          >
-                            <Github className="h-4 w-4" />
-                            Code
-                          </a>
-                        </Button>
-                      )}
-                      {project.external && (
-                        <Button variant="outline" size="sm" asChild className="flex-1">
-                          <a
-                            href={project.external}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2"
-                          >
-                            <ExternalLink className="h-4 w-4" />
-                            Demo
-                          </a>
-                        </Button>
-                      )}
-                    </CardFooter>
-                  )}
-
+                {/* Header */}
+                <div className="flex items-start justify-between gap-3">
+                  <div className="space-y-0.5 flex-1 min-w-0">
+                    <p className="label-mono">{project.organization}</p>
+                    <h3 className="text-base font-medium leading-snug">{project.title}</h3>
+                  </div>
                   {project.isNDA && (
-                    <CardFooter>
-                      <div className="w-full text-center py-2">
-                        <Badge variant="outline" className="text-xs">
-                          Code not publicly available
-                        </Badge>
-                      </div>
-                    </CardFooter>
+                    <Lock className="h-3.5 w-3.5 text-muted-foreground shrink-0 mt-0.5" />
                   )}
-                </Card>
+                </div>
+
+                {/* Description */}
+                <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+                  {project.description}
+                </p>
+
+                {/* Metrics */}
+                {project.metrics.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.metrics.map((metric) => (
+                      <span
+                        key={metric}
+                        className="inline-flex items-center rounded-sm border border-border px-2 py-0.5 font-mono text-xs text-muted-foreground"
+                      >
+                        {metric}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="inline-flex items-center rounded-sm bg-secondary px-2 py-0.5 text-xs text-muted-foreground"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Actions */}
+                {(project.github || project.external || project.caseStudy || project.isNDA) && (
+                  <div className="flex flex-wrap gap-2 pt-1 border-t border-border mt-auto">
+                    {project.isNDA && (
+                      <span className="label-mono">Code not publicly available</span>
+                    )}
+                    {project.caseStudy && (
+                      <Button variant="default" size="sm" asChild>
+                        <a href={project.caseStudy}>Case Study</a>
+                      </Button>
+                    )}
+                    {project.github && (
+                      <Button variant="outline" size="sm" asChild>
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5">
+                          <Github className="h-3.5 w-3.5" />
+                          Code
+                        </a>
+                      </Button>
+                    )}
+                    {project.external && (
+                      <Button variant="outline" size="sm" asChild>
+                        <a href={project.external} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5">
+                          <ExternalLink className="h-3.5 w-3.5" />
+                          Demo
+                        </a>
+                      </Button>
+                    )}
+                  </div>
+                )}
               </motion.div>
             ))}
           </AnimatePresence>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

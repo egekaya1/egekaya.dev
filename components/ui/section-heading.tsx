@@ -4,12 +4,14 @@ import { cn } from "@/lib/utils"
 interface SectionHeadingProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string
   subtitle?: string
+  label?: string
   centered?: boolean
 }
 
 export function SectionHeading({
   title,
   subtitle,
+  label,
   centered = false,
   className,
   ...props
@@ -17,17 +19,20 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "space-y-2",
+        "space-y-3",
         centered && "text-center mx-auto max-w-3xl",
         className
       )}
       {...props}
     >
-      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+      {label && (
+        <p className="label-mono">{label}</p>
+      )}
+      <h2 className="font-display text-4xl font-normal tracking-tight sm:text-5xl lg:text-6xl">
         {title}
       </h2>
       {subtitle && (
-        <p className="text-lg text-muted-foreground sm:text-xl">
+        <p className={cn("text-base text-muted-foreground leading-relaxed sm:text-lg", centered ? "mx-auto max-w-lg" : "max-w-lg")}>
           {subtitle}
         </p>
       )}

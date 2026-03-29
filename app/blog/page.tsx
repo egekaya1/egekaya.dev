@@ -164,11 +164,12 @@ export default function BlogPage() {
     <main className="section-padding">
       <div className="container-custom">
         {/* Hero */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
+        <div className="max-w-3xl mb-16">
+          <p className="label-mono mb-3">Writing</p>
+          <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight mb-4">
             Blog
           </h1>
-          <p className="text-lg sm:text-xl text-muted-foreground">
+          <p className="text-base text-muted-foreground leading-relaxed max-w-md">
             Technical articles and case studies on ML, web development, and software engineering
           </p>
         </div>

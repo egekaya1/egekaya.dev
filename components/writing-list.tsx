@@ -2,8 +2,6 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Clock, Calendar } from "lucide-react"
 
 export type PostType = "article" | "case-study"
@@ -45,74 +43,63 @@ export function WritingList({ entries }: { entries: WritingEntry[] }) {
   return (
     <div>
       {/* Filter tabs */}
-      <div className="flex flex-wrap gap-2 mb-8">
+      <div className="flex flex-wrap gap-2 mb-10">
         {FILTERS.map((f) => (
           <button
             key={f}
             onClick={() => setFilter(f)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors border ${
+            className={`px-4 py-1.5 rounded-sm text-sm border transition-colors duration-200 ${
               filter === f
                 ? "bg-primary text-primary-foreground border-primary"
-                : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                : "border-border text-muted-foreground hover:text-foreground hover:border-foreground/40"
             }`}
           >
             {f}
-            <span className={`ml-2 text-xs ${filter === f ? "opacity-80" : "opacity-60"}`}>
+            <span className={`ml-2 font-mono text-xs ${filter === f ? "opacity-70" : "opacity-50"}`}>
               {counts[f]}
             </span>
           </button>
         ))}
       </div>
 
-      {/* Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* List */}
+      <div className="border border-border rounded-sm overflow-hidden divide-y divide-border">
         {filtered.map((entry) => (
-          <Link key={`${entry.type}-${entry.slug}`} href={getHref(entry)}>
-            <Card className="h-full hover-lift transition-all duration-300 border-2 hover:border-primary/50">
-              <CardHeader>
-                <div className="mb-2">
-                  <Badge
-                    variant="secondary"
-                    className={
-                      entry.type === "case-study"
-                        ? "bg-violet-500/10 text-violet-600 dark:text-violet-400"
-                        : "bg-primary/10"
-                    }
-                  >
-                    {entry.type === "case-study" ? "Case Study" : "Article"}
-                  </Badge>
+          <Link key={`${entry.type}-${entry.slug}`} href={getHref(entry)} className="block group">
+            <div className="bg-card hover:bg-secondary/40 transition-colors duration-200 px-6 py-5">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                <div className="flex-1 min-w-0 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="label-mono">
+                      {entry.type === "case-study" ? "Case Study" : "Article"}
+                    </span>
+                  </div>
+                  <p className="text-sm font-medium leading-snug group-hover:underline underline-offset-2">
+                    {entry.title}
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                    {entry.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {entry.tags.map((tag) => (
+                      <span key={tag} className="inline-flex items-center rounded-sm bg-secondary px-2 py-0.5 text-xs text-muted-foreground">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <CardTitle className="text-xl leading-tight">{entry.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="flex-1">
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {entry.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {entry.tags.map((tag) => (
-                    <Badge key={tag} variant="outline">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-              <CardFooter className="flex items-center justify-between text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4" />
-                  <time dateTime={entry.publishedAt}>
+                <div className="flex sm:flex-col items-center sm:items-end gap-3 sm:gap-1.5 shrink-0 sm:text-right">
+                  <span className="label-mono">
                     {new Date(entry.publishedAt).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
                       year: "numeric",
                     })}
-                  </time>
+                  </span>
+                  <span className="label-mono">{entry.readingTime}</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4" />
-                  <span>{entry.readingTime}</span>
-                </div>
-              </CardFooter>
-            </Card>
+              </div>
+            </div>
           </Link>
         ))}
       </div>

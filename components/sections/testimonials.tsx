@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/ui/section-heading"
 import { Card, CardContent } from "@/components/ui/card"
 import { Quote } from "lucide-react"
 import { scrollToSection } from "@/lib/utils"
+
 interface Testimonial {
   name: string
   role: string
@@ -48,7 +49,7 @@ const _testimonials: Testimonial[] = [
     company: "Polito Rocket Team",
     relationship: "Division Lead",
     content:
-      "Ege’s automation on our Discord bot project eliminated repetitive ops work. The code was clean, resilient, and easy to maintain, and he documented the code and deployment clearly.",
+      "Ege's automation on our Discord bot project eliminated repetitive ops work. The code was clean, resilient, and easy to maintain, and he documented the code and deployment clearly.",
   },
   {
     name: "Prof. A. K.",
@@ -60,50 +61,55 @@ const _testimonials: Testimonial[] = [
   },
 ]
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  },
+}
+
 export function Testimonials() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 })
+
   return (
-    <section id="testimonials" className="section-padding bg-secondary/20">
+    <section id="testimonials" className="section-padding bg-secondary/30">
       <div className="container-custom">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={fadeUp}
         >
           <SectionHeading
-            title="Testimonials"
+            label="Testimonials"
+            title="What People Say"
             subtitle="Coming soon — pending approvals"
-            centered
           />
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="mt-12"
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={fadeUp}
+          className="mt-16 max-w-xl"
         >
-          <Card className="border-2">
-            <CardContent className="pt-8 pb-8">
+          <Card className="border">
+            <CardContent className="pt-6 pb-6">
               <div className="flex items-start gap-4">
-                <div className="inline-flex p-3 rounded-lg bg-primary/10">
-                  <Quote className="h-6 w-6 text-primary" />
-                </div>
+                <Quote className="h-4 w-4 mt-0.5 text-muted-foreground shrink-0" />
                 <div>
-                  <p className="text-muted-foreground">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     I&apos;m collecting approvals from collaborators and mentors. Once ready, you&apos;ll find
                     verified testimonials here.
                   </p>
                   <p className="text-sm text-muted-foreground mt-3">
-                    In the meantime, feel free to {""}
+                    In the meantime, feel free to{" "}
                     <a
                       href="#contact"
                       onClick={(e) => { e.preventDefault(); scrollToSection("#contact") }}
-                      className="underline text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                      className="text-foreground underline underline-offset-2"
                     >
                       reach out
                     </a>

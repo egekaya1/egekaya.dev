@@ -13,10 +13,6 @@ const TechStack = dynamic(() => import("@/components/sections/tech-stack").then(
   loading: () => <SectionSkeleton />
 })
 
-const LeetCodeStats = dynamic(() => import("@/components/sections/leetcode-stats").then(mod => ({ default: mod.LeetCodeStats })), {
-  loading: () => <SectionSkeleton />
-})
-
 const Experience = dynamic(() => import("@/components/sections/experience").then(mod => ({ default: mod.Experience })), {
   loading: () => <SectionSkeleton />
 })
@@ -43,7 +39,6 @@ export default function Home() {
       <Hero />
       <About />
       <TechStack />
-      <LeetCodeStats />
       <Experience />
       <Projects />
       <Research />

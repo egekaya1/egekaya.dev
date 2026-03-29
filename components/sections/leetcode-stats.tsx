@@ -3,17 +3,28 @@
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Target, TrendingUp, Code2 } from "lucide-react"
 import Image from "next/image"
 
-// Updated with real data from LeetCode profile
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  },
+}
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07 } },
+}
+
 const leetcodeStats = {
   totalSolved: 69,
   easy: 44,
   medium: 23,
   hard: 2,
-  ranking: 0, // Not prominently displayed
   acceptanceRate: 53.2,
   recentSubmissions: [
     { title: "Function Composition", difficulty: "Easy", status: "Accepted" },
@@ -23,199 +34,125 @@ const leetcodeStats = {
 }
 
 export function LeetCodeStats() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 })
 
   return (
-    <section className="section-padding bg-secondary/20">
+    <section className="section-padding bg-secondary/30">
       <div className="container-custom">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={fadeUp}
+          className="mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Competitive Programming
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Practicing algorithmic problem-solving on LeetCode to sharpen my technical skills.
+          <p className="label-mono mb-3">Competitive Programming</p>
+          <h2 className="font-display text-4xl font-light tracking-tight sm:text-5xl">LeetCode</h2>
+          <p className="text-base text-muted-foreground mt-3 max-w-md leading-relaxed">
+            Practicing algorithmic problem-solving to sharpen technical skills.
           </p>
         </motion.div>
 
-        {/* LeetCode Stats Card using API */}
+        {/* Stats image */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex justify-center mb-8"
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={fadeUp}
+          className="mb-10"
         >
-          <Card className="border-2 overflow-hidden max-w-2xl w-full">
-            <CardContent className="pt-6 flex items-center justify-center">
-              <Image
-                src="https://leetcode-stats.vercel.app/api?username=egekaya&theme=dark"
-                alt="Ege Kaya's LeetCode Stats"
-                width={500}
-                height={200}
-                className="w-full"
-                unoptimized
-              />
-            </CardContent>
-          </Card>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Total Solved */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <Card className="border-2 hover-lift">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-sm font-medium text-muted-foreground">
-                    Total Solved
-                  </CardTitle>
-                  <Code2 className="h-5 w-5 text-primary" />
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold">{leetcodeStats.totalSolved}</div>
-                <p className="text-xs text-muted-foreground mt-1">problems</p>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          {/* Acceptance Rate */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <Card className="border-2 hover-lift">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-sm font-medium text-muted-foreground">
-                    Success Rate
-                  </CardTitle>
-                  <Target className="h-5 w-5 text-green-500" />
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold">{leetcodeStats.acceptanceRate}%</div>
-                <p className="text-xs text-muted-foreground mt-1">acceptance</p>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          {/* Problem Distribution */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <Card className="border-2 hover-lift">
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-sm font-medium text-muted-foreground">
-                    Difficulty
-                  </CardTitle>
-                  <TrendingUp className="h-5 w-5 text-cyan-500" />
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-sm">
-                    <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">
-                      Easy
-                    </Badge>
-                    <span className="font-semibold">{leetcodeStats.easy}</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <Badge variant="outline" className="bg-amber-500/10 text-amber-500 border-amber-500/20">
-                      Medium
-                    </Badge>
-                    <span className="font-semibold">{leetcodeStats.medium}</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <Badge variant="outline" className="bg-red-500/10 text-red-500 border-red-500/20">
-                      Hard
-                    </Badge>
-                    <span className="font-semibold">{leetcodeStats.hard}</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-
-        {/* Recent Activity */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-8"
-        >
-          <Card className="border-2">
-            <CardHeader>
-              <CardTitle className="text-lg">Recent Submissions</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                {leetcodeStats.recentSubmissions.map((submission, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-between p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-green-500" />
-                      <span className="font-medium">{submission.title}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Badge
-                        variant="outline"
-                        className={
-                          submission.difficulty === "Easy"
-                            ? "bg-green-500/10 text-green-500"
-                            : submission.difficulty === "Medium"
-                            ? "bg-amber-500/10 text-amber-500"
-                            : "bg-red-500/10 text-red-500"
-                        }
-                      >
-                        {submission.difficulty}
-                      </Badge>
-                      <Badge variant="outline" className="bg-green-500/10 text-green-500">
-                        {submission.status}
-                      </Badge>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+          <div className="border border-border rounded-sm overflow-hidden w-full">
+            <Image
+              src="https://leetcode-stats.vercel.app/api?username=egekaya&theme=dark"
+              alt="Ege Kaya's LeetCode Stats"
+              width={500}
+              height={200}
+              className="w-full grayscale opacity-75 dark:opacity-50"
+              unoptimized
+            />
+          </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-8 text-center"
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={stagger}
+          className="grid md:grid-cols-3 gap-px border border-border rounded-sm overflow-hidden bg-border"
         >
-          <p className="text-sm text-muted-foreground">
-            View my full profile on{" "}
-            <a
-              href="https://leetcode.com/egekaya"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline font-medium"
-            >
-              LeetCode
-            </a>
-          </p>
+          <motion.div variants={fadeUp} className="bg-card p-5">
+            <div className="flex items-center justify-between mb-3">
+              <p className="label-mono">Total Solved</p>
+              <Code2 className="h-3.5 w-3.5 text-muted-foreground" />
+            </div>
+            <p className="font-display text-4xl font-light">{leetcodeStats.totalSolved}</p>
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="bg-card p-5">
+            <div className="flex items-center justify-between mb-3">
+              <p className="label-mono">Success Rate</p>
+              <Target className="h-3.5 w-3.5 text-muted-foreground" />
+            </div>
+            <p className="font-display text-4xl font-light">{leetcodeStats.acceptanceRate}%</p>
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="bg-card p-5">
+            <div className="flex items-center justify-between mb-3">
+              <p className="label-mono">Difficulty</p>
+              <TrendingUp className="h-3.5 w-3.5 text-muted-foreground" />
+            </div>
+            <div className="space-y-1.5">
+              {[
+                { label: "Easy", value: leetcodeStats.easy },
+                { label: "Medium", value: leetcodeStats.medium },
+                { label: "Hard", value: leetcodeStats.hard },
+              ].map(({ label, value }) => (
+                <div key={label} className="flex items-center justify-between">
+                  <span className="label-mono">{label}</span>
+                  <span className="text-sm font-medium">{value}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </motion.div>
+
+        {/* Recent submissions */}
+        <motion.div
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={fadeUp}
+          className="mt-6 border border-border rounded-sm overflow-hidden"
+        >
+          <div className="bg-card">
+            <div className="px-5 py-4 border-b border-border">
+              <p className="label-mono">Recent Submissions</p>
+            </div>
+            <div className="divide-y divide-border">
+              {leetcodeStats.recentSubmissions.map((s, i) => (
+                <div key={i} className="flex items-center justify-between px-5 py-3">
+                  <span className="text-sm">{s.title}</span>
+                  <div className="flex items-center gap-3">
+                    <span className="label-mono">{s.difficulty}</span>
+                    <span className="label-mono text-foreground">{s.status}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={fadeUp}
+          className="mt-6"
+        >
+          <a
+            href="https://leetcode.com/egekaya"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="label-mono hover:text-foreground transition-colors duration-200 underline-animate"
+          >
+            View full profile on LeetCode →
+          </a>
         </motion.div>
       </div>
     </section>

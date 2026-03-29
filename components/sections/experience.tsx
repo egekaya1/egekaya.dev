@@ -6,6 +6,20 @@ import { useInView } from "react-intersection-observer"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { Timeline, TimelineItem, TimelineContent } from "@/components/ui/timeline"
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  },
+}
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.09 } },
+}
+
 const experiences = [
   {
     title: "Research Assistant – AI",
@@ -46,36 +60,33 @@ const experiences = [
 ]
 
 export function Experience() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 })
 
   return (
-    <section id="experience" className="section-padding bg-secondary/20">
+    <section id="experience" className="section-padding bg-secondary/30">
       <div className="container-custom">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={fadeUp}
         >
           <SectionHeading
-            title="Experience"
+            label="Experience"
+            title="Work History"
             subtitle="Building products and contributing to innovative teams"
-            centered
           />
         </motion.div>
 
-        <div className="mt-12 lg:mt-16 max-w-4xl mx-auto">
+        <motion.div
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={stagger}
+          className="mt-16 lg:mt-20"
+        >
           <Timeline>
             {experiences.map((experience, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
-              >
+              <motion.div key={index} variants={fadeUp}>
                 <TimelineItem isLast={index === experiences.length - 1}>
                   <TimelineContent
                     title={experience.title}
@@ -89,7 +100,7 @@ export function Experience() {
               </motion.div>
             ))}
           </Timeline>
-        </div>
+        </motion.div>
       </div>
     </section>
   )
