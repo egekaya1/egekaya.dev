@@ -42,7 +42,6 @@ export default function BlogPost() {
             readingTime="12 min read"
           />
           <hr />
-          <hr />
 
           {/* Content */}
           <p className="lead">

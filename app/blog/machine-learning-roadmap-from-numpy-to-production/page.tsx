@@ -64,31 +64,31 @@ export default function BlogPostMLRoadmap() {
 
           <h2>Why Machine Learning, Why Now</h2>
           <p>
-            After years of building web applications and backend systems, I found myself increasingly curious about the systems that power recommendations, predictions, and intelligent automation. The turning point came when I realized that understanding ML wasn&apos;t just about career growth — it was about understanding the technology that&apos;s reshaping every industry I might work in.
+            I spent two years building web applications and backend systems before seriously engaging with ML. The gap between deploying a Next.js app and understanding what is inside a recommendation model bothered me enough to do something about it.
           </p>
           <p>
-            This post documents my structured approach to learning machine learning from the ground up. Not a tutorial, but a roadmap — the decisions I made about what to learn, in what order, and why. My goal: build a portfolio of 6–10 production-quality projects while developing enough theoretical depth to read and reproduce research papers.
+            This post documents how I structured that transition: what to learn, in what order, and why that sequence matters. The goal is a portfolio of 6&ndash;10 production-quality projects with enough theoretical depth to read and reproduce research papers.
           </p>
 
-          <h2>The Learning Philosophy</h2>
+          <h2>How I Approach This</h2>
           <p>
-            Before diving into the technical content, I want to share the principles guiding this journey:
+            A few rules I set for myself before starting:
           </p>
           <ul>
-            <li><strong>Build first, theory second:</strong> I learn best by doing. Mathematical intuition follows from implementing algorithms, not the other way around.</li>
-            <li><strong>Consistency over intensity:</strong> 30 minutes daily beats 8-hour weekend marathons. The compound effect of daily practice is real.</li>
-            <li><strong>Public learning:</strong> Writing about what I learn forces clarity. This blog post is as much for me as for anyone reading it.</li>
-            <li><strong>Production mindset:</strong> Every project should be deployable. No Jupyter notebooks left to rot — code gets structured, tested, and shipped.</li>
+            <li><strong>Build first, theory second.</strong> I learn by implementing. The math clicks after you have code that either works or fails in a way you can trace.</li>
+            <li><strong>Consistency beats intensity.</strong> 30 minutes daily is more reliable than 8-hour weekend sessions. Progress looks slow week-to-week and fast month-to-month.</li>
+            <li><strong>Write about it.</strong> Writing forces precision. This post is partly for others, mostly to hold myself to account.</li>
+            <li><strong>Ship things.</strong> Every project gets structured, tested, and put somewhere public. No notebooks that only run on my machine.</li>
           </ul>
 
-          <h2>The Roadmap Overview</h2>
+          <h2>The Roadmap</h2>
           <p>
-            I&apos;ve structured my learning into four phases, each building on the previous. The timeline is flexible — some phases might take longer, others shorter — but the sequence matters.
+            Four phases, each building on the previous. The timeline is flexible but the sequence matters.
           </p>
 
           <h3>Phase 1: Python Scientific Foundations</h3>
           <p>
-            Before touching any ML library, I needed fluency in the tools that underpin everything: NumPy for numerical computing, Pandas for data manipulation, and Matplotlib/Seaborn for visualization. This isn&apos;t glamorous work, but it&apos;s foundational.
+            Before touching any ML library, I needed fluency in NumPy, Pandas, and Matplotlib. Not the most exciting phase, but skipping it makes everything harder later.
           </p>
           <p>
             <strong>The tech stack:</strong>
@@ -101,7 +101,7 @@ export default function BlogPostMLRoadmap() {
             <li><strong>Matplotlib + Seaborn</strong> — Visualization for EDA and communication</li>
           </ul>
           <p>
-            The key insight from this phase: <em>vectorization is everything</em>. Understanding why <code>a * b</code> on NumPy arrays is 100–500x faster than a Python loop changed how I think about numerical code. Broadcasting rules, memory layout (C vs Fortran order), and avoiding unnecessary copies — these details matter at scale.
+            The main thing this phase taught me: <em>vectorization is not optional</em>. Understanding why <code>a * b</code> on NumPy arrays is 100&ndash;500x faster than a Python loop changed how I think about numerical code. Broadcasting rules, memory layout (C vs Fortran order), avoiding unnecessary copies&mdash;these details compound at scale.
           </p>
           <p>
             <strong>Key exercises I worked through:</strong>
@@ -146,7 +146,7 @@ export default function BlogPostMLRoadmap() {
 
           <h3>Phase 3: Deep Learning with PyTorch</h3>
           <p>
-            This is where things get interesting. I chose PyTorch over TensorFlow for its Pythonic API and dynamic computation graphs — debugging feels natural, and the mental model is clearer.
+            I chose PyTorch over TensorFlow for its Pythonic API and dynamic computation graphs. Debugging feels natural because you are just manipulating Python objects, not reasoning about a compiled static graph.
           </p>
           <p>
             <strong>The tech stack:</strong>
@@ -158,7 +158,7 @@ export default function BlogPostMLRoadmap() {
             <li><strong>Hugging Face Transformers</strong> — Pretrained NLP models, fine-tuning</li>
           </ul>
           <p>
-            Running on Apple Silicon&apos;s MPS backend was a revelation. Training CNNs on CIFAR-10 locally, without cloud costs, with 3–5x speedup over CPU — that&apos;s accessibility that wasn&apos;t possible a few years ago. The command to check: <code>torch.backends.mps.is_available()</code>.
+            Running on Apple Silicon&apos;s MPS backend was genuinely useful. Training CNNs on CIFAR-10 locally with a 3&ndash;5x speedup over CPU, no cloud credits needed. Check availability with <code>torch.backends.mps.is_available()</code> before each run.
           </p>
           <p>
             <strong>Architectures I studied and implemented:</strong>
@@ -171,12 +171,12 @@ export default function BlogPostMLRoadmap() {
             <li><strong>Transformers</strong> — Multi-head attention, positional encoding, the architecture that changed NLP</li>
           </ul>
           <p>
-            The breakthrough moment: implementing multi-head attention from scratch. Once you see that attention is just a weighted sum of values, with weights computed from query-key dot products, the magic disappears and understanding takes its place.
+            The most clarifying exercise: implementing multi-head attention from scratch. Attention is a weighted sum of values where the weights come from query-key dot products. Once you have that in code, the rest of transformer architecture follows directly.
           </p>
 
           <h3>Phase 4: Production ML</h3>
           <p>
-            Training a model is maybe 20% of the work. The rest is everything that happens before and after: data pipelines, experiment tracking, deployment, monitoring, and maintenance. This phase is about building systems, not just models.
+            Training a model is maybe 20% of the work. The rest is data pipelines, experiment tracking, deployment, monitoring, and maintenance. The goal here is treating the whole thing as a software system, not a research notebook.
           </p>
           <p>
             <strong>The tech stack:</strong>
@@ -214,7 +214,7 @@ export default function BlogPostMLRoadmap() {
 
           <h2>The Math I Actually Needed</h2>
           <p>
-            There&apos;s a lot of gatekeeping in ML about mathematical prerequisites. Here&apos;s what I actually found useful:
+            Most ML courses over-sell the math prerequisites. Here is what actually came up repeatedly:
           </p>
           <p>
             <strong>Linear Algebra (essential):</strong>
@@ -250,7 +250,7 @@ export default function BlogPostMLRoadmap() {
 
           <h2>Resources That Actually Helped</h2>
           <p>
-            Cutting through the noise of ML resources:
+            Filtered from a lot of mediocre material:
           </p>
           <ul>
             <li><strong>3Blue1Brown&apos;s Linear Algebra series</strong> — Visual intuition that textbooks lack</li>
@@ -261,7 +261,7 @@ export default function BlogPostMLRoadmap() {
             <li><strong>Andrej Karpathy&apos;s blog/videos</strong> — Practical wisdom from a practitioner</li>
           </ul>
           <p>
-            What I avoided: courses that promise to make you an &quot;ML expert in 30 days.&quot; This takes time. Accepting that made the process less frustrating.
+            What I skipped: courses that promise to make you an &quot;ML expert in 30 days.&quot; This takes longer than that. Accepting it early makes the rest less frustrating.
           </p>
 
           <h2>Project Ideas by Difficulty</h2>
@@ -289,9 +289,9 @@ export default function BlogPostMLRoadmap() {
             <li><strong>Paper Reproduction</strong> — Pick a seminal paper (ResNet, Attention Is All You Need), reproduce key results</li>
           </ul>
 
-          <h2>Daily Habits That Compound</h2>
+          <h2>Daily Habits</h2>
           <p>
-            The system that keeps me consistent:
+            What the actual routine looks like:
           </p>
           <ul>
             <li><strong>Daily:</strong> 30–60 minutes of focused work (code or reading)</li>
@@ -301,12 +301,12 @@ export default function BlogPostMLRoadmap() {
             <li><strong>Bi-weekly:</strong> Write about what I learned (blog posts like this one)</li>
           </ul>
           <p>
-            The key: making it small enough to be sustainable. Missing a day happens — missing a week shouldn&apos;t.
+            The goal is something small enough to do every day. Missing a day is fine. Missing a week breaks the rhythm.
           </p>
 
-          <h2>Milestones I&apos;m Tracking</h2>
+          <h2>Milestones</h2>
           <p>
-            Concrete goals for the next 12 months:
+            Concrete targets for the next 12 months:
           </p>
           <ul>
             <li><strong>Month 3:</strong> Complete 2 end-to-end projects (tabular + image classification)</li>
@@ -317,7 +317,7 @@ export default function BlogPostMLRoadmap() {
 
           <h2>What I Wish I Knew Earlier</h2>
           <p>
-            A few lessons that would have saved time:
+            Things that would have saved me time:
           </p>
           <ul>
             <li><strong>Start with structured data.</strong> Tabular ML is underrated and immediately applicable. Don&apos;t rush to deep learning.</li>
@@ -329,13 +329,10 @@ export default function BlogPostMLRoadmap() {
 
           <h2>The Path Forward</h2>
           <p>
-            This roadmap isn&apos;t finished — it&apos;s a living document that evolves as I learn. The next posts in this series will dive deeper into specific projects: the CIFAR-10 classifier, the sentiment analysis pipeline, and eventually the paper reproductions.
+            This roadmap will keep changing as I work through it. The next posts in this series will cover specific projects: the CIFAR-10 classifier, the sentiment analysis pipeline, and eventually the paper reproductions.
           </p>
           <p>
-            If you&apos;re on a similar journey, I&apos;d love to hear about it. What worked for you? What would you add to this roadmap?
-          </p>
-          <p>
-            The most important thing I&apos;ve learned: <strong>start before you&apos;re ready</strong>. The best time to begin was yesterday. The second best time is now.
+            If you&apos;re at a similar point, the most practical thing I can say is: pick one dataset, build one end-to-end pipeline, and ship it. Everything else follows from that.
           </p>
 
           <p className="text-muted-foreground text-sm mt-12">

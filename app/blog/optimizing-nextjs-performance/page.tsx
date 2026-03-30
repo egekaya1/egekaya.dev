@@ -44,10 +44,10 @@ export default function BlogPost() {
           {/* Content */}
           <h2>The Challenge</h2>
           <p>
-            When I first ran Lighthouse on my portfolio, the results were humbling. Despite using Next.js with its built-in optimizations, my mobile performance score was <strong>58/100</strong>. The desktop score wasn&apos;t tested yet, but I knew there was work to be done.
+            When I first ran Lighthouse on my portfolio, mobile performance came back at <strong>58/100</strong>. Next.js has good defaults but they do not compensate for unoptimized assets and blocking libraries.
           </p>
           <p>
-            My site had Three.js 3D animations, Framer Motion throughout, and rich interactive content - all the things that make a portfolio stand out but also drag down performance. The goal was clear: achieve a 100/100 Lighthouse score without sacrificing the visual flair that makes the site unique.
+            The site had Three.js 3D animations, Framer Motion throughout, and a large profile image. The goal: get to 100/100 on desktop without removing any of it, and as close as possible on mobile.
           </p>
 
           <h3>Initial Metrics (Mobile)</h3>
@@ -104,7 +104,7 @@ cwebp -q 90 profile.png -o profile.webp
 # Savings: 94% reduction!`}</code></pre>
 
           <p>
-            The visual quality difference? Imperceptible. The performance difference? Massive.
+            The quality difference at 90% compression is imperceptible. The file size difference is not: 94% smaller.
           </p>
 
           <h3>Next.js Image Component Best Practices</h3>
@@ -130,10 +130,10 @@ cwebp -q 90 profile.png -o profile.webp
 
           <h2>3. Deferring Three.js: The 600KB Solution</h2>
           <p>
-            My hero section had a beautiful Three.js 3D background with floating geometric shapes. The problem? The Three.js bundle was 865KB and loading immediately, blocking the main thread for 292ms.
+            My hero section had a Three.js 3D background. The bundle was 865KB, loading immediately, blocking the main thread for 292ms.
           </p>
 
-          <h3>Smart Loading Strategy</h3>
+          <h3>Loading strategy</h3>
           <pre><code>{`import dynamic from "next/dynamic"
 
 const ThreeBackground = dynamic(
@@ -224,10 +224,10 @@ const activateRetroMode = useCallback(() => {
 
           <h2>5. Optimizing Framer Motion Initialization</h2>
           <p>
-            Framer Motion is amazing for animations, but running complex animations during initial render adds to the element render delay. The solution? Defer animation initialization.
+            Framer Motion&apos;s animation calculations during initial render add to element render delay. Deferring initialization until after first paint fixes this with no visible difference.
           </p>
 
-          <h3>The Pattern</h3>
+          <h3>The pattern</h3>
           <pre><code>{`export function Hero() {
   const [enableAnimations, setEnableAnimations] = useState(false)
 
@@ -410,39 +410,39 @@ const geistSans = Geist({
 
           <h2>Lessons Learned</h2>
 
-          <h3>1. Image Optimization is Non-Negotiable</h3>
+          <h3>1. Start with images</h3>
           <p>
-            A single 1.3MB image can destroy your LCP. Always use modern formats (WebP, AVIF) and compress aggressively. The quality difference at 85-90% is imperceptible to users.
+            A 1.3MB PNG as the LCP element is an easy fix. Convert to WebP at 90% quality: the size drops by ~94%, the visual difference is invisible. The <code>priority</code> attribute on the Next.js Image component tells the browser to preload it.
           </p>
 
-          <h3>2. Defer Heavy Libraries</h3>
+          <h3>2. Defer heavy libraries</h3>
           <p>
-            Three.js, Framer Motion, and other animation libraries are amazing but expensive. Load them after initial render. Users won&apos;t notice a 100ms delay, but Lighthouse will notice the faster initial load.
+            Three.js and Framer Motion are large. Load them after initial render with <code>dynamic()</code> and a short timeout. Users do not notice a 100ms delay; the browser does not block on it.
           </p>
 
-          <h3>3. Code Split Aggressively</h3>
+          <h3>3. Code split infrequently-used code</h3>
           <p>
-            That easter egg CSS? Those retro mode styles? That admin panel code? If fewer than 50% of users see it, code split it.
+            The retro mode CSS and Konami easter egg are active for a tiny fraction of visits. Loading them conditionally takes one <code>document.createElement(&apos;link&apos;)</code> call and saves the initial payload.
           </p>
 
-          <h3>4. Prioritize Above-the-Fold Content</h3>
+          <h3>4. Mark the LCP element</h3>
           <p>
-            Use <code>priority</code> loading for critical resources. Lazy load everything else with Next.js dynamic imports.
+            Use <code>priority</code> on above-the-fold images and lazy load everything below the fold with Next.js dynamic imports.
           </p>
 
-          <h3>5. Accessibility = Better UX for Everyone</h3>
+          <h3>5. Descriptive aria-labels fix both accessibility and semantics</h3>
           <p>
-            Adding descriptive <code>aria-label</code> attributes doesn&apos;t just help screen reader users - it makes your site more semantic and maintainable.
+            Multiple &quot;Case Study&quot; links on one page are indistinguishable to screen readers. Adding <code>aria-label=&quot;View case study for X&quot;</code> moves Accessibility from 96 to 100 and makes the markup cleaner.
           </p>
 
-          <h3>6. 100/100 Mobile is Hard (and Maybe Unnecessary)</h3>
+          <h3>6. 100/100 mobile is a tradeoff, not a target</h3>
           <p>
-            Getting to 87/100 on mobile while keeping Three.js and Framer Motion is a win. To hit 100/100, I&apos;d need to remove visual features that make the site unique. Sometimes 87 is the right tradeoff.
+            87/100 on mobile with Three.js and Framer Motion still present is a better outcome than 100/100 without them. The score matters less than the actual Core Web Vitals numbers.
           </p>
 
-          <h3>7. Desktop is Easier Than You Think</h3>
+          <h3>7. Desktop headroom is generous</h3>
           <p>
-            With the same optimizations, desktop hit 100/100 easily. Modern desktops have fast CPUs and good connections - the same code that struggles on mobile flies on desktop.
+            The same code that scores 87 on mobile scores 100 on desktop. Fast CPUs and stable connections absorb a lot. Do not over-optimize for desktop; focus on mobile LCP and TBT.
           </p>
 
           <h2>What Didn&apos;t Work</h2>
@@ -490,7 +490,7 @@ const geistSans = Geist({
           </ul>
 
           <p className="text-muted-foreground text-sm mt-12">
-            Have questions about performance optimization? Feel free to <Link href="/#contact">reach out</Link>!
+            Working on a performance problem? <Link href="/#contact">Reach out</Link>.
           </p>
         </ContentArticle>
           </div>

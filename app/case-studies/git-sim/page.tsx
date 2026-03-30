@@ -452,14 +452,14 @@ gitsim snapshot restore before-rebase`}</code></pre>
           <section>
             <h2>Lessons Learned & Engineering Insights</h2>
             
-            <h3>Heuristics First, Precision Later</h3>
+            <h3>Ship the approximation, refine later</h3>
             <p>
-              Fast approximations unlock value early. We shipped conflict detection with 70%+ accuracy instead of waiting for 95% precision via AST parsing. Users adopted it immediately, and we can layer in deeper analysis later. <strong>Key insight:</strong> &quot;Good enough&quot; solutions that ship beat perfect solutions that don&apos;t.
+              Conflict detection shipped at 70%+ accuracy rather than waiting for AST-based precision. Users adopted it immediately, and real usage made the remaining edge cases clearer. The AST refinement is now in progress precisely because we had user feedback to guide it.
             </p>
 
-            <h3>Explainability Drives Adoption</h3>
+            <h3>Show the score&apos;s reasoning</h3>
             <p>
-              Users trust safety scores more when rationale is explicit. The <code>explain</code> mode showing <em>why</em> a rebase is HIGH risk (e.g., &quot;3 commits rewritten + force-push required to origin/main&quot;) builds confidence. <strong>Lesson:</strong> Transparency &gt; black-box algorithms.
+              Users trust safety scores more when the rationale is explicit. Showing why a rebase is HIGH risk — &quot;3 commits rewritten + force-push required to origin/main&quot; — made the score meaningful rather than opaque.
             </p>
 
             <h3>Testing Infrastructure Pays Dividends</h3>
@@ -511,9 +511,9 @@ gitsim snapshot restore before-rebase`}</code></pre>
 
           <section className="border-t pt-8 not-prose">
             <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">Interested in safer Git workflows?</h3>
+              <h3 className="text-2xl font-bold mb-4">Working with complex Git workflows?</h3>
               <p className="text-muted-foreground mb-6">
-                I build tooling that makes complex version control operations transparent and teachable.
+                The project is on GitHub — or reach out directly.
               </p>
               <Button asChild>
                 <Link href="/#contact">Let’s talk</Link>

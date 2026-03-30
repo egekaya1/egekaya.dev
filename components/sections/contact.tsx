@@ -69,7 +69,7 @@ export function Contact() {
           <SectionHeading
             label="Contact"
             title="Get in Touch"
-            subtitle="Let's build something great together"
+            subtitle="Open to opportunities, collaborations, and conversations"
             centered
           />
         </motion.div>

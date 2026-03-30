@@ -60,7 +60,7 @@ export default function BlogPostCoreMetric() {
 
           <h2>System Architecture: The Factory vs The Product</h2>
           <p>
-            CoreMetric splits into two distinct pipelines with radically different environments:
+            CoreMetric splits into two distinct pipelines running in very different environments:
           </p>
 
           <h3>The Factory (Python/Training)</h3>
@@ -557,17 +557,17 @@ struct AnomalyChart: View {
             Apple&apos;s low-level kernel APIs lack comprehensive guides. Reading XNU source code and reverse-engineering <code>top</code>&apos;s implementation was necessary. Key resources: <a href="https://github.com/apple/darwin-xnu" target="_blank" rel="noopener noreferrer">XNU GitHub</a> and <code>man 3 host_statistics</code>.
           </p>
 
-          <h3>Privacy-First Design Builds Trust</h3>
+          <h3>Privacy documentation matters</h3>
           <p>
-            Users immediately asked: &quot;Does this send data to the cloud?&quot; Clear privacy guarantees (local-only processing, sandboxing) must be front-and-center in documentation.
+            The first question most users asked was: &quot;Does this send data to the cloud?&quot; Local-only processing and sandboxing need to be documented upfront, not buried.
           </p>
 
           <h2>Conclusion</h2>
           <p>
-            CoreMetric demonstrates how modern ML techniques (autoencoders, one-class learning) can transform system monitoring from reactive threshold-based alerts to proactive anomaly detection. By leveraging Apple&apos;s hardware acceleration (ANE, MPS) and respecting user privacy (on-device processing), it achieves the trifecta of effectiveness, efficiency, and trust.
+            CoreMetric applies reconstruction autoencoders to system monitoring: train on your machine&apos;s normal behavior, then flag whatever the model can&apos;t reconstruct. It sidesteps the threshold problem entirely. The ANE handles inference at 1.2ms with 0.3W, so the overhead is genuinely negligible.
           </p>
           <p>
-            The project is a technical exercise in bridging two ecosystems—Python&apos;s ML maturity and Swift&apos;s native macOS integration—while staying true to Apple&apos;s design principles: performance, privacy, and polish.
+            The harder part was bridging Python&apos;s ML tooling and Swift&apos;s low-level macOS APIs. Getting the PyTorch to CoreML conversion right, embedding scaling parameters in model metadata, and reading metrics through Darwin kernel APIs without introducing overhead took more iteration than the model itself.
           </p>
 
           <p className="text-muted-foreground text-sm mt-12">

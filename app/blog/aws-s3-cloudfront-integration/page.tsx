@@ -189,7 +189,7 @@ Cache-Control: public, max-age=86400, s-maxage=604800, stale-while-revalidate=60
             <li><strong>Edge-cached media center:</strong> Centralized delivery of documents and training videos for 50+ staff, with private S3 origin and CloudFront-only access.</li>
             <li><strong>Predictable updates:</strong> Versioned asset pipeline and targeted invalidations, preventing cache busting incidents during releases.</li>
             <li><strong>Streamlined uploads:</strong> Pre-signed S3 uploads and standardized object metadata for reliable playback and previews.</li>
-            <li><strong>Teamwide communication:</strong> Faster content distribution and higher availability improved internal communication and data sharing across departments.</li>
+            <li><strong>Reduced distribution overhead:</strong> Staff retrieved documents and training videos directly from the media center instead of waiting for email attachments or manual file shares.</li>
           </ul>
 
           <h2>Results</h2>

@@ -49,7 +49,7 @@ export function About() {
           <SectionHeading
             label="About"
             title="Who I Am"
-            subtitle="Building the future through code and curiosity"
+            subtitle="Computer engineer. AI researcher. Full-stack developer."
           />
         </motion.div>
 

@@ -256,9 +256,9 @@ async function assignRole(member, roleId) {
           {/* CTA */}
           <section className="border-t pt-8 not-prose">
             <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">Interested in automation solutions?</h3>
+              <h3 className="text-2xl font-bold mb-4">Automating team workflows?</h3>
               <p className="text-muted-foreground mb-6">
-                I&apos;d love to discuss how automation can solve your team&apos;s challenges.
+                Send a message if you want to talk through the design.
               </p>
               <Button asChild>
                 <Link href="/#contact">Get in Touch</Link>

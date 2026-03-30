@@ -280,9 +280,9 @@ export default function CaseStudy() {
           {/* CTA */}
           <section className="border-t pt-8 not-prose">
             <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">Interested in learning tools?</h3>
+              <h3 className="text-2xl font-bold mb-4">Building a study platform?</h3>
               <p className="text-muted-foreground mb-6">
-                Let’s explore how to tailor an effective study experience.
+                Reach out with questions or ideas.
               </p>
               <Button asChild>
                 <Link href="/#contact">Get in Touch</Link>

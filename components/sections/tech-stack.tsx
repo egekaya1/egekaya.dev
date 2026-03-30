@@ -4,8 +4,6 @@ import * as React from "react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { SectionHeading } from "@/components/ui/section-heading"
-import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
 
 interface TechItem {
   name: string

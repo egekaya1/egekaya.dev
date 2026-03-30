@@ -218,7 +218,7 @@ export function Projects() {
           <SectionHeading
             label="Work"
             title="Projects"
-            subtitle="Crafting solutions from concept to deployment"
+            subtitle="Things I have built, shipped, or am actively working on"
           />
         </motion.div>
 

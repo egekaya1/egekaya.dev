@@ -1,10 +1,9 @@
 "use client"
 
-import * as React from "react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { SectionHeading } from "@/components/ui/section-heading"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Trophy, GraduationCap, Sparkles, Server } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -58,7 +57,7 @@ const recognitions = [
     organization: "Reply",
     year: "2025",
     description:
-      "Competed in Reply's European-wide Student Clash focused on Agentic AI, joined by 700+ students from 8 top universities across Europe. Designed and scaled innovative AI Agent projects that transform business operations and empower society through autonomous, intelligent systems.",
+      "Competed in Reply's European-wide Student Clash focused on Agentic AI, with 700+ students from 8 universities across Europe. The challenge was to design and build AI agent systems that address real business problems.",
     icon: Sparkles,
     category: "Hackathon",
   },
@@ -88,7 +87,7 @@ export function Awards() {
           <SectionHeading
             label="Recognition"
             title="Awards & Achievements"
-            subtitle="Some of my recent awards and achievements"
+            subtitle="Competitions, scholarships, and awards"
           />
         </motion.div>
 

@@ -1,9 +1,8 @@
 import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, Rocket, Sparkles, Image as ImageIcon, Accessibility, BarChart3 } from "lucide-react"
+import { ArrowLeft, Rocket, Image as ImageIcon, Accessibility, BarChart3 } from "lucide-react"
 import { ContentArticle } from "@/components/content-article"
 import { PostHeader } from "@/components/post-header"
 
@@ -273,9 +272,9 @@ export default function CaseStudy() {
           {/* CTA */}
           <section className="border-t pt-8 not-prose">
             <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">Want a fast, accessible site?</h3>
+              <h3 className="text-2xl font-bold mb-4">Want a fast, accessible build?</h3>
               <p className="text-muted-foreground mb-6">
-                I build modern web experiences with measurable performance and polish.
+                Reach out if you want to discuss the approach.
               </p>
               <Button asChild>
                 <Link href="/#contact">Let’s talk</Link>

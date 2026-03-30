@@ -92,11 +92,11 @@ export default function BlogPostGitSimulator() {
             Git&apos;s most powerful commands are also its most dangerous. A single mistyped <code>git reset --hard</code> or poorly planned <code>git rebase</code> can rewrite history, lose work, or create conflicts that take hours to resolve. GitSimulator addresses this by:
           </p>
           <ul>
-            <li><strong>Zero-Risk Preview:</strong> See exact outcomes without touching your repository</li>
-            <li><strong>Conflict Forecasting:</strong> Know which files will conflict <em>before</em> starting a merge/rebase</li>
-            <li><strong>Safety Guardrails:</strong> Automated risk scoring prevents catastrophic mistakes</li>
-            <li><strong>Educational Value:</strong> Learn Git internals through interactive explanations</li>
-            <li><strong>CI/CD Integration:</strong> Pre-validate dangerous operations in automation scripts</li>
+            <li><strong>Read-only preview:</strong> See the exact outcome before touching your repository</li>
+            <li><strong>Conflict forecasting:</strong> Know which files will conflict <em>before</em> starting a merge or rebase</li>
+            <li><strong>Risk scoring:</strong> Automated safety analysis flags HIGH and CRITICAL operations with specific reasons</li>
+            <li><strong>Educational mode:</strong> Step-by-step explanations of what Git is actually doing internally</li>
+            <li><strong>CI integration:</strong> Pre-validate dangerous operations in automation pipelines</li>
           </ul>
 
           <h2>Architecture Deep Dive</h2>
@@ -511,14 +511,14 @@ gitsim snapshot create before-rebase`}</code></pre>
 
           <h2>Lessons Learned</h2>
 
-          <h3>Heuristics First, Precision Later</h3>
+          <h3>Ship the approximation, refine later</h3>
           <p>
-            Fast approximations unlock value early. We shipped conflict detection with 70%+ accuracy instead of waiting for 95% precision via AST parsing. Users adopted it immediately, and we can layer in deeper analysis later.
+            Conflict detection shipped at 70%+ accuracy rather than waiting for AST-based analysis. Users adopted it immediately. The precision improvements can happen incrementally without breaking the workflow they already rely on.
           </p>
 
-          <h3>Explainability Drives Trust</h3>
+          <h3>Show the score&apos;s reasoning</h3>
           <p>
-            Users trust safety scores more when rationale is explicit. The <code>explain</code> mode showing <em>why</em> a rebase is HIGH risk (e.g., &quot;3 commits rewritten + force-push required&quot;) builds confidence.
+            A safety score of HIGH means nothing without context. The <code>explain</code> mode shows <em>why</em>&mdash;&quot;3 commits rewritten + force-push required to origin/main&quot;&mdash;and users adopted the tool much faster once that was in place.
           </p>
 
           <h3>Testing Infrastructure Pays Off</h3>
@@ -558,7 +558,7 @@ gitsim snapshot create before-rebase`}</code></pre>
 
           <h2>Conclusion</h2>
           <p>
-            GitSimulator demonstrates how production-grade tooling (comprehensive testing, CI/CD, plugin architecture) can transform a developer experience problem into a polished open-source product. By combining Git internals expertise, sophisticated heuristics, and thoughtful UX (Rich formatting, interactive TUI), the project achieves its goal: making dangerous Git commands safe to explore.
+            The core problem GitSimulator solves is simple: Git gives you no preview of destructive operations before you run them. The solution required reading Git internals with Dulwich, implementing heuristic conflict detection, and wrapping it in a CLI with enough polish to actually be useful. 135+ tests and a working CI pipeline were not optional extras; without them the project would have broken on the first Windows or Python 3.13 user.
           </p>
 
           <p className="text-muted-foreground text-sm mt-12">

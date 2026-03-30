@@ -326,9 +326,9 @@ target_link_libraries(digitwin_processor
           {/* CTA */}
           <section className="border-t pt-8 not-prose">
             <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">Need high-performance data processing?</h3>
+              <h3 className="text-2xl font-bold mb-4">Working on a data pipeline?</h3>
               <p className="text-muted-foreground mb-6">
-                Let&apos;s discuss how I can help optimize your systems.
+                Reach out if you have questions about the approach.
               </p>
               <Button asChild>
                 <Link href="/#contact">Get in Touch</Link>

@@ -1,10 +1,9 @@
 "use client"
 
-import * as React from "react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { SectionHeading } from "@/components/ui/section-heading"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { FileText, Presentation, Microscope } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -46,7 +45,7 @@ const research = [
     title: "Architecture and Memory: A Deep Dive aided by Artificial Intelligence",
     role: "Co-presenter",
     description:
-      "Delivered an in-depth technical presentation exploring computer architecture and memory systems, leveraging AI tools to enhance explanation clarity and visual demonstrations. Focused on bridging theoretical concepts with practical applications.",
+      "Delivered a technical presentation on computer architecture and memory systems, using AI tools to generate visual demonstrations and reinforce explanation clarity. Focused on connecting lecture theory to practical system behavior.",
     icon: Presentation,
     tags: ["Computer Architecture", "Memory Systems", "AI-Assisted Teaching"],
   },
@@ -67,7 +66,7 @@ export function Research() {
           <SectionHeading
             label="Research"
             title="Research & Contributions"
-            subtitle="Exploring AI, education technology, and computer architecture"
+            subtitle="Academic work, evaluations, and technical presentations"
           />
         </motion.div>
 
@@ -125,8 +124,8 @@ export function Research() {
           className="mt-10 max-w-2xl"
         >
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Actively exploring research opportunities in the fields of Computer Science, AI, Architecture and more. Open to
-            collaborations and academic partnerships.
+            Open to research collaborations in computer science, AI, and adjacent areas. Feel free to reach out if you have
+            something specific in mind.
           </p>
         </motion.div>
       </div>

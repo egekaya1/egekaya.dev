@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Clock, Calendar } from "lucide-react"
 
 export type PostType = "article" | "case-study"
 

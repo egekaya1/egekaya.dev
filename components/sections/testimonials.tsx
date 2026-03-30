@@ -17,7 +17,7 @@ interface Testimonial {
   relationship: string
 }
 
-// Keeping data for future use; not rendered until approvals are collected
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const _testimonials: Testimonial[] = [
   {
     name: "E. M.",

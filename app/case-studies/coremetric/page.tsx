@@ -100,14 +100,14 @@ export default function CaseStudyCoreMetric() {
               Traditional system monitors like Activity Monitor, htop, or iStat Menus rely on static thresholds: alert when CPU &gt; 90%, warn when RAM &gt; 80%, panic when disk I/O saturates. This approach creates three critical failure modes:
             </p>
 
-            <h3>1. False Positives: Crying Wolf</h3>
+            <h3>1. False Positives</h3>
             <ul>
               <li><strong>Expected Heavy Workloads:</strong> Video encoding legitimately uses 95%+ CPU for hours. ML training consumes 24GB RAM. Game rendering saturates GPU. These aren&apos;t anomalies—they&apos;re normal for specific users.</li>
               <li><strong>Periodic Spikes:</strong> Time Machine backups spike disk I/O. Spotlight indexing hits CPU. Weekly builds max out cores. Thresholds can&apos;t distinguish routine patterns from genuine problems.</li>
               <li><strong>Alert Fatigue:</strong> Users disable notifications after too many false alarms, missing real issues later.</li>
             </ul>
 
-            <h3>2. False Negatives: Silent Threats</h3>
+            <h3>2. False Negatives</h3>
             <ul>
               <li><strong>Low-Level Abuse:</strong> Cryptocurrency miners using 15% CPU (below typical thresholds) run undetected for weeks. Adware processes with 3% CPU stay hidden.</li>
               <li><strong>Gradual Degradation:</strong> Memory leaks growing at 50MB/hour won&apos;t trigger alarms until swap thrashing begins hours later. Slowly accumulating disk writes evade detection.</li>
@@ -121,7 +121,7 @@ export default function CaseStudyCoreMetric() {
           </section>
 
           <section>
-            <h2>CoreMetric&apos;s Solution: Learn, Don&apos;t Guess</h2>
+            <h2>CoreMetric&apos;s Approach</h2>
             <p>
               Instead of hard-coded thresholds, CoreMetric uses <strong>one-class machine learning</strong>:
             </p>
@@ -132,7 +132,7 @@ export default function CaseStudyCoreMetric() {
               <li><strong>Detect Anomalies:</strong> Real-time inference measures reconstruction error—high error = unfamiliar system state = potential problem</li>
             </ol>
             <p>
-              Result: Personalized anomaly detection that adapts to your specific usage patterns without false positive noise.
+              Each model is trained on that specific machine&apos;s usage history — no shared thresholds, no manual tuning required.
             </p>
           </section>
 
@@ -747,7 +747,7 @@ class AnomalyDetector: ObservableObject {
               <li>Avoiding high-level APIs (Foundation, Combine) for data collection—use Darwin C APIs</li>
             </ul>
 
-            <h3>Privacy-First Design Builds Trust</h3>
+            <h3>Privacy guarantees</h3>
             <p>
               First question from every beta tester: &quot;Does this send data to the cloud?&quot; Clear privacy guarantees must be:
             </p>

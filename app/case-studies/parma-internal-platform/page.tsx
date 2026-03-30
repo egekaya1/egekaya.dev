@@ -220,9 +220,9 @@ export default function CaseStudy() {
           {/* CTA */}
           <section className="border-t pt-8 not-prose">
             <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">Need help developing internal tools?</h3>
+              <h3 className="text-2xl font-bold mb-4">Building internal tools?</h3>
               <p className="text-muted-foreground mb-6">
-                I can help design, ship, and harden production‑ready platforms with measurable impact.
+                I&apos;ve shipped production-ready platforms for real teams — happy to discuss.
               </p>
               <Button asChild>
                 <Link href="/#contact">Get in Touch</Link>

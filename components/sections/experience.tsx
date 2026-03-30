@@ -26,7 +26,7 @@ const experiences = [
     subtitle: "Politecnico di Torino – Prof. Paolo Montuschi",
     period: "2026 – Present",
     description:
-      "Designing and implementing machine learning models to analyze and predict student academic performance. Building scalable data pipelines and evaluation frameworks for large educational datasets. Designing and deploying AI-based class support systems integrated within university infrastructure.",
+      "Building ML models to analyze and predict student academic performance. Implementing data pipelines and evaluation frameworks for large educational datasets. Deploying AI-based class support systems integrated within university infrastructure.",
     tags: ["Python", "PyTorch", "Data Pipelines", "ML"],
     achievements: ["IEEE Fellow Supervisor", "ML Models", "Educational AI"],
   },
@@ -74,7 +74,7 @@ export function Experience() {
           <SectionHeading
             label="Experience"
             title="Work History"
-            subtitle="Building products and contributing to innovative teams"
+            subtitle="Where I have shipped code and what it did"
           />
         </motion.div>
 

@@ -164,7 +164,7 @@ export default function BlogPost() {
             <p className="text-xs text-muted-foreground">Post‑MVP: ICS export, adaptive spaced repetition, shared study sets, semantic rerank refinement.</p>
           </div>
 
-          <p className="text-muted-foreground text-sm mt-12">Feedback or ideas? <Link href="/#contact">Reach out</Link> — I’d love to hear them.</p>
+          <p className="text-muted-foreground text-sm mt-12">Questions or feedback? <Link href="/#contact">Reach out</Link>.</p>
           <div className="not-prose mt-10 p-4 rounded-lg border bg-muted/30">
             <p className="text-sm"><strong>Note:</strong> Roadmap sections are aspirational until shipped; page updates track milestone delivery.</p>
           </div>
