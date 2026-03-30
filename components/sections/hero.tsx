@@ -94,7 +94,7 @@ export function Hero() {
               className="text-base text-muted-foreground leading-relaxed max-w-md"
             >
               Computer Engineering graduate from Politecnico di Torino, incoming M.Sc. in Computer Science (AI) at KU Leuven.
-              Research Assistant at PoliTo under IEEE Fellow Prof. Montuschi — working on AI systems, full-stack development, and embedded firmware.
+              Research Assistant at PoliTo. Working on ML pipelines, full-stack development, and all things software.
             </motion.p>
 
             {/* CTAs */}
