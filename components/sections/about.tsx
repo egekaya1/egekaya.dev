@@ -67,10 +67,11 @@ export function About() {
                 <li className="flex items-start gap-3">
                   <span className="mt-0.75 text-foreground/40 shrink-0">—</span>
                   <span className="text-sm leading-relaxed">
-                    Final-year Computer Engineering student at{" "}
+                    Computer Engineering graduate from{" "}
                     <span className="text-foreground font-medium">Politecnico di Torino</span>{" "}
-                    with 27/30 GPA and Full Scholarship, incoming M.Sc. in CS (AI) at{" "}
-                    <span className="text-foreground font-medium">KU Leuven</span>
+                    with 27/30 GPA and Full Scholarship. Admitted to M.Sc. in CS (AI) at{" "}
+                    <span className="text-foreground font-medium">KU Leuven</span>{" "}
+                    with Programme Scholarship — currently weighing other graduate offers
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -111,7 +112,7 @@ export function About() {
                 {
                   degree: "M.Sc. Computer Science – AI Specialisation",
                   school: "KU Leuven",
-                  meta: "2026 – 2028 · Programme Scholarship",
+                  meta: "Admitted · Programme Scholarship · Weighing other offers",
                 },
                 {
                   degree: "B.Sc. Computer Engineering",
@@ -199,7 +200,7 @@ export function About() {
                       <p className="text-sm font-medium mb-3">Current Goals</p>
                       <ul className="space-y-2">
                         {[
-                          "Starting M.Sc. in Computer Science (AI) at KU Leuven",
+                          "Deciding between graduate school offers (admitted to KU Leuven + others)",
                           "Continuing AI research under Prof. Montuschi",
                           "Contributing to open-source and research projects",
                         ].map((goal) => (

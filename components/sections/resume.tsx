@@ -22,7 +22,7 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.08 } },
 }
 
-const summary = `Computer Engineer and incoming M.Sc. candidate in Computer Science (Artificial Intelligence) at KU Leuven. Research Assistant under Prof. Paolo Montuschi, with experience in AI systems, production-grade full-stack development, and embedded firmware engineering.`
+const summary = `Computer Engineer and Research Assistant at Politecnico di Torino under Prof. Paolo Montuschi, with experience in AI systems, production-grade full-stack development, and embedded firmware engineering. Admitted to M.Sc. in Computer Science (AI) at KU Leuven with Programme Scholarship.`
 
 const skills = [
   "Python", "C/C++", "Java", "TypeScript", "SQL", "Swift", "Go", "Rust",
@@ -61,7 +61,7 @@ const education = [
   {
     degree: "M.Sc. in Computer Science – AI Specialisation",
     institution: "KU Leuven",
-    period: "2026 – 2028",
+    period: "Admitted · Weighing other offers",
     note: "Programme Scholarship · 70% Tuition Waiver",
   },
   {

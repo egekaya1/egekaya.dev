@@ -93,7 +93,7 @@ export function Hero() {
               variants={fadeUp}
               className="text-base text-muted-foreground leading-relaxed max-w-md"
             >
-              Computer Engineering graduate from Politecnico di Torino, incoming M.Sc. in Computer Science (AI) at KU Leuven.
+              Computer Engineering graduate from Politecnico di Torino. Admitted to M.Sc. in CS (AI) at KU Leuven with Programme Scholarship — weighing other graduate offers.
               Research Assistant at PoliTo. Working on ML pipelines, full-stack development, and all things software.
             </motion.p>
 
