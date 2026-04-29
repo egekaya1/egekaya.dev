@@ -27,7 +27,7 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Gravitational Lens Finder",
-    organization: "GSoC 2026 Applicant — ML4SCI / DeepLense",
+    organization: "Google Summer of Code 2026 Applicant - ML4SCI / DeepLense",
     description:
       "Completed evaluation tests for Google Summer of Code 2026 under ML4SCI / DeepLense. Multi-class substructure classification: AUC 0.9919, surpassing the Varma et al. reported baseline on the same dataset. Lens finding under 100:1 class imbalance: AUC 0.9877, 189 of 195 lenses recovered.",
     tags: ["PyTorch", "ResNet-18", "Computer Vision", "Python", "Class Imbalance", "Astrophysics"],
@@ -42,7 +42,7 @@ const projects: Project[] = [
     title: "AI-Generated Text Detector",
     organization: "MALTO Hackathon",
     description:
-      "6-class classifier distinguishing human writing from 5 LLM sources on a heavily imbalanced dataset. Ensemble of 3 TF-IDF models — word n-grams, char n-grams, and 20 handcrafted stylometric features — with meta-learner stacking. Top 10 finish.",
+      "6-class classifier distinguishing human writing from 5 LLM sources on a heavily imbalanced dataset. Ensemble of 3 TF-IDF models (word n-grams, char n-grams, and 20 handcrafted stylometric features) with meta-learner stacking. Top 10 finish.",
     tags: ["Python", "scikit-learn", "NLP", "TF-IDF", "Ensemble", "Stacking"],
     metrics: ["Top 10 Finish", "F1 0.9370 (OOF)", "6-Class"],
     category: "ML / AI",
@@ -55,7 +55,7 @@ const projects: Project[] = [
     title: "Timber Co.",
     organization: "Personal Project",
     description:
-      "(WIP) Bird's-eye view strategy game — build a timber empire. Command workers to cut forests, process wood into refined materials, automate production chains, and scale operations. Resource management, worker AI, progression systems built with Java and JavaFX.",
+      "(WIP) Bird's-eye view strategy game: build a timber empire. Command workers to cut forests, process wood into refined materials, automate production chains, and scale operations. Resource management, worker AI, progression systems built with Java and JavaFX.",
     tags: ["Java", "JavaFX", "Game Development", "Resource Management", "AI Systems"],
     metrics: ["Worker Automation", "Production Chains", "Resource Economy"],
     category: "Systems",

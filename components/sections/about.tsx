@@ -23,16 +23,9 @@ const stagger = {
 
 const interests = [
   "Computer Science", "Artificial Intelligence", "Software Engineering",
-  "Physics", "Biology", "Chemistry", "Mathematics", "Art", "Language Learning",
+  "Physics", "Biology", "Chemistry", "Mathematics", "Art", "Language Learning", "Running", "Guitar", "Gym"
 ]
 
-const stats = [
-  { label: "GPA", value: "27/30" },
-  { label: "Year", value: "Final" },
-  { label: "Languages", value: "3" },
-  { label: "Organizations", value: "3+" },
-  { label: "Projects", value: "5+" },
-]
 
 export function About() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 })
@@ -65,23 +58,23 @@ export function About() {
               <h3 className="font-display text-2xl font-light">Background</h3>
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-3">
-                  <span className="mt-0.75 text-foreground/40 shrink-0">—</span>
+                  <span className="mt-0.75 text-foreground/40 shrink-0">·</span>
                   <span className="text-sm leading-relaxed">
                     Computer Engineering graduate from{" "}
                     <span className="text-foreground font-medium">Politecnico di Torino</span>{" "}
-                    with 27/30 GPA and Full Scholarship. Admitted to M.Sc. in CS (AI) at{" "}
-                    <span className="text-foreground font-medium">KU Leuven</span>{" "}
-                    with Programme Scholarship — currently weighing other graduate offers
+                    with 27/30 GPA and Full Scholarship. Incoming M.Sc. in Computer Science at{" "}
+                    <span className="text-foreground font-medium">University of British Columbia</span>{" "}
+                    (starting Sep 2026), fully funded, supervised by Prof. Cristina Conati (ACM &amp; AAAI Fellow)
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="mt-0.75 text-foreground/40 shrink-0">—</span>
+                  <span className="mt-0.75 text-foreground/40 shrink-0">·</span>
                   <span className="text-sm leading-relaxed">
                     Research Assistant under IEEE Fellow and Vice Rector Prof. Paolo Montuschi at Politecnico di Torino
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="mt-0.75 text-foreground/40 shrink-0">—</span>
+                  <span className="mt-0.75 text-foreground/40 shrink-0">·</span>
                   <span className="text-sm leading-relaxed">
                     Full-stack developer with experience in React, Next.js, TypeScript, AWS, Python, and AI/ML systems
                   </span>
@@ -99,25 +92,34 @@ export function About() {
                   "Contribute to open-source and research projects exploring AI and CS",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-0.75 text-foreground/40 shrink-0">—</span>
+                    <span className="mt-0.75 text-foreground/40 shrink-0">·</span>
                     <span className="text-sm leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>
             </motion.div>
 
+          </motion.div>
+
+          {/* Right Column */}
+          <motion.div
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={stagger}
+            className="space-y-6"
+          >
             {/* Education */}
             <motion.div variants={fadeUp} className="space-y-3">
               {[
                 {
-                  degree: "M.Sc. Computer Science – AI Specialisation",
-                  school: "KU Leuven",
-                  meta: "Admitted · Programme Scholarship · Weighing other offers",
+                  degree: "M.Sc. Computer Science, Thesis Track",
+                  school: "University of British Columbia",
+                  meta: "Sep 2026 · Fully Funded · Prof. Cristina Conati",
                 },
                 {
                   degree: "B.Sc. Computer Engineering",
                   school: "Politecnico di Torino",
-                  meta: "2023 – 2026 · GPA 27/30",
+                  meta: "2023 – 2026 · GPA 27.5/30",
                 },
               ].map((edu) => (
                 <Card key={edu.degree} className="border">
@@ -144,26 +146,6 @@ export function About() {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
-          </motion.div>
-
-          {/* Right Column */}
-          <motion.div
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            variants={stagger}
-            className="space-y-6"
-          >
-            {/* Stats */}
-            <motion.div variants={fadeUp}>
-              <div className="grid grid-cols-3 gap-px border border-border rounded-sm overflow-hidden">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="bg-card px-4 py-5 text-center">
-                    <p className="font-display text-4xl font-normal tabular-nums">{stat.value}</p>
-                    <p className="label-mono mt-1">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
             </motion.div>
 
             {/* Interests */}
@@ -200,12 +182,12 @@ export function About() {
                       <p className="text-sm font-medium mb-3">Current Goals</p>
                       <ul className="space-y-2">
                         {[
-                          "Deciding between graduate school offers (admitted to KU Leuven + others)",
+                          "Google Summer of Code 2026, contributing to the Swift Concurrency runtime",
+                          "Starting M.Sc. at University of British Columbia in September 2026 with Prof. Cristina Conati",
                           "Continuing AI research under Prof. Montuschi",
-                          "Contributing to open-source and research projects",
                         ].map((goal) => (
                           <li key={goal} className="flex items-start gap-3">
-                            <span className="mt-0.75 text-foreground/40 shrink-0 text-xs">—</span>
+                            <span className="mt-0.75 text-foreground/40 shrink-0 text-xs">·</span>
                             <span className="text-sm text-muted-foreground">{goal}</span>
                           </li>
                         ))}

@@ -169,7 +169,7 @@ export function Contact() {
                 {submitStatus === "success" && (
                   <div className="flex items-center gap-2 p-3 rounded-sm border border-border text-sm text-muted-foreground">
                     <CheckCircle2 className="h-4 w-4 shrink-0" />
-                    Message sent — I&apos;ll get back to you soon.
+                    Message sent. I&apos;ll get back to you soon.
                   </div>
                 )}
 

@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Trophy, GraduationCap, Sparkles, Server } from "lucide-react"
+import { Trophy, GraduationCap, Sparkles, Server, Code2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const fadeUp = {
@@ -23,6 +23,17 @@ const stagger = {
 
 const recognitions = [
   {
+    title: "Google Summer of Code 2026 – Swift",
+    organization: "Google × Swift Open Source",
+    year: "2026",
+    description:
+      "Selected to contribute to the Swift Concurrency runtime as part of Google Summer of Code 2026. Project: Task and TaskGroup Tracking. Building a global task registry inside the Swift runtime so that suspended async tasks become visible to debuggers and crash reports, turning opaque stalls into diagnosable situations. Low-level C++ work in one of the most performance-sensitive parts of the Swift toolchain. Mentored by Alastair Houghton and Mike Ash from Apple. Ships to every Swift developer in the world.",
+    icon: Code2,
+    link: "https://summerofcode.withgoogle.com",
+    category: "Open Source Program",
+    highlight: "Swift Runtime",
+  },
+  {
     title: "3rd Place – GitKon Game Jam 2025",
     organization: "GitKraken",
     year: "2025",
@@ -34,14 +45,25 @@ const recognitions = [
     highlight: "3rd Place",
   },
   {
+    title: "M.Sc. – University of British Columbia",
+    organization: "University of British Columbia Department of Computer Science",
+    year: "2026",
+    description:
+      "Supervisor-initiated admission to a fully funded M.Sc. in Computer Science starting Sep 2026. Supervised by Prof. Cristina Conati (ACM Fellow, AAAI Fellow) in the Human-AI Interaction Lab. Research focus: personalized explainable AI, specifically how AI systems can adapt their explanations to individual users. The University of British Columbia Department of Computer Science is ranked top 10 in North America.",
+    icon: GraduationCap,
+    link: "https://hai.cs.ubc.ca",
+    category: "Graduate Admission",
+    highlight: "Fully Funded",
+  },
+  {
     title: "KU Leuven Programme Scholarship",
     organization: "KU Leuven",
     year: "2026",
     description:
-      "Awarded the Programme Scholarship with a 70% tuition waiver for the M.Sc. in Computer Science (Artificial Intelligence). Granted to only 10 students across the programme, recognizing academic excellence and research potential.",
+      "Awarded the Programme Scholarship for the M.Sc. in Computer Science (Artificial Intelligence). Granted to only 10 students across the programme, recognizing academic excellence and research potential. Declined in favour of the fully funded University of British Columbia position under Prof. Cristina Conati.",
     icon: GraduationCap,
     category: "Academic Honor",
-    highlight: "70% Tuition Waiver",
+    highlight: "Scholarship",
   },
   {
     title: "Full Merit Scholarship",

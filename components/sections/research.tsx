@@ -24,8 +24,8 @@ const stagger = {
 const research = [
   {
     type: "Evaluation",
-    title: "Gravitational Lens Finder — ML4SCI / DeepLense",
-    role: "GSoC 2026 Applicant",
+    title: "Gravitational Lens Finder: ML4SCI / DeepLense",
+    role: "Google Summer of Code 2026 Applicant",
     description:
       "Completed evaluation tests for Google Summer of Code 2026 under ML4SCI / DeepLense. Multi-class substructure classification achieved AUC 0.9919, surpassing the Varma et al. reported baseline on the same dataset. Lens finding under 100:1 class imbalance: AUC 0.9877, recovering 189 of 195 lenses.",
     icon: Microscope,
@@ -48,6 +48,15 @@ const research = [
       "Delivered a technical presentation on computer architecture and memory systems, using AI tools to generate visual demonstrations and reinforce explanation clarity. Focused on connecting lecture theory to practical system behavior.",
     icon: Presentation,
     tags: ["Computer Architecture", "Memory Systems", "AI-Assisted Teaching"],
+  },
+  {
+    type: "Paper",
+    title: "AI-Based Anomaly Detection in Network Security",
+    role: "Co-author",
+    description:
+      "Survey paper for the Cybersecurity course at Politecnico di Torino. Covered AI-based approaches to network intrusion detection as alternatives to signature-based tools such as Snort and Suricata: Isolation Forest, One-Class SVM, autoencoders (including Kitsune), LSTM networks, CNNs, and clustering methods. Analysed deployment contexts across enterprise security, military networks, and critical infrastructure, and proposed a hybrid detection architecture combining signature-based and anomaly-based detection with continuous retraining.",
+    icon: FileText,
+    tags: ["Network Security", "Anomaly Detection", "Machine Learning", "Deep Learning", "Intrusion Detection", "Cybersecurity"],
   },
 ]
 

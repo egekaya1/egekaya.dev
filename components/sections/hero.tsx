@@ -48,7 +48,7 @@ export function Hero() {
               animate={ready ? "visible" : "hidden"}
               variants={fadeUp}
             >
-              <span className="label-mono">Computer Engineer · AI Researcher</span>
+              <span className="label-mono">Computer Engineer · Researcher</span>
             </motion.div>
 
             {/* Display name */}
@@ -76,13 +76,6 @@ export function Hero() {
                 <MapPin className="h-3.5 w-3.5 shrink-0" />
                 <span>Torino, Italy</span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/60 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
-                </span>
-                <span>Open to opportunities · Sep 2026</span>
-              </div>
             </motion.div>
 
             {/* Description */}
@@ -93,8 +86,7 @@ export function Hero() {
               variants={fadeUp}
               className="text-base text-muted-foreground leading-relaxed max-w-md"
             >
-              Computer Engineering graduate from Politecnico di Torino. Admitted to M.Sc. in CS (AI) at KU Leuven with Programme Scholarship — weighing other graduate offers.
-              Research Assistant at PoliTo. Working on ML pipelines, full-stack development, and all things software.
+              Computer Engineering graduate from Politecnico di Torino. Google Summer of Code 2026, contributing to the Swift Concurrency runtime, mentored by Apple engineers. Incoming M.Sc. at University of British Columbia (starting Sep 2026), supervised by Prof. Cristina Conati (ACM &amp; AAAI Fellow).
             </motion.p>
 
             {/* CTAs */}

@@ -22,9 +22,18 @@ const stagger = {
 
 const experiences = [
   {
+    title: "Google Summer of Code 2026 – Swift Concurrency",
+    subtitle: "Google Summer of Code 2026 – Swift",
+    period: "May 2026 – Present",
+    description:
+      "Building Task and TaskGroup Tracking for the Swift Concurrency runtime. Implementing a global task registry in C++ so suspended async tasks become visible to debuggers and crash reports, turning opaque stalls into diagnosable situations. Low-level systems work in one of the most performance-sensitive parts of the Swift toolchain. Mentored by Alastair Houghton and Mike Ash from Apple.",
+    tags: ["C++", "Swift", "Swift Concurrency", "Systems Programming", "Open Source"],
+    achievements: ["Swift Runtime", "Global Task Registry", "Ships Worldwide", "Apple Mentors"],
+  },
+  {
     title: "Research Assistant – AI",
     subtitle: "Politecnico di Torino – Prof. Paolo Montuschi",
-    period: "2026 – Present",
+    period: "Feb 2026 – Present",
     description:
       "Building ML models to analyze and predict student academic performance. Implementing data pipelines and evaluation frameworks for large educational datasets. Deploying AI-based class support systems integrated within university infrastructure.",
     tags: ["Python", "PyTorch", "Data Pipelines", "ML"],

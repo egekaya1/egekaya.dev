@@ -30,6 +30,9 @@ const techStack: TechItem[] = [
   { name: "Node.js", category: "Frameworks & Libraries" },
   { name: "Spring Boot", category: "Frameworks & Libraries" },
   { name: "PyTorch", category: "Frameworks & Libraries" },
+  { name: "scikit-learn", category: "Frameworks & Libraries" },
+  { name: "TensorFlow", category: "Frameworks & Libraries" },
+  { name: "HuggingFace", category: "Frameworks & Libraries" },
   { name: "HTML", category: "Frameworks & Libraries" },
   { name: "CSS", category: "Frameworks & Libraries" },
   // Infrastructure
