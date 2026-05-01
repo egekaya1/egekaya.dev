@@ -29,7 +29,8 @@ const recognitions = [
     description:
       "Selected to contribute to the Swift Concurrency runtime as part of Google Summer of Code 2026. Project: Task and TaskGroup Tracking. Building a global task registry inside the Swift runtime so that suspended async tasks become visible to debuggers and crash reports, turning opaque stalls into diagnosable situations. Low-level C++ work in one of the most performance-sensitive parts of the Swift toolchain. Mentored by Alastair Houghton and Mike Ash from Apple. Ships to every Swift developer in the world.",
     icon: Code2,
-    link: "https://summerofcode.withgoogle.com",
+    link: "https://summerofcode.withgoogle.com/programs/2026/projects/jSfvgdVP",
+    secondaryLink: "https://www.linkedin.com/embed/feed/update/urn:li:share:7455687862907224064",
     category: "Open Source Program",
     highlight: "Swift Runtime",
   },
@@ -153,15 +154,29 @@ export function Awards() {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {item.description}
                 </p>
-                {item.link && (
-                  <a
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center mt-3 text-xs text-muted-foreground hover:text-foreground transition-colors underline-animate"
-                  >
-                    View announcement →
-                  </a>
+                {(item.link || item.secondaryLink) && (
+                  <div className="flex items-center gap-4 mt-3">
+                    {item.link && (
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-xs text-muted-foreground hover:text-foreground transition-colors underline-animate"
+                      >
+                        View announcement →
+                      </a>
+                    )}
+                    {item.secondaryLink && (
+                      <a
+                        href={item.secondaryLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-xs text-muted-foreground hover:text-foreground transition-colors underline-animate"
+                      >
+                        LinkedIn post →
+                      </a>
+                    )}
+                  </div>
                 )}
               </CardContent>
             </motion.div>
