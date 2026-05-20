@@ -61,7 +61,7 @@ const recognitions = [
     organization: "KU Leuven",
     year: "2026",
     description:
-      "Awarded the Programme Scholarship for the M.Sc. in Computer Science (Artificial Intelligence). Granted to only 10 students across the programme, recognizing academic excellence and research potential. Declined in favour of the fully funded University of British Columbia position under Prof. Cristina Conati.",
+      "Awarded the Programme Scholarship for the M.Sc. in Computer Science (Artificial Intelligence). Granted to only 10 students across the programme, recognizing academic excellence and research potential. Ultimately pursued the fully funded University of British Columbia position under Prof. Cristina Conati.",
     icon: GraduationCap,
     category: "Academic Honor",
     highlight: "Scholarship",
