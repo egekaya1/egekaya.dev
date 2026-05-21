@@ -95,18 +95,16 @@ export function Experience() {
         >
           <Timeline>
             {experiences.map((experience, index) => (
-              <motion.div key={index} variants={fadeUp}>
-                <TimelineItem isLast={index === experiences.length - 1}>
-                  <TimelineContent
-                    title={experience.title}
-                    subtitle={experience.subtitle}
-                    period={experience.period}
-                    description={experience.description}
-                    achievements={experience.achievements}
-                    tags={experience.tags}
-                  />
-                </TimelineItem>
-              </motion.div>
+              <TimelineItem key={index} variants={fadeUp} isLast={index === experiences.length - 1}>
+                <TimelineContent
+                  title={experience.title}
+                  subtitle={experience.subtitle}
+                  period={experience.period}
+                  description={experience.description}
+                  achievements={experience.achievements}
+                  tags={experience.tags}
+                />
+              </TimelineItem>
             ))}
           </Timeline>
         </motion.div>

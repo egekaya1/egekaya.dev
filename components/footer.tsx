@@ -11,7 +11,7 @@ export function Footer() {
         <div className="py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <p className="label-mono">© {currentYear} Ege Kaya</p>
-            <p className="label-mono opacity-50">Built with Next.js</p>
+            <p className="label-mono opacity-70">Built with Next.js</p>
           </div>
 
           <nav aria-label="Social media links" className="flex items-center gap-4">

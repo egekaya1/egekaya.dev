@@ -319,7 +319,7 @@ export function Projects() {
                     )}
                     {project.caseStudy && (
                       <Button variant="default" size="sm" asChild>
-                        <a href={project.caseStudy}>Case Study</a>
+                        <a href={project.caseStudy} aria-label={`${project.title} case study`}>Case Study</a>
                       </Button>
                     )}
                     {project.github && (

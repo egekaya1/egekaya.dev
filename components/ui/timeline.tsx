@@ -1,4 +1,5 @@
 import * as React from "react"
+import { motion, type HTMLMotionProps } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 interface TimelineProps extends React.HTMLAttributes<HTMLOListElement> {
@@ -13,7 +14,7 @@ export function Timeline({ children, className, ...props }: TimelineProps) {
   )
 }
 
-interface TimelineItemProps extends React.HTMLAttributes<HTMLLIElement> {
+interface TimelineItemProps extends HTMLMotionProps<"li"> {
   children: React.ReactNode
   isLast?: boolean
 }
@@ -25,7 +26,7 @@ export function TimelineItem({
   ...props
 }: TimelineItemProps) {
   return (
-    <li className={cn("relative pb-8", className)} {...props}>
+    <motion.li className={cn("relative pb-8", className)} {...props}>
       {/* Connector line */}
       {!isLast && (
         <span
@@ -43,7 +44,7 @@ export function TimelineItem({
         {/* Content */}
         <div className="flex-1 min-w-0">{children}</div>
       </div>
-    </li>
+    </motion.li>
   )
 }
 

@@ -16,6 +16,15 @@ const fadeUp = {
   }),
 }
 
+// Translate-only so the LCP image is never opacity:0 (which blocks paint)
+const slideUp = {
+  hidden: { y: 28 },
+  visible: (delay: number = 0) => ({
+    y: 0,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number], delay },
+  }),
+}
+
 export function Hero() {
   const [ready, setReady] = React.useState(false)
 
@@ -146,7 +155,7 @@ export function Hero() {
             custom={0.15}
             initial="hidden"
             animate={ready ? "visible" : "hidden"}
-            variants={fadeUp}
+            variants={slideUp}
             className="flex justify-center md:justify-end order-1 md:order-2"
           >
             <div className="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-md lg:h-112">
