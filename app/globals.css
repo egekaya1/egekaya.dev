@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -45,37 +44,37 @@
 }
 
 /* ============================================
-   LIGHT MODE — warm neutral palette
+   LIGHT MODE — cozy warm cream & espresso
    ============================================ */
 :root {
-  --radius: 0.375rem;
+  --radius: 0.5rem; /* softer, slightly rounder */
 
-  --background: oklch(0.985 0.004 75);
-  --foreground: oklch(0.055 0.010 60);
+  --background: oklch(0.98 0.015 85); /* warm cream */
+  --foreground: oklch(0.25 0.02 50); /* deep espresso brown */
 
-  --card: oklch(0.960 0.008 75);
-  --card-foreground: oklch(0.055 0.010 60);
+  --card: oklch(0.99 0.01 85);
+  --card-foreground: oklch(0.25 0.02 50);
 
-  --popover: oklch(0.985 0.004 75);
-  --popover-foreground: oklch(0.08 0.010 60);
+  --popover: oklch(0.99 0.01 85);
+  --popover-foreground: oklch(0.25 0.02 50);
 
-  --primary: oklch(0.58 0.17 38);
-  --primary-foreground: oklch(0.985 0.004 75);
+  --primary: oklch(0.45 0.08 145); /* cozy matcha/forest green */
+  --primary-foreground: oklch(0.98 0.01 85);
 
-  --secondary: oklch(0.930 0.010 75);
-  --secondary-foreground: oklch(0.08 0.010 60);
+  --secondary: oklch(0.94 0.015 85); /* latte / warm gray */
+  --secondary-foreground: oklch(0.35 0.02 50);
 
-  --muted: oklch(0.930 0.010 75);
-  --muted-foreground: oklch(0.33 0.020 60);
+  --muted: oklch(0.94 0.015 85);
+  --muted-foreground: oklch(0.50 0.02 50);
 
-  --accent: oklch(0.930 0.010 75);
-  --accent-foreground: oklch(0.08 0.010 60);
+  --accent: oklch(0.94 0.015 85);
+  --accent-foreground: oklch(0.35 0.02 50);
 
   --destructive: oklch(0.577 0.245 27.325);
 
-  --border: oklch(0.820 0.020 75);
-  --input: oklch(0.820 0.020 75);
-  --ring: oklch(0.58 0.17 38);
+  --border: oklch(0.90 0.015 85);
+  --input: oklch(0.90 0.015 85);
+  --ring: oklch(0.45 0.08 145);
 
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -83,14 +82,61 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
 
-  --sidebar: oklch(0.975 0.005 75);
-  --sidebar-foreground: oklch(0.095 0.008 60);
-  --sidebar-primary: oklch(0.095 0.008 60);
-  --sidebar-primary-foreground: oklch(0.985 0.004 75);
-  --sidebar-accent: oklch(0.945 0.007 75);
-  --sidebar-accent-foreground: oklch(0.095 0.008 60);
-  --sidebar-border: oklch(0.875 0.012 75);
-  --sidebar-ring: oklch(0.50 0.014 60);
+  --sidebar: oklch(0.96 0.015 85);
+  --sidebar-foreground: oklch(0.25 0.02 50);
+  --sidebar-primary: oklch(0.45 0.08 145);
+  --sidebar-primary-foreground: oklch(0.98 0.01 85);
+  --sidebar-accent: oklch(0.92 0.015 85);
+  --sidebar-accent-foreground: oklch(0.25 0.02 50);
+  --sidebar-border: oklch(0.88 0.015 85);
+  --sidebar-ring: oklch(0.45 0.08 145);
+}
+
+/* ============================================
+   DARK MODE — warm roasted coffee
+   ============================================ */
+.dark {
+  --background: oklch(0.18 0.01 70); /* warm roasted dark brown/gray */
+  --foreground: oklch(0.95 0.01 85); /* soft cream */
+
+  --card: oklch(0.22 0.01 70);
+  --card-foreground: oklch(0.95 0.01 85);
+
+  --popover: oklch(0.22 0.01 70);
+  --popover-foreground: oklch(0.95 0.01 85);
+
+  --primary: oklch(0.60 0.10 145); /* softer matcha for dark mode */
+  --primary-foreground: oklch(0.15 0.01 70);
+
+  --secondary: oklch(0.26 0.01 70);
+  --secondary-foreground: oklch(0.90 0.01 85);
+
+  --muted: oklch(0.26 0.01 70);
+  --muted-foreground: oklch(0.75 0.01 85);
+
+  --accent: oklch(0.26 0.01 70);
+  --accent-foreground: oklch(0.90 0.01 85);
+
+  --destructive: oklch(0.704 0.191 22.216);
+
+  --border: oklch(0.30 0.01 70);
+  --input: oklch(0.30 0.01 70);
+  --ring: oklch(0.60 0.10 145);
+
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+
+  --sidebar: oklch(0.16 0.01 70);
+  --sidebar-foreground: oklch(0.95 0.01 85);
+  --sidebar-primary: oklch(0.60 0.10 145);
+  --sidebar-primary-foreground: oklch(0.15 0.01 70);
+  --sidebar-accent: oklch(0.24 0.01 70);
+  --sidebar-accent-foreground: oklch(0.95 0.01 85);
+  --sidebar-border: oklch(0.30 0.01 70);
+  --sidebar-ring: oklch(0.60 0.10 145);
 }
 
 /* ============================================
@@ -152,11 +198,12 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     scroll-behavior: smooth;
-    transition: background-color 300ms ease, color 200ms ease;
   }
 
-  body {
-    transition: background-color 300ms ease;
+  *, *::before, *::after {
+    transition-property: background-color, border-color, text-decoration-color, fill, stroke, color;
+    transition-duration: 1000ms;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   html::-webkit-scrollbar {
@@ -290,4 +337,59 @@
   .prose a:hover {
     @apply opacity-70;
   }
+}
+
+
+/* Phase 6: Noise Overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.70' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+.dark .noise-overlay {
+  opacity: 0.09;
+}
+
+/* Phase 6: Sticker Physics */
+.sticker {
+  /* Sticker physics handled inline via tailwind group-hover for better hitboxes */
+}
+
+/* Phase 6: Scroll Fade-Ins */
+@keyframes fadeFloatUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-section {
+  animation: fadeFloatUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Phase 6: Text Selection Highlight */
+::selection {
+  background-color: oklch(0.45 0.08 145 / 0.3); /* Match primary color with opacity */
+  color: inherit;
+}
+.dark ::selection {
+  background-color: oklch(0.60 0.10 145 / 0.3);
+}
+
+/* Vinyl Spin */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
 }

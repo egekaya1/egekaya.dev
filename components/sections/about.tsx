@@ -1,204 +1,117 @@
 "use client"
 
 import * as React from "react"
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { SectionHeading } from "@/components/ui/section-heading"
-import { Card, CardContent } from "@/components/ui/card"
-import { GraduationCap, Languages, Target, BookOpen } from "lucide-react"
+import Image from "next/image"
+import illustrationPic from "@/public/illustration.webp"
+import vancouverLakePic from "@/public/vancouver_lake.webp"
+import tameImpalaPic from "@/public/tame_impala.webp"
+import milanoPic from "@/public/milano.webp"
+import northVanPic from "@/public/north_van.webp"
+import fazilSayPic from "@/public/fazil_say.webp"
+import portofinoPic from "@/public/portofino.webp"
+import cernPic from "@/public/cern.webp"
+import parmaPic from "@/public/parma.webp"
+import catSticker from "@/public/sticker_cat.webp"
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
-  },
-}
 
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.07 } },
-}
-
-const interests = [
-  "Computer Science", "Artificial Intelligence", "Software Engineering",
-  "Physics", "Biology", "Chemistry", "Mathematics", "Art", "Language Learning", "Running", "Guitar", "Gym"
+const photos = [
+  { src: vancouverLakePic, alt: "A quiet lake up in North Vancouver" },
+  { src: tameImpalaPic, alt: "Seeing Tame Impala live" },
+  { src: milanoPic, alt: "Piazza del Duomo, Milano" },
+  { src: northVanPic, alt: "Hiking the Pacific Northwest" },
+  { src: fazilSayPic, alt: "Fazıl Say performing in Torino" },
+  { src: portofinoPic, alt: "Coastline views in Portofino" },
+  { src: cernPic, alt: "Visiting the CERN Antimatter Factory (when I was 17)" },
+  { src: parmaPic, alt: "The historic library in Parma" }
 ]
 
-
 export function About() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 })
-
   return (
-    <section id="about" className="section-padding">
-      <div className="container-custom">
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={fadeUp}
-        >
-          <SectionHeading
-            label="About"
-            title="Who I Am"
-            subtitle="Computer engineer. AI researcher. Full-stack developer."
-          />
-        </motion.div>
+    <section className="py-16">
+      <div className="container-custom max-w-5xl mx-auto space-y-24">
+        
+        {/* Top: Intro & Illustration */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
+          
+          <div className="md:col-span-3 space-y-6 text-lg text-muted-foreground font-light leading-relaxed order-2 md:order-1">
+            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">A bit about me</h2>
+            
+            <p>
+              Before moving to the Pacific Northwest, I lived in Italy. I studied Computer Engineering at Politecnico di Torino, did AI research for the university, built software for a professional football club, and even wrote some flight firmware for a rocket team.
+            </p>
+            
+            <p>
+              I usually work on a Mac. Lately, I've been spending my time building the global task registry for the Swift Concurrency runtime in C++ for Apple via Google Summer of Code. It's a lot of low-level systems work, but making opaque program stalls diagnosable is pretty rewarding.
+            </p>
 
-        <div className="mt-16 lg:mt-20 grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Left Column */}
-          <motion.div
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            variants={stagger}
-            className="space-y-8"
-          >
-            <motion.div variants={fadeUp} className="space-y-4">
-              <h3 className="font-display text-2xl font-light">Background</h3>
-              <ul className="space-y-3 text-muted-foreground">
-                <li className="flex items-start gap-3">
-                  <span className="mt-0.75 text-foreground/40 shrink-0">·</span>
-                  <span className="text-sm leading-relaxed">
-                    Computer Engineering graduate from{" "}
-                    <span className="text-foreground font-medium">Politecnico di Torino</span>{" "}
-                    with 27/30 GPA and Full Scholarship. Incoming M.Sc. in Computer Science at{" "}
-                    <span className="text-foreground font-medium">University of British Columbia</span>{" "}
-                    (starting Sep 2026), fully funded, supervised by Prof. Cristina Conati (ACM &amp; AAAI Fellow)
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-0.75 text-foreground/40 shrink-0">·</span>
-                  <span className="text-sm leading-relaxed">
-                    Research Assistant under IEEE Fellow and Vice Rector Prof. Paolo Montuschi at Politecnico di Torino
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-0.75 text-foreground/40 shrink-0">·</span>
-                  <span className="text-sm leading-relaxed">
-                    Full-stack developer with experience in React, Next.js, TypeScript, AWS, Python, and AI/ML systems
-                  </span>
-                </li>
-              </ul>
-            </motion.div>
+            <p className="pt-2">
+              Want to chat? Shoot me an email at <a href="mailto:egekaya360@gmail.com" className="text-foreground underline underline-offset-4 hover:opacity-70 transition-opacity">egekaya360@gmail.com</a>.
+            </p>
+          </div>
 
-            <motion.div variants={fadeUp} className="space-y-4">
-              <h3 className="font-display text-2xl font-light">What I Do</h3>
-              <ul className="space-y-3 text-muted-foreground">
-                {[
-                  "Build scalable web applications with modern frameworks (React, Next.js, TypeScript)",
-                  "Develop problem-solving software for real-time applications (C++, Python)",
-                  "Design and optimize database architectures (PostgreSQL, Supabase)",
-                  "Contribute to open-source and research projects exploring AI and CS",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-0.75 text-foreground/40 shrink-0">·</span>
-                    <span className="text-sm leading-relaxed">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-          </motion.div>
-
-          {/* Right Column */}
-          <motion.div
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            variants={stagger}
-            className="space-y-6"
-          >
-            {/* Education */}
-            <motion.div variants={fadeUp} className="space-y-3">
-              {[
-                {
-                  degree: "M.Sc. Computer Science, Thesis Track",
-                  school: "University of British Columbia",
-                  meta: "Sep 2026 · Fully Funded · Prof. Cristina Conati",
-                },
-                {
-                  degree: "B.Sc. Computer Engineering",
-                  school: "Politecnico di Torino",
-                  meta: "2023 – 2026 · GPA 27.5/30",
-                },
-              ].map((edu) => (
-                <Card key={edu.degree} className="border">
-                  <CardContent className="pt-5 pb-5">
-                    <div className="flex items-start gap-4">
-                      <GraduationCap className="h-5 w-5 mt-0.5 text-muted-foreground shrink-0" />
-                      <div>
-                        <p className="text-sm font-medium">{edu.degree}</p>
-                        <p className="text-xs text-muted-foreground mt-0.5">{edu.school}</p>
-                        <p className="label-mono mt-2">{edu.meta}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-              <Card className="border">
-                <CardContent className="pt-5 pb-5">
-                  <div className="flex items-start gap-4">
-                    <Languages className="h-5 w-5 mt-0.5 text-muted-foreground shrink-0" />
-                    <div>
-                      <p className="text-sm font-medium">Languages</p>
-                      <p className="label-mono mt-2">Turkish · English · Italian</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Interests */}
-            <motion.div variants={fadeUp}>
-              <Card className="border">
-                <CardContent className="pt-5 pb-5">
-                  <div className="flex items-start gap-4">
-                    <BookOpen className="h-5 w-5 mt-0.5 text-muted-foreground shrink-0" />
-                    <div className="flex-1">
-                      <p className="text-sm font-medium mb-3">Interests</p>
-                      <div className="flex flex-wrap gap-2">
-                        {interests.map((interest) => (
-                          <span
-                            key={interest}
-                            className="inline-flex items-center rounded-sm border border-border px-2.5 py-1 text-xs text-muted-foreground"
-                          >
-                            {interest}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Goals */}
-            <motion.div variants={fadeUp}>
-              <Card className="border">
-                <CardContent className="pt-5 pb-5">
-                  <div className="flex items-start gap-4">
-                    <Target className="h-5 w-5 mt-0.5 text-muted-foreground shrink-0" />
-                    <div className="flex-1">
-                      <p className="text-sm font-medium mb-3">Current Goals</p>
-                      <ul className="space-y-2">
-                        {[
-                          "Google Summer of Code 2026, contributing to the Swift Concurrency runtime",
-                          "Starting M.Sc. at University of British Columbia in September 2026 with Prof. Cristina Conati",
-                          "Continuing AI research under Prof. Montuschi",
-                        ].map((goal) => (
-                          <li key={goal} className="flex items-start gap-3">
-                            <span className="mt-0.75 text-foreground/40 shrink-0 text-xs">·</span>
-                            <span className="text-sm text-muted-foreground">{goal}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </motion.div>
+          <div className="md:col-span-2 flex justify-center order-1 md:order-2">
+            <div className="flex flex-col items-center space-y-4">
+              <div className="relative w-full max-w-[360px] aspect-square rounded-2xl overflow-hidden shadow-sm border border-border/40 group">
+                <Image
+                  src={illustrationPic}
+                  placeholder="blur"
+                  alt="Cozy lo-fi aesthetic of Ege working"
+                  fill
+                  className="object-cover rounded-2xl transition-transform duration-[1200ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.04]"
+                  sizes="(max-width: 768px) 100vw, 360px"
+                />
+              </div>
+              <p className="text-sm text-center text-muted-foreground/60 italic font-display">
+                A pic resembling me I found on the internet
+              </p>
+            </div>
+          </div>
         </div>
+
+        {/* Middle: Trivia */}
+        <div className="bg-secondary/30 rounded-2xl p-8 md:p-10 border border-border/40 relative">
+          
+          {/* Cat Sticker */}
+          <div className="absolute -top-10 -right-6 p-8 group cursor-pointer z-50">
+            <div className="relative w-28 h-28 opacity-90 -rotate-12 transition-transform duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-110 group-hover:-translate-y-2 group-hover:-rotate-3">
+              <Image src={catSticker}
+                  placeholder="blur" alt="Cat sticker" fill sizes="112px" className="object-contain filter drop-shadow-lg" />
+            </div>
+          </div>
+          <h3 className="font-display text-2xl text-foreground mb-6 border-b border-border/50 pb-4">Beyond the Terminal</h3>
+          <ul className="space-y-4 text-lg text-muted-foreground font-light">
+            <li>🎸 <strong>Music:</strong> I'm learning to play guitar on my Yamaha Pacifica 012 II (Metallic Black) plugged into a Boss Katana Mini.</li>
+            <li>☕ <strong>Caffeine:</strong> I drink iced coffee with milk almost exclusively. My go-to Nespresso Vertuo pods are Ice Leggero, Bianco Doppio, and Double Espresso Dolce.</li>
+            <li>🏃‍♂️ <strong>Activity:</strong> I stay active by working out and running around Vancouver. </li>
+            <li>🎮 <strong>Downtime:</strong> You can probably find me playing PS5.</li>
+            <li>🌍 <strong>Languages:</strong> I speak Turkish, Italian, English, and I'm currently trying to learn French.</li>
+          </ul>
+        </div>
+
+        {/* Bottom: Masonry Gallery */}
+        <div>
+          <h3 className="font-display text-3xl md:text-4xl text-foreground mb-8">Life & Places</h3>
+          <div className="columns-1 sm:columns-2 md:columns-3 gap-6">
+            {photos.map((photo, i) => (
+              <div key={i} className="break-inside-avoid relative group inline-block w-full mb-6">
+                <div className="relative w-full overflow-hidden rounded-xl bg-secondary/30 shadow-sm border border-border/20">
+                  {/* Using standard img to maintain original aspect ratios in masonry */}
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    placeholder="blur"
+                    className="w-full h-auto object-cover rounded-xl transition-transform duration-[1200ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.02]"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                </div>
+                <div className="pt-2 px-1">
+                  <p className="text-sm font-display italic text-muted-foreground">{photo.alt}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   )

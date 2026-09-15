@@ -6,11 +6,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { ThemeProvider } from "next-themes"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { KonamiWrapper } from "@/components/konami-wrapper"
-import { ScrollProgress } from "@/components/scroll-progress"
-import { BackToTop } from "@/components/back-to-top"
-import { PageTransition } from "@/components/page-transition"
-import { CommandPalette } from "@/components/command-palette"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +27,7 @@ const cormorant = Cormorant({
 export const metadata: Metadata = {
   metadataBase: new URL("https://egekaya.dev"),
   title: "Ege Kaya | Software Engineer",
-  description: "Portfolio of Ege Kaya - Computer Engineering student at Politecnico di Torino (27/30 GPA), Research Assistant under Prof. Paolo Montuschi, and Full-Stack Developer. Specialized in React, Next.js, TypeScript, AWS and Python. Building production-grade applications in Torino, Italy.",
+  description: "Ege Kaya - Incoming M.Sc. Computer Science student at UBC, researching personalized explainable AI. Systems programming and machine learning.",
   keywords: [
     "Ege Kaya",
     "Software Engineer Portfolio",
@@ -73,7 +68,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://egekaya.dev",
     title: "Ege Kaya | Software Engineer",
-    description: "Computer Engineering student at Politecnico di Torino, Research Assistant under Prof. Paolo Montuschi, and Full-Stack Developer. Specialized in React, Next.js, TypeScript, AWS, and Python.",
+    description: "Ege Kaya - Incoming M.Sc. Computer Science student at UBC, researching personalized explainable AI. Systems programming and machine learning.",
     siteName: "Ege Kaya | Software Engineer",
     images: [
       {
@@ -87,17 +82,17 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Ege Kaya | Software Engineer",
-    description: "Computer Engineering student at Politecnico di Torino. Building production-grade applications with React, Next.js, and TypeScript.",
+    description: "Ege Kaya - Incoming M.Sc. Computer Science student at UBC, researching personalized explainable AI. Systems programming and machine learning.",
     images: ["/opengraph-image"],
   },
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.jpg", type: "image/jpeg" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
       { url: "/icon.png", sizes: "512x512", type: "image/png" },
-      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/favicon.jpg", type: "image/jpeg" },
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
@@ -164,10 +159,8 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
         >
-          <KonamiWrapper>
-            <ScrollProgress />
-            <CommandPalette />
-            <a
+          
+                                    <a
               href="#main"
               className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md focus:shadow-lg"
             >
@@ -175,13 +168,11 @@ export default function RootLayout({
             </a>
             <Analytics />
             <SpeedInsights />
-            <Navbar />
-            <PageTransition>
-              {children}
-            </PageTransition>
-            <Footer />
-            <BackToTop />
-          </KonamiWrapper>
+            <div className="noise-overlay" />
+                                  <Navbar />
+                          {children}
+                        <Footer />
+                      
         </ThemeProvider>
       </body>
     </html>
