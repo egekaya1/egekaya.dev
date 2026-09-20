@@ -61,9 +61,7 @@ export function About() {
                   sizes="(max-width: 768px) 100vw, 360px"
                 />
               </div>
-              <p className="text-sm text-center text-muted-foreground/60 italic font-display">
-                A pic resembling me I found on the internet
-              </p>
+
             </div>
           </div>
         </div>
