@@ -2,27 +2,18 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { Github, Linkedin, Sun, Moon } from "lucide-react"
-import { useTheme } from "next-themes"
-import { useState, useEffect } from "react"
+import { GraduationCap, Mail } from "lucide-react"
+import { GithubIcon, LinkedinIcon } from "@/components/icons"
 import Image from "next/image"
 import vinylSticker from "@/public/sticker_vinyl.webp"
 
 
 export function Footer() {
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-  
-  // Fix hydration mismatch for theme toggle
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
   const currentYear = new Date().getFullYear()
 
   return (
     <footer className="border-t border-border" role="contentinfo">
-      <div className="container-custom">
+      <div className="container-custom max-w-6xl">
         <div className="py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <p className="label-mono">© {currentYear} Ege Kaya</p>
@@ -44,7 +35,22 @@ export function Footer() {
           </a>
 
           <nav aria-label="Social media links" className="flex items-center gap-4">
-            
+            <Link
+              href="mailto:egekaya360@gmail.com"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+              aria-label="Email"
+            >
+              <Mail className="h-4 w-4" />
+            </Link>
+            <Link
+              href="https://scholar.google.ca/citations?user=6oLyRogAAAAJ&hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+              aria-label="Google Scholar"
+            >
+              <GraduationCap className="h-4 w-4" />
+            </Link>
             <Link
               href="https://www.linkedin.com/in/ege-kaya/"
               target="_blank"
@@ -52,7 +58,7 @@ export function Footer() {
               className="text-muted-foreground hover:text-foreground transition-colors duration-200"
               aria-label="LinkedIn"
             >
-              <Linkedin className="h-4 w-4" />
+              <LinkedinIcon className="h-4 w-4" />
             </Link>
             <Link
               href="https://github.com/egekaya1"
@@ -61,7 +67,7 @@ export function Footer() {
               className="text-muted-foreground hover:text-foreground transition-colors duration-200"
               aria-label="GitHub"
             >
-              <Github className="h-4 w-4" />
+              <GithubIcon className="h-4 w-4" />
             </Link>
           </nav>
         </div>

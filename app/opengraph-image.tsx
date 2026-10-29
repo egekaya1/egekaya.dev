@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
 
-export const alt = 'Ege Kaya - Systems & Machine Learning'
+export const alt = 'Ege Kaya, M.Sc. Computer Science at UBC'
 export const size = {
   width: 1200,
   height: 630,
@@ -32,7 +32,7 @@ export default async function Image() {
             letterSpacing: '-0.02em',
           }}
         >
-          Hi, I'm Ege.
+          Ege Kaya
         </div>
 
         <div
@@ -44,7 +44,7 @@ export default async function Image() {
             lineHeight: 1.4,
           }}
         >
-          I write code focusing on low-level systems and machine learning. Based in Vancouver, BC.
+          M.Sc. Computer Science, University of British Columbia. NLP interpretability, explainable AI, and systems engineering.
         </div>
 
         <div
@@ -53,11 +53,11 @@ export default async function Image() {
             gap: '16px',
           }}
         >
-          <span style={{ fontSize: 24, color: '#A8A29E', textTransform: 'uppercase', letterSpacing: '0.1em' }}>SWE</span>
+          <span style={{ fontSize: 24, color: '#A8A29E', textTransform: 'uppercase', letterSpacing: '0.1em' }}>NLP</span>
           <span style={{ fontSize: 24, color: '#A8A29E' }}>/</span>
-          <span style={{ fontSize: 24, color: '#A8A29E', textTransform: 'uppercase', letterSpacing: '0.1em' }}>UBC</span>
+          <span style={{ fontSize: 24, color: '#A8A29E', textTransform: 'uppercase', letterSpacing: '0.1em' }}>XAI</span>
           <span style={{ fontSize: 24, color: '#A8A29E' }}>/</span>
-          <span style={{ fontSize: 24, color: '#A8A29E', textTransform: 'uppercase', letterSpacing: '0.1em' }}>COFFEE</span>
+          <span style={{ fontSize: 24, color: '#A8A29E', textTransform: 'uppercase', letterSpacing: '0.1em' }}>SYSTEMS</span>
         </div>
       </div>
     ),

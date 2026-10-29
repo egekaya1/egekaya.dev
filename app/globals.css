@@ -93,53 +93,6 @@
 }
 
 /* ============================================
-   DARK MODE — warm roasted coffee
-   ============================================ */
-.dark {
-  --background: oklch(0.18 0.01 70); /* warm roasted dark brown/gray */
-  --foreground: oklch(0.95 0.01 85); /* soft cream */
-
-  --card: oklch(0.22 0.01 70);
-  --card-foreground: oklch(0.95 0.01 85);
-
-  --popover: oklch(0.22 0.01 70);
-  --popover-foreground: oklch(0.95 0.01 85);
-
-  --primary: oklch(0.60 0.10 145); /* softer matcha for dark mode */
-  --primary-foreground: oklch(0.15 0.01 70);
-
-  --secondary: oklch(0.26 0.01 70);
-  --secondary-foreground: oklch(0.90 0.01 85);
-
-  --muted: oklch(0.26 0.01 70);
-  --muted-foreground: oklch(0.75 0.01 85);
-
-  --accent: oklch(0.26 0.01 70);
-  --accent-foreground: oklch(0.90 0.01 85);
-
-  --destructive: oklch(0.704 0.191 22.216);
-
-  --border: oklch(0.30 0.01 70);
-  --input: oklch(0.30 0.01 70);
-  --ring: oklch(0.60 0.10 145);
-
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-
-  --sidebar: oklch(0.16 0.01 70);
-  --sidebar-foreground: oklch(0.95 0.01 85);
-  --sidebar-primary: oklch(0.60 0.10 145);
-  --sidebar-primary-foreground: oklch(0.15 0.01 70);
-  --sidebar-accent: oklch(0.24 0.01 70);
-  --sidebar-accent-foreground: oklch(0.95 0.01 85);
-  --sidebar-border: oklch(0.30 0.01 70);
-  --sidebar-ring: oklch(0.60 0.10 145);
-}
-
-/* ============================================
    DARK MODE — warm deep charcoal
    ============================================ */
 .dark {
@@ -152,7 +105,7 @@
   --popover: oklch(0.155 0.008 60);
   --popover-foreground: oklch(0.965 0.004 75);
 
-  --primary: oklch(0.68 0.16 38);
+  --primary: oklch(0.72 0.11 145);
   --primary-foreground: oklch(0.09 0.005 60);
 
   --secondary: oklch(0.200 0.008 60);
@@ -168,7 +121,7 @@
 
   --border: oklch(1 0 0 / 13%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.68 0.16 38);
+  --ring: oklch(0.72 0.11 145);
 
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
@@ -382,7 +335,7 @@
   color: inherit;
 }
 .dark ::selection {
-  background-color: oklch(0.60 0.10 145 / 0.3);
+  background-color: oklch(0.72 0.11 145 / 0.3);
 }
 
 /* Vinyl Spin */

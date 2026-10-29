@@ -2,55 +2,68 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { Moon, Sun,  } from "lucide-react"
+import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
-export function Navbar() {
-  const [mounted, setMounted] = React.useState(false)
-  const { setTheme, resolvedTheme } = useTheme()
+const sections = [
+  { href: "#research", label: "Research" },
+  { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Projects" },
+  { href: "#education", label: "Education" },
+]
 
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
+export function Navbar() {
+  // false during SSR, true on the client — avoids a theme-icon hydration mismatch
+  const mounted = React.useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  )
+  const { setTheme, resolvedTheme } = useTheme()
 
   const toggleTheme = () => setTheme(resolvedTheme === "dark" ? "light" : "dark")
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 bg-transparent py-6">
-      <div className="container-custom">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
+    <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-border/40">
+      <div className="container-custom max-w-6xl">
+        <div className="flex h-16 items-center justify-between gap-4">
           <Link
             href="/"
             className="font-display text-2xl font-medium tracking-tight hover:opacity-70 transition-opacity duration-200"
           >
-            EK.
+            Ege Kaya
           </Link>
 
-          {/* Actions */}
-          <div className="flex items-center gap-4">
-            {/* Resume Download */}
+          <div className="flex items-center gap-5">
+            <ul className="hidden md:flex items-center gap-5">
+              {sections.map((section) => (
+                <li key={section.href}>
+                  <a
+                    href={section.href}
+                    className="underline-animate text-[13px] text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  >
+                    {section.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
             <a
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[13px] font-semibold transition-all duration-300 text-muted-foreground hover:text-foreground border-b border-transparent hover:border-foreground/50 pb-0.5 hover:-translate-y-[1px] active:scale-95"
+              className="rounded-full border border-border px-3 py-1 text-[13px] font-medium text-foreground hover:border-primary hover:text-primary transition-colors duration-200"
             >
-              Resume
+              CV
             </a>
 
-            {/* Theme Toggle */}
             {mounted && (
               <button
                 onClick={toggleTheme}
-                className="p-2 text-muted-foreground hover:text-foreground transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-[1px] hover:scale-110 active:scale-95"
+                className="p-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
                 aria-label="Toggle theme"
               >
-                {resolvedTheme === "dark" ? (
-                  <Sun className="h-4 w-4" />
-                ) : (
-                  <Moon className="h-4 w-4" />
-                )}
+                {resolvedTheme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
               </button>
             )}
           </div>

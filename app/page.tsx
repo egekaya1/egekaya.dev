@@ -1,15 +1,27 @@
-import { Hero } from "@/components/sections/hero"
+import { Profile } from "@/components/profile"
 import { About } from "@/components/sections/about"
+import { Research } from "@/components/sections/research"
 import { Experience } from "@/components/sections/experience"
 import { Projects } from "@/components/sections/projects"
+import { Education } from "@/components/sections/education"
+import { Personal } from "@/components/sections/personal"
 
 export default function Home() {
   return (
-    <main id="main">
-      <div className="fade-in-section" style={{animationDelay: "0s"}}><Hero /></div>
-      <div className="fade-in-section" style={{animationDelay: "0.2s"}}><About /></div>
-      <div className="fade-in-section" style={{animationDelay: "0.4s"}}><Experience /></div>
-      <div className="fade-in-section" style={{animationDelay: "0.6s"}}><Projects /></div>
+    <main id="main" className="container-custom max-w-6xl pt-28 pb-24">
+      <div className="grid grid-cols-1 lg:grid-cols-[260px_minmax(0,1fr)] gap-12 lg:gap-16">
+        <div className="fade-in-section">
+          <Profile />
+        </div>
+        <div className="fade-in-section" style={{ animationDelay: "0.15s" }}>
+          <About />
+          <Research />
+          <Experience />
+          <Projects />
+          <Education />
+          <Personal />
+        </div>
+      </div>
     </main>
   )
 }

@@ -24,28 +24,30 @@ const cormorant = Cormorant({
   style: ["normal", "italic"],
 });
 
+const title = "Ege Kaya"
+const description =
+  "M.Sc. Computer Science student at UBC working on NLP interpretability, explainable and human-centred AI, and low-level systems engineering."
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://egekaya.dev"),
-  title: "Ege Kaya | Software Engineer",
-  description: "Ege Kaya - Incoming M.Sc. Computer Science student at UBC, researching personalized explainable AI. Systems programming and machine learning.",
+  title,
+  description,
   keywords: [
     "Ege Kaya",
-    "Software Engineer Portfolio",
-    "Computer Engineering",
-    "Research Assistant",
-    "Full Stack Developer",
-    "React Developer",
-    "Next.js Developer",
-    "TypeScript Developer",
+    "UBC",
+    "University of British Columbia",
+    "M.Sc. Computer Science",
+    "NLP",
+    "Interpretability",
+    "Explainable AI",
+    "Human-Centred AI",
+    "LLM Evaluation",
+    "Retrieval-Augmented Generation",
+    "Activation Patching",
+    "Swift Concurrency",
+    "Google Summer of Code",
+    "Systems Programming",
     "Politecnico di Torino",
-    "Parma Calcio 1913",
-    "AWS Developer",
-    "Software Engineer",
-    "Python Developer",
-    "PostgreSQL",
-    "Torino Italy",
-    "Web Development Portfolio",
-    "AI Development",
   ],
   authors: [{ name: "Ege Kaya", url: "https://egekaya.dev" }],
   creator: "Ege Kaya",
@@ -64,37 +66,30 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    type: "website",
+    type: "profile",
     locale: "en_US",
     url: "https://egekaya.dev",
-    title: "Ege Kaya | Software Engineer",
-    description: "Ege Kaya - Incoming M.Sc. Computer Science student at UBC, researching personalized explainable AI. Systems programming and machine learning.",
-    siteName: "Ege Kaya | Software Engineer",
+    title,
+    description,
+    siteName: "Ege Kaya",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Ege Kaya - Software Engineer",
+        alt: "Ege Kaya, M.Sc. Computer Science at UBC",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ege Kaya | Software Engineer",
-    description: "Ege Kaya - Incoming M.Sc. Computer Science student at UBC, researching personalized explainable AI. Systems programming and machine learning.",
+    title,
+    description,
     images: ["/opengraph-image"],
   },
   icons: {
-    icon: [
-      { url: "/favicon.jpg", type: "image/jpeg" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icon.png", sizes: "512x512", type: "image/png" },
-      { url: "/favicon.jpg", type: "image/jpeg" },
-    ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    icon: [{ url: "/favicon.jpg", type: "image/jpeg" }],
+    apple: [{ url: "/favicon.jpg", type: "image/jpeg" }],
   },
 };
 
@@ -108,38 +103,38 @@ export default function RootLayout({
     '@type': 'Person',
     name: 'Ege Kaya',
     url: 'https://egekaya.dev',
-    image: 'https://egekaya.dev/profile.webp',
-    jobTitle: 'Computer Engineering Student & Research Assistant',
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Politecnico di Torino',
+    image: 'https://egekaya.dev/hero-profile.webp',
+    jobTitle: 'Graduate Researcher, Computer Science',
+    affiliation: {
+      '@type': 'CollegeOrUniversity',
+      name: 'University of British Columbia',
     },
     alumniOf: {
-      '@type': 'EducationalOrganization',
+      '@type': 'CollegeOrUniversity',
       name: 'Politecnico di Torino',
     },
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Torino',
-      addressCountry: 'IT',
+      addressLocality: 'Vancouver',
+      addressRegion: 'BC',
+      addressCountry: 'CA',
     },
     sameAs: [
+      'https://scholar.google.ca/citations?user=6oLyRogAAAAJ',
       'https://www.linkedin.com/in/ege-kaya/',
       'https://github.com/egekaya1',
     ],
     knowsAbout: [
-      'Computer Engineering',
-      'Software Development',
-      'Front End Development',
-      'Full Stack Development',
-      'Embedded Systems',
-      'React',
-      'Next.js',
-      'TypeScript',
-      'AWS',
-      'PostgreSQL',
+      'Natural Language Processing',
+      'Interpretability',
+      'Explainable AI',
+      'Human-Computer Interaction',
+      'Retrieval-Augmented Generation',
+      'Systems Programming',
       'C++',
-      'Python'
+      'Swift',
+      'Python',
+      'PyTorch',
     ],
   }
 
@@ -159,20 +154,18 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
         >
-          
-                                    <a
-              href="#main"
-              className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md focus:shadow-lg"
-            >
-              Skip to main content
-            </a>
-            <Analytics />
-            <SpeedInsights />
-            <div className="noise-overlay" />
-                                  <Navbar />
-                          {children}
-                        <Footer />
-                      
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md focus:shadow-lg"
+          >
+            Skip to main content
+          </a>
+          <Analytics />
+          <SpeedInsights />
+          <div className="noise-overlay" />
+          <Navbar />
+          {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

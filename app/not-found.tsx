@@ -20,7 +20,7 @@ export default function NotFound() {
 
         <h1 className="font-display text-6xl text-foreground">404</h1>
         <p className="text-muted-foreground font-light leading-relaxed">
-          This page doesn't exist. It might have been moved during the redesign.
+          This page doesn&apos;t exist. It might have been moved during the redesign.
         </p>
         <div className="pt-4">
           <Link 
