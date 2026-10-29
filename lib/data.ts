@@ -206,7 +206,7 @@ export const education = [
     period: "Sep 2023 – Sep 2026",
     details: [
       "GPA 3.7/4.0 (27.5/30), final mark 101/110. Full merit scholarship.",
-      "Highlights: Computer Architecture (30L), Cybersecurity and National Defence (30L), Object-Oriented Programming, Linear Algebra and Geometry.",
+      "Coursework: Computer Architecture, Algorithms and Data Structures, Operating Systems, Object-Oriented Programming, Programming Techniques, Computer Networks, Introduction to Databases, Introduction to Data Science and Visualization, Digital Electronics Design, Signal Analysis and Processing, Automatic Control, Cybersecurity and National Defence, Linear Algebra and Geometry, Mathematical Methods for Computer Science, Mathematical Analysis I and II.",
     ],
   },
 ]
