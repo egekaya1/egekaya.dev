@@ -70,7 +70,7 @@ export const research: ResearchItem[] = [
     title: "Analysis of AI Usage in University-Level Lecturing",
     status: "Public report",
     period: "2026",
-    collaborators: "with A. Kale and B. Demirtola",
+    collaborators: "with Alp Kale and Bora Demirtola",
     summary:
       "Evaluated AI systems for lecturing and instructional-material generation, including a full Computer Architecture lecture.",
   },
@@ -78,7 +78,7 @@ export const research: ResearchItem[] = [
     title: "AI-Based Anomaly Detection in Network Security",
     status: "Course report",
     period: "2026",
-    collaborators: "with A. Kale and D. E. Bulte",
+    collaborators: "with Alp Kale and Demir Ege Bulte",
     summary: "Investigated machine-learning approaches to detecting anomalous activity in network-security data.",
   },
 ]
