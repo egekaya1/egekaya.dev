@@ -212,7 +212,6 @@ export const education = [
 ]
 
 export const honours = [
-  "Top 0.34% nationwide, Turkish University Entrance Examination (~1.5M candidates)",
   "Top 9 finalist, Amazon Robotics Hackathon",
   "3rd place, GitKraken Game Jam (GitSimulator)",
   "KU Leuven CS Scholarship, selected among the top ten incoming students",
